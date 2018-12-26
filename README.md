@@ -143,9 +143,65 @@ sleep 10
 
 ```
 
-  5.3. Save and reboot the Rpi zero:
+6. Save and reboot the Rpi zero:
   
 ```
 sudo reboot
 ```
+  
+7. Connect your Rpi zero to your computer and make sure it recognizes your Rpi zero as a USB HID joystick device named "XAC Virtual Joystick".
+  
+8.  Startup your Rpi zero and enter following commands to test the configuration:
+   
+```
+sudo /usr/bin/xac_joystick_usb
+ls -la /dev/hidg*
+```   
+
+You should get something similar to following which means it's working and ready to use.
+
+```
+crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
+```   
+9.  Download the keyboard input interface code
+
+  9.1. Create a new python file using following command:
+  
+```
+sudo nano input_keyboard.py
+sudo chmod +x input_keyboard.py
+```   
+
+Note : Make sure you are in /home/pi directory 
+
+  9.2. Copy and paste the following code:
+  
+```
+TO DO
+```   
+
+  9.3. Save input_keyboard.py file and exit
+  
+  9.4. Test operating XAC using input_keyboard.py code with a physical keyboard or SSH
+  
+```
+sudo python input_keyboard.py
+```   
+
+10. input_keyboard.py usage:
+
+* Key 1: Button 1
+* Key 2: Button 2
+* Key 3: Button 3
+* Key 4: Button 4
+* Key 5: Button 5
+* Key 6: Button 6
+* Key 7: Button 7
+* Key 8: Button 8
+* RIGHT Key: Analog Right
+* UP Key: Analog Up
+* LEFT Key: Analog Left
+* RIGHT Key: Analog Down
+
+  
   
