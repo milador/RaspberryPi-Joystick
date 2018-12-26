@@ -88,6 +88,7 @@ sudo nano /usr/bin/xac_joystick_usb
   5.2. Add the following code to the xac_joystick_usb gadget and save it.
   
 ```
+# Created by https://github.com/milador/XAC-Virtual-Joystick
 #!/bin/bash
 
 sleep 10
