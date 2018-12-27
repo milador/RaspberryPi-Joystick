@@ -151,6 +151,10 @@ sudo reboot
 ```
   
 7. Connect your Rpi zero to your computer and make sure it recognizes your Rpi zero as a USB HID joystick device named "XAC Virtual Joystick".
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/XAC-Virtual-Joystick/master/Resources/cpanel.PNG" width="50%" height="50%" alt="Joystick device in cpanel"/>
+</p>
   
 8.  Startup your Rpi zero and enter following commands to test the configuration:
    
@@ -164,9 +168,12 @@ You should get something similar to following which means it's working and ready
 ```
 crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 ```   
-9.  Download the keyboard input interface code
 
-  9.1. Create a new python file using following command:
+# Usage
+
+1.  Download the keyboard input interface code
+
+  1.1. Create a new python file using following command:
   
 ```
 sudo nano input_keyboard.py
@@ -175,21 +182,32 @@ sudo chmod +x input_keyboard.py
 
 Note : Make sure you are in /home/pi directory 
 
-  9.2. Copy and paste the following code:
-  
-```
-TO DO
-```   
+  1.2. Copy and paste the input_keyboard.py code available under Scripts directory.
 
-  9.3. Save input_keyboard.py file and exit
+  1.3. Save input_keyboard.py file and exit
   
-  9.4. Test operating XAC using input_keyboard.py code with a physical keyboard or SSH
+  1.4. Test operating XAC using input_keyboard.py code with a physical keyboard or SSH
   
 ```
 sudo python input_keyboard.py
 ```   
 
-10. input_keyboard.py usage:
+  1.5. Use "q" key to exit.
+
+2.	Add input_keyboard.py code to startup scripts and run it automatically after OS boot
+
+  2.1. Open /etc/rc.local
+  
+```
+sudo nano /etc/rc.local
+```
+  2.2. Add following command on the line above "exit 0" and save it. ( Add it on the line before "exit 0" )
+  
+```
+sudo python input_keyboard.py
+```
+
+3. input_keyboard.py usage:
 
 * Key 1: Button 1
 * Key 2: Button 2
@@ -199,10 +217,10 @@ sudo python input_keyboard.py
 * Key 6: Button 6
 * Key 7: Button 7
 * Key 8: Button 8
-* RIGHT Key: Analog Right
-* UP Key: Analog Up
-* LEFT Key: Analog Left
-* RIGHT Key: Analog Down
+* Key d: Analog Right
+* Key w: Analog Up
+* Key a: Analog Left
+* Key s: Analog Down
 
   
   
