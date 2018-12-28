@@ -4,9 +4,9 @@ XAC only accepts HID USB joystick devices and other sorts of USB HID devices can
 
 However, we can use a raspberry pi to act as a HID converter device which makes it possible to use other devices such as USB Keyboard and mouse.
 
-The new versions of raspberry pi ( Rpi 3 & Rpi zero w ) come with bluetooth chip which makes it possible to use Bluetooth HID devices as well as USB HID.
+The new versions of raspberry pi zero W come with bluetooth chip which makes it possible to use Bluetooth HID devices as well as USB HID.
 
-This project is in development process and it's only possible to operate XAC using a keyboard at the moment.
+This project is in development process at the moment.
 
 We now go over the hardware and software requirements.
 
@@ -170,6 +170,8 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 ```   
 
 # Usage
+
+This ia a simple program to operate the virtual joystick using command line and a keyboard.
 
 1.  Download the keyboard input interface code
 
