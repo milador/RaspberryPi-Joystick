@@ -17,7 +17,7 @@ We now go over the hardware and software requirements.
   3. [Pi Zero USB Stem](https://www.sparkfun.com/products/14526) x 1
   4. mice and keyboard to setup (optional)
   
-Note : You can also use an OTG adapter cable and a power supply through micro USB ports instead of Pi Zero USB Stem. A 3rd generation Raspberry pi 3 and Raspberry pi zero can be used as well.
+Note : You can also use an OTG adapter cable and a power supply through micro USB ports instead of Pi Zero USB Stem.
 
 # Hardware Assembly Instructions   
 
@@ -121,7 +121,7 @@ echo "XAC Virtual Joystick" > strings/0x409/product
 mkdir functions/hid.usb0
 echo 0 > functions/hid.usb0/protocol
 echo 0 > functions/hid.usb0/subclass
-echo 8 > functions/hid.usb0/report_length
+echo 3 > functions/hid.usb0/report_length
 
 # Write report descriptor ( X and Y analog joysticks plus 8 buttons )
 echo "05010904A1011581257F0901A10009300931750895028102C005091901290815002501750195088102C0" | xxd -r -ps > functions/hid.usb0/report_desc
