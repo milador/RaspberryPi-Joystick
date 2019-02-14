@@ -1,8 +1,5 @@
-# XAC-Virtual-Joystick
-The goal of this project is to create a virtual USB HID joystick using Raspberry Pi to operate XAC. 
-XAC only accepts HID USB joystick devices and other sorts of USB HID devices can't be used to operate XAC.
-
-However, we can use a raspberry pi to act as a HID converter device which makes it possible to use other devices such as USB Keyboard and mouse.
+# RaspberryPi-Joystick
+The goal of this project is to create a virtual USB HID joystick using Raspberry Pi. 
 
 The new versions of raspberry pi zero W come with bluetooth chip which makes it possible to use Bluetooth HID devices as well as USB HID.
 
