@@ -66,70 +66,70 @@ def write_report(report):
 	
 # Initialization 
 def init():
-    write_report('\x00\x00\x00')
+    clean_up()
 
 def button_1(tf):
-    write_report('\x00\x00\x01')
+    write_report('\x01\x80\x80')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def button_2(tf):
-    write_report('\x00\x00\x02')
+    write_report('\x02\x80\x80')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def button_3(tf):
-    write_report('\x00\x00\x04')
+    write_report('\x04\x80\x80')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def button_4(tf):
-    write_report('\x00\x00\x08')
+    write_report('\x08\x80\x80')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def button_5(tf):
-    write_report('\x00\x00\x10')
+    write_report('\x10\x80\x80')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def button_6(tf):
-    write_report('\x00\x00\x20')
+    write_report('\x20\x80\x80')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def button_7(tf):
-    write_report('\x00\x00\x40')
+    write_report('\x40\x80\x80')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def button_8(tf):
-    write_report('\x00\x00\x80')
+    write_report('\x80\x80\x80')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def button_right(tf):
-    write_report('\x7E\x00\x00')
+    write_report('\x00\xFF\x80')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def button_up(tf):
     write_report('\x00\x80\x00')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def button_left(tf):
-    write_report('\x80\x00\x00')
+    write_report('\x00\x00\x80')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def button_down(tf):
-    write_report('\x00\x7E\x00')
+    write_report('\x00\x80\xFF')
     time.sleep(tf)
-    write_report('\x00\x00\x00')	
+    clean_up()	
 	
 def clean_up():
-    write_report('\x00\x00\x00')
+    write_report('\x00\x80\x80')
 
 
 def main():
@@ -142,3 +142,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
