@@ -1,32 +1,4 @@
-# RaspberryPi-Joystick
-The goal of this project is to create a virtual USB HID joystick using Raspberry Pi. 
-
-The new versions of raspberry pi zero W come with bluetooth chip which makes it possible to use Bluetooth HID devices as well as USB HID.
-
-This project is in development process at the moment.
-
-We now go over the hardware and software requirements.
-
-# Hardware requirements  
-
-  1. [Raspberry Pi zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) x 1
-  2. Micro SD card x 1
-  3. [Pi Zero USB Stem](https://www.sparkfun.com/products/14526) x 1
-  4. mice and keyboard to setup (optional)
-  
-Note : You can also use an OTG adapter cable and a power supply through micro USB ports instead of Pi Zero USB Stem.
-
-# Hardware Assembly Instructions   
-
-  1. Solder the Pi Zero USB Stem
-  
-The main part of the assembly process is to solder the Pi Zero USB Stem to the Raspberry pi zero W. You can find the assembly instructions of Pi Zero USB Stem on [zerostem.io website](https://zerostem.io/installation/). 
-
-Note: You can skip this step if you using an OTG adapter 
-
-  2. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
-  
-  3. Connect your raspberry pi zero to a monitor through HDMI cable and a mice and keyboard. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
+# 8 Buttons Software Installation Instructions 
   
 # Software requirements  
 
@@ -57,8 +29,8 @@ sudo echo "libcomposite" | sudo tee -a /etc/modules
 3.	Create the virtual joystick HID config script
 
 ```
-sudo touch /usr/bin/xac_joystick_usb
-sudo chmod +x /usr/bin/xac_joystick_usb
+sudo touch /usr/bin/8_buttons_rpi_joystick_usb
+sudo chmod +x /usr/bin/8_buttons_rpi_joystick_usb
 ```
 
 4.	Add virtual joystick HID config script to startup scripts and run it automatically after OS boot
@@ -71,7 +43,7 @@ sudo nano /etc/rc.local
   4.2. Add following command on the line above "exit 0" and save it. ( Add it on the line before "exit 0" )
   
 ```
-/usr/bin/xac_joystick_usb # XAC libcomposite configuration
+/usr/bin/8_buttons_rpi_joystick_usb # Raspberry Joystick 8 button libcomposite configuration
 ```
 
 5.	Create the joystick HID gadget 
@@ -79,10 +51,10 @@ sudo nano /etc/rc.local
   5.1. Create a new gadget
 
 ```
-sudo nano /usr/bin/xac_joystick_usb
+sudo nano /usr/bin/8_buttons_rpi_joystick_usb
 ```
 
-  5.2. Add the following code to the xac_joystick_usb gadget and save it.
+  5.2. Add the following code to the 8_buttons_rpi_joystick_usb gadget and save it.
   
 ```
 # Created by https://github.com/milador/RaspberryPi-Joystick
@@ -90,10 +62,10 @@ sudo nano /usr/bin/xac_joystick_usb
 
 sleep 10
 
-# Create xac_joystick gadget
+# Create 8_buttons_rpi_joystick gadget
 cd /sys/kernel/config/usb_gadget/
-mkdir -p xac_joystick
-cd xac_joystick
+mkdir -p 8_buttons_rpi_joystick
+cd 8_buttons_rpi_joystick
 
 sudo su
 
@@ -111,7 +83,7 @@ mkdir -p strings/0x409
 
 echo "0123456789" > strings/0x409/serialnumber
 echo "Raspberry Pi" > strings/0x409/manufacturer
-echo "XAC Virtual Joystick" > strings/0x409/product
+echo "RaspberryPi Joystick" > strings/0x409/product
 
 
 # Define the functions of the device
@@ -141,6 +113,41 @@ sleep 10
 
 ```
 
+The report descriptor is created to define a dual axis joystick and 8 buttons joystick HID device. The report descriptor used in the 8_buttons_rpi_joystick_usb gadget definition is presented in hexadecimal values as follows:
+
+```
+05010904A1011581257F0901A10009300931750895028102C005091901290815002501750195088102C0
+```
+
+The actual USB Report Descriptor can be defined as following:
+
+```
+0x05, 0x01,        // Usage Page (Generic Desktop Ctrls)
+0x09, 0x04,        // Usage (Joystick)
+0xA1, 0x01,        // Collection (Application)
+0x15, 0x81,        //   Logical Minimum (-127)
+0x25, 0x7F,        //   Logical Maximum (127)
+0x09, 0x01,        //   Usage (Pointer)
+0xA1, 0x00,        //   Collection (Physical)
+0x09, 0x30,        //     Usage (X)
+0x09, 0x31,        //     Usage (Y)
+0x75, 0x08,        //     Report Size (8)
+0x95, 0x02,        //     Report Count (2)
+0x81, 0x02,        //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
+0xC0,              //   End Collection
+0x05, 0x09,        //   Usage Page (Button)
+0x19, 0x01,        //   Usage Minimum (0x01)
+0x29, 0x08,        //   Usage Maximum (0x08)
+0x15, 0x00,        //   Logical Minimum (0)
+0x25, 0x01,        //   Logical Maximum (1)
+0x75, 0x01,        //   Report Size (1)
+0x95, 0x08,        //   Report Count (8)
+0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
+0xC0,              // End Collection
+
+// 42 bytes
+```
+
 6. Save and reboot the Rpi zero:
   
 ```
@@ -156,7 +163,7 @@ sudo reboot
 8.  Startup your Rpi zero and enter following commands to test the configuration:
    
 ```
-sudo /usr/bin/xac_joystick_usb
+sudo /usr/bin/8_buttons_rpi_joystick_usb
 ls -la /dev/hidg*
 ```   
 
@@ -168,32 +175,32 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 
 # Usage
 
-This ia a simple program to operate the virtual joystick using command line and a keyboard.
+A sample code to convert keyboard actions to joystick actions using command line and a keyboard is available to test the functionality.
 
-1.  Download the keyboard input interface code
+1.  Download the 8 buttons keyboard input interface code
 
   1.1. Create a new python file using following command:
   
 ```
-sudo nano input_keyboard.py
-sudo chmod +x input_keyboard.py
+sudo nano 8_buttons_keyboard.py
+sudo chmod +x 8_buttons_keyboard.py
 ```   
 
 Note : Make sure you are in /home/pi directory 
 
-  1.2. Copy and paste the input_keyboard.py code available under Scripts directory.
+  1.2. Copy and paste the 8_buttons_keyboard.py code available under Code directory.[8_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons/Code/8_buttons_keyboard.py)
 
-  1.3. Save input_keyboard.py file and exit
+  1.3. Save 8_buttons_keyboard.py file and exit
   
-  1.4. Test operating XAC using input_keyboard.py code with a physical keyboard or SSH
+  1.4. Test operating RaspberryPi-Joystick using 8_buttons_keyboard.py code with a physical keyboard or SSH
   
 ```
-sudo python input_keyboard.py
+sudo python 8_buttons_keyboard.py
 ```   
 
   1.5. Use "q" key to exit.
 
-2.	Add input_keyboard.py code to startup scripts and run it automatically after OS boot
+2.	Add 8_buttons_keyboard.py code to startup scripts and run it automatically after OS boot
 
   2.1. Open /etc/rc.local
   
@@ -203,10 +210,10 @@ sudo nano /etc/rc.local
   2.2. Add following command on the line above "exit 0" and save it. ( Add it on the line before "exit 0" )
   
 ```
-sudo python input_keyboard.py
+sudo python 8_buttons_keyboard.py
 ```
 
-3. input_keyboard.py usage:
+3. 8_buttons_keyboard.py usage:
 
 * Key 1: Button 1
 * Key 2: Button 2
