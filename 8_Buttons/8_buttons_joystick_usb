@@ -1,12 +1,12 @@
-# Created by https://github.com/milador/XAC-Virtual-Joystick
+# Created by https://github.com/milador/RaspberryPi-Joystick
 #!/bin/bash
 
 sleep 10
 
-# Create xac_joystick gadget
+# Create 8 button raspberry_joystick gadget
 cd /sys/kernel/config/usb_gadget/
-mkdir -p xac_joystick
-cd xac_joystick
+mkdir -p raspberry_joystick
+cd raspberry_joystick
 
 sudo su
 
@@ -24,7 +24,7 @@ mkdir -p strings/0x409
 
 echo "0123456789" > strings/0x409/serialnumber
 echo "Raspberry Pi" > strings/0x409/manufacturer
-echo "XAC Virtual Joystick" > strings/0x409/product
+echo "Raspberry Joystick" > strings/0x409/product
 
 
 # Define the functions of the device

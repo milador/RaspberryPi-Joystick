@@ -1,7 +1,7 @@
-# File name: input_keyboard.py
-# Created by https://github.com/milador/XAC-Virtual-Joystick
+# File name: 8_button_keyboard.py
+# Created by https://github.com/milador/RaspberryPi-Joystick
 # Author: Milad Hajihassan
-# Date created: 25/12/2018
+# Date created: 24/1/2021
 # Python Version: 2.7
 
 import os
