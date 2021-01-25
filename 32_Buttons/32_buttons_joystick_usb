@@ -3,10 +3,10 @@
 
 sleep 10
 
-# Create 32 button raspberry_joystick gadget
+# Create 32 button 32_buttons_rpi_joystick gadget
 cd /sys/kernel/config/usb_gadget/
-mkdir -p raspberry_joystick
-cd raspberry_joystick
+mkdir -p 32_buttons_rpi_joystick
+cd 32_buttons_rpi_joystick
 
 sudo su
 
@@ -24,7 +24,7 @@ mkdir -p strings/0x409
 
 echo "0123456789" > strings/0x409/serialnumber
 echo "Raspberry Pi" > strings/0x409/manufacturer
-echo "Raspberry Joystick" > strings/0x409/product
+echo "RaspberryPi Joystick" > strings/0x409/product
 
 
 # Define the functions of the device
@@ -33,8 +33,8 @@ echo 0 > functions/hid.usb0/protocol
 echo 0 > functions/hid.usb0/subclass
 echo 3 > functions/hid.usb0/report_length
 
-# Write report descriptor ( X and Y analog joysticks plus 8 buttons )
-echo "05010904A1011581257F0901A10009300931750895028102C005091901290815002501750195088102C0" | xxd -r -ps > functions/hid.usb0/report_desc
+# Write report descriptor ( X and Y analog joysticks plus 16 buttons )
+echo "" | xxd -r -ps > functions/hid.usb0/report_desc
 
 
 # Create configuration file
@@ -43,7 +43,7 @@ mkdir configs/c.1/strings/0x409
 
 echo 0x80 > configs/c.1/bmAttributes
 echo 100 > configs/c.1/MaxPower # 100 mA
-echo "XAC configuration" > configs/c.1/strings/0x409/configuration
+echo "RaspberryPi Joystick Configuration" > configs/c.1/strings/0x409/configuration
 
 # Link the configuration file
 ln -s functions/hid.usb0 configs/c.1

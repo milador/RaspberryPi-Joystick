@@ -43,7 +43,7 @@ mkdir configs/c.1/strings/0x409
 
 echo 0x80 > configs/c.1/bmAttributes
 echo 100 > configs/c.1/MaxPower # 100 mA
-echo "XAC configuration" > configs/c.1/strings/0x409/configuration
+echo "RaspberryPi Joystick Configuration" > configs/c.1/strings/0x409/configuration
 
 # Link the configuration file
 ln -s functions/hid.usb0 configs/c.1
