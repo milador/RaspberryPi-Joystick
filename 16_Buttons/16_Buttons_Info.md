@@ -88,7 +88,7 @@ sudo reboot
 8.  Startup your Rpi zero and enter following commands to test the configuration:
    
 ```
-sudo /usr/bin/8_buttons_rpi_joystick_usb
+sudo /usr/bin/16_buttons_rpi_joystick_usb
 ls -la /dev/hidg*
 ```   
 
