@@ -1,4 +1,4 @@
-# File name: 8_button_keyboard.py
+# File name: 8_buttons_keyboard.py
 # Created by https://github.com/milador/RaspberryPi-Joystick
 # Author: Milad Hajihassan
 # Date created: 24/1/2021

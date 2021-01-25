@@ -3,10 +3,10 @@
 
 sleep 10
 
-# Create 8 button raspberry_joystick gadget
+# Create 8 button 8_buttons_rpi_joystick gadget
 cd /sys/kernel/config/usb_gadget/
-mkdir -p raspberry_joystick
-cd raspberry_joystick
+mkdir -p 8_buttons_rpi_joystick
+cd 8_buttons_rpi_joystick
 
 sudo su
 
@@ -24,7 +24,7 @@ mkdir -p strings/0x409
 
 echo "0123456789" > strings/0x409/serialnumber
 echo "Raspberry Pi" > strings/0x409/manufacturer
-echo "Raspberry Joystick" > strings/0x409/product
+echo "RaspberryPi Joystick" > strings/0x409/product
 
 
 # Define the functions of the device
