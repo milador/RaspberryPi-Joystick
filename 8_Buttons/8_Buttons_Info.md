@@ -157,7 +157,7 @@ sudo reboot
 7. Connect your Rpi zero to your computer and make sure it recognizes your Rpi zero as a USB HID joystick device named "RaspberryPi Joystick".
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/RPi-Joystick-Cpanel.PNG" width="50%" height="50%" alt="RPi-Joystick.PNG device in cpanel"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_cpanel.PNG" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
 </p>
   
 8.  Startup your Rpi zero and enter following commands to test the configuration:
