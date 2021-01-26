@@ -1,7 +1,7 @@
 # Created by https://github.com/milador/RaspberryPi-Joystick
 #!/bin/bash
 
-sleep 10
+sleep 30
 
 # Create 32 button 32_buttons_rpi_joystick gadget
 cd /sys/kernel/config/usb_gadget/
@@ -33,8 +33,8 @@ echo 0 > functions/hid.usb0/protocol
 echo 0 > functions/hid.usb0/subclass
 echo 3 > functions/hid.usb0/report_length
 
-# Write report descriptor ( X and Y analog joysticks plus 16 buttons )
-echo "" | xxd -r -ps > functions/hid.usb0/report_desc
+# Write report descriptor ( X and Y analog joysticks plus 32 buttons )
+echo "05010904A10115002501750195200509190129208102150025073500463B0175049501651405010939814205010901A100150026FF03750A950409300931093209358102C0150026FF03750A9502093609368102C0" | xxd -r -ps > functions/hid.usb0/report_desc
 
 
 # Create configuration file
