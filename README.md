@@ -34,7 +34,7 @@ The software for this project is offered in three flavors and you can select the
 
   1. [8_Buttons_Info](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons/8_Buttons_Info.md) ( 8 Buttons and a dual axis joystick )
   2. [16_Buttons_Info](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons/16_Buttons_Info.md) ( 16 Buttons and a dual axis joystick )
-  3. [32_Buttons_Info](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons/16_Buttons_Info.md) ( 32 Buttons and a dual axis joystick )
+  3. [32_Buttons_Info](https://github.com/milador/RaspberryPi-Joystick/blob/master/32_Buttons/32_Buttons_Info.md) ( 32 Buttons and a dual axis joystick )
   
 Please select the opention based on your need and follow the instructions.
 
