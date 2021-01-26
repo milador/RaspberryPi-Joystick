@@ -60,7 +60,7 @@ sudo nano /usr/bin/8_buttons_rpi_joystick_usb
 # Created by https://github.com/milador/RaspberryPi-Joystick
 #!/bin/bash
 
-sleep 10
+sleep 30
 
 # Create 8_buttons_rpi_joystick gadget
 cd /sys/kernel/config/usb_gadget/
@@ -101,7 +101,7 @@ mkdir configs/c.1/strings/0x409
 
 echo 0x80 > configs/c.1/bmAttributes
 echo 200 > configs/c.1/MaxPower # 200 mA
-echo "XAC configuration" > configs/c.1/strings/0x409/configuration
+echo "RaspberryPi Joystick configuration" > configs/c.1/strings/0x409/configuration
 
 # Link the configuration file
 ln -s functions/hid.usb0 configs/c.1
