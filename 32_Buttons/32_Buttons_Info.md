@@ -93,7 +93,7 @@ echo 0 > functions/hid.usb0/subclass
 echo 3 > functions/hid.usb0/report_length
 
 # Write report descriptor ( X and Y analog joysticks plus 32 buttons )
-echo "05010904A10115002501750195200509190129208102150025073500463B0175049501651405010939814205010901A100150026FF03750A950409300931093209358102C0150026FF03750A9502093609368102C0" | xxd -r -ps > functions/hid.usb0/report_desc
+echo "05010904A1011581257F0901A10009300931750895028102C0A10005091901292015002501750195208102C0C0" | xxd -r -ps > functions/hid.usb0/report_desc
 
 
 # Create configuration file
@@ -117,7 +117,7 @@ sleep 10
 The report descriptor is created to define a dual axis joystick and 16 buttons joystick HID device. The report descriptor used in the 32_buttons_rpi_joystick_usb gadget definition is presented in hexadecimal values as follows:
 
 ```
-05010904A10115002501750195200509190129208102150025073500463B0175049501651405010939814205010901A100150026FF03750A950409300931093209358102C0150026FF03750A9502093609368102C0
+05010904A1011581257F0901A10009300931750895028102C0A10005091901292015002501750195208102C0C0
 ```
 
 The actual USB Report Descriptor can be defined as following:
@@ -126,47 +126,30 @@ The actual USB Report Descriptor can be defined as following:
 0x05, 0x01,        // Usage Page (Generic Desktop Ctrls)
 0x09, 0x04,        // Usage (Joystick)
 0xA1, 0x01,        // Collection (Application)
-0x15, 0x00,        //   Logical Minimum (0)
-0x25, 0x01,        //   Logical Maximum (1)
-0x75, 0x01,        //   Report Size (1)
-0x95, 0x20,        //   Report Count (32)
-0x05, 0x09,        //   Usage Page (Button)
-0x19, 0x01,        //   Usage Minimum (0x01)
-0x29, 0x20,        //   Usage Maximum (0x20)
-0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-0x15, 0x00,        //   Logical Minimum (0)
-0x25, 0x07,        //   Logical Maximum (7)
-0x35, 0x00,        //   Physical Minimum (0)
-0x46, 0x3B, 0x01,  //   Physical Maximum (315)
-0x75, 0x04,        //   Report Size (4)
-0x95, 0x01,        //   Report Count (1)
-0x65, 0x14,        //   Unit (System: English Rotation, Length: Centimeter)
-0x05, 0x01,        //   Usage Page (Generic Desktop Ctrls)
-0x09, 0x39,        //   Usage (Hat switch)
-0x81, 0x42,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,Null State)
-0x05, 0x01,        //   Usage Page (Generic Desktop Ctrls)
+0x15, 0x81,        //   Logical Minimum (-127)
+0x25, 0x7F,        //   Logical Maximum (127)
 0x09, 0x01,        //   Usage (Pointer)
 0xA1, 0x00,        //   Collection (Physical)
-0x15, 0x00,        //     Logical Minimum (0)
-0x26, 0xFF, 0x03,  //     Logical Maximum (1023)
-0x75, 0x0A,        //     Report Size (10)
-0x95, 0x04,        //     Report Count (4)
 0x09, 0x30,        //     Usage (X)
 0x09, 0x31,        //     Usage (Y)
-0x09, 0x32,        //     Usage (Z)
-0x09, 0x35,        //     Usage (Rz)
+0x75, 0x08,        //     Report Size (8)
+0x95, 0x02,        //     Report Count (2)
 0x81, 0x02,        //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
 0xC0,              //   End Collection
-0x15, 0x00,        //   Logical Minimum (0)
-0x26, 0xFF, 0x03,  //   Logical Maximum (1023)
-0x75, 0x0A,        //   Report Size (10)
-0x95, 0x02,        //   Report Count (2)
-0x09, 0x36,        //   Usage (Slider)
-0x09, 0x36,        //   Usage (Slider)
-0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
+0xA1, 0x00,        //   Collection (Physical)
+0x05, 0x09,        //     Usage Page (Button)
+0x19, 0x01,        //     Usage Minimum (0x01)
+0x29, 0x20,        //     Usage Maximum (0x20)
+0x15, 0x00,        //     Logical Minimum (0)
+0x25, 0x01,        //     Logical Maximum (1)
+0x75, 0x01,        //     Report Size (1)
+0x95, 0x20,        //     Report Count (32)
+0x81, 0x02,        //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
+0xC0,              //   End Collection
 0xC0,              // End Collection
 
-// 85 bytes
+// 45 bytes
+
 
 ```
 
@@ -200,6 +183,14 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_32_buttons_properties.PNG" width="50%" height="50%" alt="raspberry pi joystick 32 buttons properties"/>
+</p>
+
+# Data packets
+
+The data sent to the host device for the 32 buttons and dual axis joystick configuration of the joystick contains 6 bytes, 2 are for the XY and 4 are the buttons. The first 4 bytes of the data are for 32 buttons and other two bytes are for dual axis joystick(X,Y).
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_32_buttons_packets.png" width="50%" height="50%" alt="raspberry pi 32 buttons joystick data packets"/>
 </p>
 
 # Usage
