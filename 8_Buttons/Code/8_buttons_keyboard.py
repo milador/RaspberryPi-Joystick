@@ -69,67 +69,67 @@ def init():
     clean_up()
 
 def button_1(tf):
-    write_report('\x01\x80\x80')
+    write_report('\x00\x00\x01')
     time.sleep(tf)
     clean_up()	
 	
 def button_2(tf):
-    write_report('\x02\x80\x80')
+    write_report('\x00\x00\x02')
     time.sleep(tf)
     clean_up()	
 	
 def button_3(tf):
-    write_report('\x04\x80\x80')
+    write_report('\x00\x00\x04')
     time.sleep(tf)
     clean_up()	
 	
 def button_4(tf):
-    write_report('\x08\x80\x80')
+    write_report('\x00\x00\x08')
     time.sleep(tf)
     clean_up()	
 	
 def button_5(tf):
-    write_report('\x10\x80\x80')
+    write_report('\x00\x00\x10')
     time.sleep(tf)
     clean_up()	
 	
 def button_6(tf):
-    write_report('\x20\x80\x80')
+    write_report('\x00\x00\x20')
     time.sleep(tf)
     clean_up()	
 	
 def button_7(tf):
-    write_report('\x40\x80\x80')
+    write_report('\x00\x00\x40')
     time.sleep(tf)
     clean_up()	
 	
 def button_8(tf):
-    write_report('\x80\x80\x80')
-    time.sleep(tf)
-    clean_up()	
-	
-def button_right(tf):
-    write_report('\x00\xFF\x80')
-    time.sleep(tf)
-    clean_up()	
-	
-def button_up(tf):
-    write_report('\x00\x80\x00')
-    time.sleep(tf)
-    clean_up()	
-	
-def button_left(tf):
     write_report('\x00\x00\x80')
     time.sleep(tf)
     clean_up()	
 	
+def button_right(tf):
+    write_report('\x7F\x00\x00')
+    time.sleep(tf)
+    clean_up()	
+	
+def button_up(tf):
+    write_report('\x00\x7F\x00')
+    time.sleep(tf)
+    clean_up()	
+	
+def button_left(tf):
+    write_report('\x81\x00\x00')
+    time.sleep(tf)
+    clean_up()	
+	
 def button_down(tf):
-    write_report('\x00\x80\xFF')
+    write_report('\x00\x81\x00')
     time.sleep(tf)
     clean_up()	
 	
 def clean_up():
-    write_report('\x00\x80\x80')
+    write_report('\x00\x00\x00')
 
 
 def main():
