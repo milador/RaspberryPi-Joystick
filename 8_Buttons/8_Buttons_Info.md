@@ -185,14 +185,14 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 The data sent to the host device for the 8 buttons and dual axis joystick configuration of the joystick contains 3 bytes, 2 are for the XY and 1 are the buttons. The first byte of the data is for 8 buttons and other two bytes are for dual axis joystick(X,Y).
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_8_buttons_packets.PNG" width="50%" height="50%" alt="raspberry pi joystick 8 buttons data packets"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_8_buttons_packets.png" width="50%" height="50%" alt="raspberry pi joystick 8 buttons data packets"/>
 </p>
 
 # Usage
 
 A sample code to convert keyboard actions to joystick actions using command line and a keyboard is available to test the functionality.
 
-1.  Download the 8 buttons keyboard input interface code
+1.  Download the 8 buttons keyboard input interface code: [8_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons/Code/8_buttons_keyboard.py)
 
   1.1. Create a new python file using following command:
   
@@ -203,7 +203,7 @@ sudo chmod +x 8_buttons_keyboard.py
 
 Note : Make sure you are in /home/pi directory 
 
-  1.2. Copy and paste the 8_buttons_keyboard.py code available under Code directory.[8_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons/Code/8_buttons_keyboard.py)
+  1.2. Copy and paste the 8_buttons_keyboard.py code available under Code directory.
 
   1.3. Save 8_buttons_keyboard.py file and exit
   
