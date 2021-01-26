@@ -177,7 +177,7 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 </p>
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_properties.PNG" width="50%" height="50%" alt="raspberry pi joystick properties"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_8_buttons_properties.PNG" width="50%" height="50%" alt="raspberry pi 8 buttons joystick properties"/>
 </p>
 
 # Data packets
