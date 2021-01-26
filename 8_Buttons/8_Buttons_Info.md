@@ -154,11 +154,8 @@ The actual USB Report Descriptor can be defined as following:
 sudo reboot
 ```
   
-7. Connect your Rpi zero to your computer and make sure it recognizes your Rpi zero as a USB HID joystick device named "RaspberryPi Joystick".
+7. Connect your Rpi zero to your computer and make sure it recognizes your Rpi zero as a USB HID joystick device named "RaspberryPi Joystick". Wait at least 30 seconds for Raspberry Pi to emulate as a HID Joystick device. Windows will initially say the USB Device is not recognized but detects it as a joystick in 30 seconds. 
 
-<p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_cpanel.PNG" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
-</p>
   
 8.  Startup your Rpi zero and enter following commands to test the configuration:
    
@@ -172,6 +169,24 @@ You should get something similar to following which means it's working and ready
 ```
 crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 ```   
+
+9.  Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_cpanel.PNG" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
+</p>
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_properties.PNG" width="50%" height="50%" alt="raspberry pi joystick properties"/>
+</p>
+
+# Data packets
+
+The data sent to the host device for the 8 buttons and dual axis joystick configuration of the joystick contains 3 bytes, 2 are for the XY and 1 are the buttons. The first byte of the data is for 8 buttons and other two bytes are for dual axis joystick(X,Y).
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_8_buttons_packets.PNG" width="50%" height="50%" alt="raspberry pi joystick 8 buttons data packets"/>
+</p>
 
 # Usage
 
