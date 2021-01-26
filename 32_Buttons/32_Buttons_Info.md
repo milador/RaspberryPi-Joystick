@@ -64,13 +64,57 @@ TBD
 The report descriptor is created to define a dual axis joystick and 16 buttons joystick HID device. The report descriptor used in the 32_buttons_rpi_joystick_usb gadget definition is presented in hexadecimal values as follows:
 
 ```
-TBD
+05010904A10115002501750195200509190129208102150025073500463B0175049501651405010939814205010901A100150026FF03750A950409300931093209358102C0150026FF03750A9502093609368102C0
 ```
 
 The actual USB Report Descriptor can be defined as following:
 
 ```
-TBD
+0x05, 0x01,        // Usage Page (Generic Desktop Ctrls)
+0x09, 0x04,        // Usage (Joystick)
+0xA1, 0x01,        // Collection (Application)
+0x15, 0x00,        //   Logical Minimum (0)
+0x25, 0x01,        //   Logical Maximum (1)
+0x75, 0x01,        //   Report Size (1)
+0x95, 0x20,        //   Report Count (32)
+0x05, 0x09,        //   Usage Page (Button)
+0x19, 0x01,        //   Usage Minimum (0x01)
+0x29, 0x20,        //   Usage Maximum (0x20)
+0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
+0x15, 0x00,        //   Logical Minimum (0)
+0x25, 0x07,        //   Logical Maximum (7)
+0x35, 0x00,        //   Physical Minimum (0)
+0x46, 0x3B, 0x01,  //   Physical Maximum (315)
+0x75, 0x04,        //   Report Size (4)
+0x95, 0x01,        //   Report Count (1)
+0x65, 0x14,        //   Unit (System: English Rotation, Length: Centimeter)
+0x05, 0x01,        //   Usage Page (Generic Desktop Ctrls)
+0x09, 0x39,        //   Usage (Hat switch)
+0x81, 0x42,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,Null State)
+0x05, 0x01,        //   Usage Page (Generic Desktop Ctrls)
+0x09, 0x01,        //   Usage (Pointer)
+0xA1, 0x00,        //   Collection (Physical)
+0x15, 0x00,        //     Logical Minimum (0)
+0x26, 0xFF, 0x03,  //     Logical Maximum (1023)
+0x75, 0x0A,        //     Report Size (10)
+0x95, 0x04,        //     Report Count (4)
+0x09, 0x30,        //     Usage (X)
+0x09, 0x31,        //     Usage (Y)
+0x09, 0x32,        //     Usage (Z)
+0x09, 0x35,        //     Usage (Rz)
+0x81, 0x02,        //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
+0xC0,              //   End Collection
+0x15, 0x00,        //   Logical Minimum (0)
+0x26, 0xFF, 0x03,  //   Logical Maximum (1023)
+0x75, 0x0A,        //   Report Size (10)
+0x95, 0x02,        //   Report Count (2)
+0x09, 0x36,        //   Usage (Slider)
+0x09, 0x36,        //   Usage (Slider)
+0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
+0xC0,              // End Collection
+
+// 85 bytes
+
 ```
 
 6. Save and reboot the Rpi zero:
@@ -79,11 +123,8 @@ TBD
 sudo reboot
 ```
   
-7. Connect your Rpi zero to your computer and make sure it recognizes your Rpi zero as a USB HID joystick device named "RaspberryPi Joystick".
+7. Connect your Rpi zero to your computer and make sure it recognizes your Rpi zero as a USB HID joystick device named "RaspberryPi Joystick". Wait at least 30 seconds for Raspberry Pi to emulate as a HID Joystick device. Windows will initially say the USB Device is not recognized but detects it as a joystick in 30 seconds. 
 
-<p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_cpanel.PNG" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
-</p>
   
 8.  Startup your Rpi zero and enter following commands to test the configuration:
    
@@ -98,11 +139,21 @@ You should get something similar to following which means it's working and ready
 crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 ```   
 
+9.  Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_cpanel.PNG" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
+</p>
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_32_buttons_properties.PNG" width="50%" height="50%" alt="raspberry pi joystick 32 buttons properties"/>
+</p>
+
 # Usage
 
 A sample code to convert keyboard actions to joystick actions using command line and a keyboard is available to test the functionality.
 
-1.  Download the 32 buttons keyboard input interface code
+1.  Download the 32 buttons keyboard input interface code: [32_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/32_Buttons/Code/32_buttons_keyboard.py)
 
   1.1. Create a new python file using following command:
   
@@ -113,7 +164,7 @@ sudo chmod +x 32_buttons_keyboard.py
 
 Note : Make sure you are in /home/pi directory 
 
-  1.2. Copy and paste the 32_buttons_keyboard.py code available under Code directory.[32_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/32_Buttons/Code/32_buttons_keyboard.py)
+  1.2. Copy and paste the 32_buttons_keyboard.py code available under Code directory.
 
   1.3. Save 32_buttons_keyboard.py file and exit
   
