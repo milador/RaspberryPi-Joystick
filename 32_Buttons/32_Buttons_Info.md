@@ -57,7 +57,60 @@ sudo nano /usr/bin/32_buttons_rpi_joystick_usb
   5.2. Add the following code to the 32_buttons_rpi_joystick_usb gadget and save it.
   
 ```
-TBD
+# Created by https://github.com/milador/RaspberryPi-Joystick
+#!/bin/bash
+
+sleep 30
+
+# Create 32 button 32_buttons_rpi_joystick gadget
+cd /sys/kernel/config/usb_gadget/
+mkdir -p 32_buttons_rpi_joystick
+cd 32_buttons_rpi_joystick
+
+sudo su
+
+# Define USB specification
+echo 0x1d6b > idVendor # Linux Foundation
+echo 0x0104 > idProduct # Multifunction Composite Joystick Gadget
+echo 0x0100 > bcdDevice # v1.0.0
+echo 0x0200 > bcdUSB # USB2
+echo 0x02 > bDeviceClass
+echo 0x00 > bDeviceSubClass
+echo 0x00 > bDeviceProtocol
+
+# Perform localization
+mkdir -p strings/0x409
+
+echo "0123456789" > strings/0x409/serialnumber
+echo "Raspberry Pi" > strings/0x409/manufacturer
+echo "RaspberryPi Joystick" > strings/0x409/product
+
+
+# Define the functions of the device
+mkdir functions/hid.usb0
+echo 0 > functions/hid.usb0/protocol
+echo 0 > functions/hid.usb0/subclass
+echo 3 > functions/hid.usb0/report_length
+
+# Write report descriptor ( X and Y analog joysticks plus 32 buttons )
+echo "05010904A10115002501750195200509190129208102150025073500463B0175049501651405010939814205010901A100150026FF03750A950409300931093209358102C0150026FF03750A9502093609368102C0" | xxd -r -ps > functions/hid.usb0/report_desc
+
+
+# Create configuration file
+mkdir configs/c.1
+mkdir configs/c.1/strings/0x409
+
+echo 0x80 > configs/c.1/bmAttributes
+echo 100 > configs/c.1/MaxPower # 100 mA
+echo "RaspberryPi Joystick Configuration" > configs/c.1/strings/0x409/configuration
+
+# Link the configuration file
+ln -s functions/hid.usb0 configs/c.1
+
+# Activate device 
+sudo ls /sys/class/udc > UDC
+
+sleep 10
 
 ```
 
