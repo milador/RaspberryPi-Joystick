@@ -1,7 +1,7 @@
 # Created by https://github.com/milador/RaspberryPi-Joystick
 #!/bin/bash
 
-sleep 10
+sleep 30
 
 # Create 8 button 8_buttons_rpi_joystick gadget
 cd /sys/kernel/config/usb_gadget/
