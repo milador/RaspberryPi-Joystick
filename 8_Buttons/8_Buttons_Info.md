@@ -182,7 +182,7 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 
 # Data packets
 
-The data sent to the host device for the 8 buttons and dual axis joystick configuration of the joystick contains 3 bytes, 2 are for the XY and 1 are the buttons. The first byte of the data is for 8 buttons and other two bytes are for dual axis joystick(X,Y).
+The data sent to the host device for the 8 buttons and dual axis joystick configuration of the joystick contains 3 bytes, 2 are for the XY and 1 are the buttons. The first two bytes are for dual axis joystick(X,Y) and the other byte of the data is for 8 buttons.
 
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_8_buttons_packets.png" width="50%" height="50%" alt="raspberry pi joystick 8 buttons data packets"/>
