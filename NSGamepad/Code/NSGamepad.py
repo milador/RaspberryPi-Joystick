@@ -30,8 +30,8 @@ import threading
 from enum import IntEnum
 
 # Direction pad names
-class NSDPad(IntEnum):
-    """NSDPad direction names"""
+class DPad(IntEnum):
+    """DPad direction names"""
     CENTERED = 0xF
     UP = 0
     UP_RIGHT = 1
@@ -60,6 +60,23 @@ class NSButton(IntEnum):
     HOME = 12
     CAPTURE = 13
 
+class DS4Button(IntEnum):
+    """Button names based on Dual Shock 4 PS4 buttons"""
+    SQUARE = 0
+    CROSS = 1
+    CIRCLE = 2
+    TRIANGLE = 3
+    L1 = 4
+    R1 = 5
+    L2 = 6
+    R2 = 7
+    SHARE = 8
+    OPTIONS = 9
+    L3 = 10
+    R3 = 11
+    LOGO = 12
+    TPAD = 13
+
 class NSGamepad():
     """NSGamepad Linux USB Gadget Interface"""
     # pylint: disable=too-many-instance-attributes
@@ -77,7 +94,7 @@ class NSGamepad():
         self.right_x_axis = 128
         self.right_y_axis = 128
         self.my_buttons = 0
-        self.d_pad = NSDPad.CENTERED
+        self.d_pad = DPad.CENTERED
         self.dpad_x_axis = 128
         self.dpad_y_axis = 128
 
@@ -90,7 +107,7 @@ class NSGamepad():
             self.right_x_axis = 128
             self.right_y_axis = 128
             self.my_buttons = 0
-            self.d_pad = NSDPad.CENTERED
+            self.d_pad = DPad.CENTERED
             self.dpad_x_axis = 128
             self.dpad_y_axis = 128
             self.write()
@@ -104,7 +121,7 @@ class NSGamepad():
     def write(self):
         """Send NSGamepad state"""
         self.devhandle.write(pack('<HBBBBBB',
-            self.my_buttons, self.d_pad, 
+            self.my_buttons, self.d_pad,
             self.left_x_axis, self.left_y_axis, \
             self.right_x_axis, self.right_y_axis, 0))
         self.devhandle.flush()
@@ -170,7 +187,7 @@ class NSGamepad():
         """Return direction pad number given axes x,y"""
         if x == 128:
             if y == 128:
-                return NSDPad.CENTERED   # Center
+                return DPad.CENTERED   # Center
             elif y < 128:
                 return 0    # North
             return 4        # South
@@ -210,7 +227,7 @@ class NSGamepad():
     def dPad(self, position):
         """Move directional pad (0..7, 15)"""
         if position < 0 or position > 7:
-            position = NSDPad.CENTERED
+            position = DPad.CENTERED
         with self.thread_lock:
             self.d_pad = position
             self.dpad_x_axis = self.compass_dir_x[position]
@@ -246,7 +263,7 @@ def main():
             gamepad.dPad(direction)
             time.sleep(0.5)
         # Move directional pad to center
-        gamepad.dPad(NSDPad.CENTERED)
+        gamepad.dPad(DPad.CENTERED)
 
         # Move the left stick then right stick
         stick = [

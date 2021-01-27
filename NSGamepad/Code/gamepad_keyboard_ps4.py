@@ -1,3 +1,10 @@
+"""
+Use a keyboard to control a PS4.
+
+Remember to hit the PS4 LOGO button (keyboard key '0' ) to activate. The PS4
+does not activate a controller until it sees the LOGO button press.
+"""
+
 import os
 import sys
 import termios
@@ -34,25 +41,25 @@ def getch():
         elif ch == ':':
             right_stick_down(sleep_time)
         elif ch == '1':
-            button(NSButton.A, sleep_time)
+            button(DS4Button.CIRCLE, sleep_time)
         elif ch == '2':
-            button(NSButton.B, sleep_time)
+            button(DS4Button.SQUARE, sleep_time)
         elif ch == '3':
-            button(NSButton.X, sleep_time)
+            button(DS4Button.TRIANGLE, sleep_time)
         elif ch == '4':
-            button(NSButton.Y, sleep_time)
+            button(DS4Button.CROSS, sleep_time)
         elif ch == '5':
-            button(NSButton.LEFT_TRIGGER, sleep_time)
+            button(DS4Button.L1, sleep_time)
         elif ch == '6':
-            button(NSButton.RIGHT_TRIGGER, sleep_time)
+            button(DS4Button.R1, sleep_time)
         elif ch == '7':
-            button(NSButton.LEFT_THROTTLE, sleep_time)
+            button(DS4Button.L2, sleep_time)
         elif ch == '8':
-            button(NSButton.RIGHT_THROTTLE, sleep_time)
+            button(DS4Button.R2, sleep_time)
         elif ch == '9':
-            button(NSButton.MINUS, sleep_time)
+            button(DS4Button.OPTIONS, sleep_time)
         elif ch == '0':
-            button(NSButton.PLUS, sleep_time)
+            button(DS4Button.LOGO, sleep_time)
         elif ch == 'q':
             clean_up()
             sys.exit()

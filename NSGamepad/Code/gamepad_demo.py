@@ -38,7 +38,7 @@ def main():
             gamepad.dPad(direction)
             time.sleep(0.5)
         # Move directional pad to center
-        gamepad.dPad(NSDPad.CENTERED)
+        gamepad.dPad(DPad.CENTERED)
 
         # Move the left stick then right stick
         stick = [
