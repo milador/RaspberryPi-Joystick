@@ -192,7 +192,7 @@ The data sent to the host device for the 8 buttons and dual axis joystick config
 
 A sample code to convert keyboard actions to joystick actions using command line and a keyboard is available to test the functionality.
 
-1.  Download the 8 buttons keyboard input interface code: [8_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons/Code/8_buttons_keyboard.py)
+1.  Download the 8 buttons keyboard input interface code: [8_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons_Joystick/Code/8_buttons_keyboard.py)
 
   1.1. Create a new python file using following command:
   

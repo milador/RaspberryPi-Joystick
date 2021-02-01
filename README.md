@@ -32,9 +32,10 @@ Note: You can skip this step if you using an OTG adapter
 
 The software for this project is offered in three flavors and you can select the version that matches your needs.
 
-  1. [8_Buttons_Info](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons/8_Buttons_Info.md) ( 8 Buttons and a dual axis joystick )
-  2. [16_Buttons_Info](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons/16_Buttons_Info.md) ( 16 Buttons and a dual axis joystick )
-  3. [32_Buttons_Info](https://github.com/milador/RaspberryPi-Joystick/blob/master/32_Buttons/32_Buttons_Info.md) ( 32 Buttons and a dual axis joystick )
+  1. [8_Buttons README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons_Joystick/README.md) ( 8 Buttons and a dual axis joystick )
+  2. [16_Buttons README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons_Joystick/README.md) ( 16 Buttons and a dual axis joystick )
+  3. [32_Buttons README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/32_Buttons_Joystick/README.md) ( 32 Buttons and a dual axis joystick )
+  4. [Nintendo_Switch README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/Nintendo_Switch/README.md) ( Nintendo Switch )
   
 Please select the opention based on your need and follow the instructions.
 

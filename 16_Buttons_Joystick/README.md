@@ -113,7 +113,7 @@ sudo chmod +x 16_buttons_keyboard.py
 
 Note : Make sure you are in /home/pi directory 
 
-  1.2. Copy and paste the 16_buttons_keyboard.py code available under Code directory.[16_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons/Code/16_buttons_keyboard.py)
+  1.2. Copy and paste the 16_buttons_keyboard.py code available under Code directory.[16_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons_Joystick/Code/16_buttons_keyboard.py)
 
   1.3. Save 16_buttons_keyboard.py file and exit
   

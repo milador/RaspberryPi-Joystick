@@ -197,7 +197,7 @@ The data sent to the host device for the 32 buttons and dual axis joystick confi
 
 A sample code to convert keyboard actions to joystick actions using command line and a keyboard is available to test the functionality.
 
-1.  Download the 32 buttons keyboard input interface code: [32_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/32_Buttons/Code/32_buttons_keyboard.py)
+1.  Download the 32 buttons keyboard input interface code: [32_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/32_Buttons_Joystick/Code/32_buttons_keyboard.py)
 
   1.1. Create a new python file using following command:
   
