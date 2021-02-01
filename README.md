@@ -41,7 +41,7 @@ Please select the opention based on your need and follow the instructions.
 
 # Usage
 
-This ia a simple python code to convert keyboard actions to joystick actions using command line and a keyboard.
+You can find sample python codes for each version of joysticks which can be used to test functionality of RaspberryPi Joystick. The sample codes can be modified and used in your own projects.
 
   
   
