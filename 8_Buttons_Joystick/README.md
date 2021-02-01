@@ -1,4 +1,4 @@
-# 8 Buttons Software Installation Instructions 
+# Linux USB Gadget 8 Buttons Installation Instructions 
   
 # Software requirements  
 
