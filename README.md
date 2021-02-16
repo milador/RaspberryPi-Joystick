@@ -32,11 +32,11 @@ Note: You can skip this step if you using an OTG adapter
 
 The software for this project is offered in three flavors and you can select the version that matches your needs.
 
-  1. [8_Buttons README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons_Joystick/README.md) ( 8 Buttons and a dual axis joystick )
-  2. [16_Buttons README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons_Joystick/README.md) ( 16 Buttons and a dual axis joystick )
-  3. [32_Buttons README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/32_Buttons_Joystick/README.md) ( 32 Buttons and a dual axis joystick )
-  4. [NSGamepad README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/NSGamepad/README.md) ( Nintendo Switch & PS4 )
-  5. [XACGamepad README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/XACGamepad/README.md) ( Xbox Adaptive Controller )
+  1. [8_Buttons](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons_Joystick/) ( 8 Buttons and a dual axis joystick )
+  2. [16_Buttons](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons_Joystick/) ( 16 Buttons and a dual axis joystick )
+  3. [32_Buttons](https://github.com/milador/RaspberryPi-Joystick/blob/master/32_Buttons_Joystick/) ( 32 Buttons and a dual axis joystick )
+  4. [NSGamepad](https://github.com/milador/RaspberryPi-Joystick/blob/master/NSGamepad/) ( Nintendo Switch & PS4 )
+  5. [XACGamepad](https://github.com/milador/RaspberryPi-Joystick/blob/master/XACGamepad/) ( Xbox Adaptive Controller )
   
 Please select the option based on your need and follow the instructions.
 
