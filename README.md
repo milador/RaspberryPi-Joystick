@@ -1,7 +1,10 @@
 # RaspberryPi-Joystick
+
 The goal of this project is to create a virtual USB HID joystick using Raspberry Pi. 
 
-The new versions of raspberry pi zero W come with bluetooth chip which makes it possible to use Bluetooth HID devices as well as USB HID.
+The new versions of raspberry pi zero W come with USB OTG and bluetooth chip which makes it possible to use Bluetooth HID devices as well as USB HID.
+
+A RaspberryPi 4B can also be used instead of a Raspberry pi zero W.
 
 This project is in development process at the moment.
 
@@ -53,6 +56,12 @@ The software for this project is offered in three flavors and you can select the
   5. [XACGamepad](https://github.com/milador/RaspberryPi-Joystick/blob/master/XACGamepad/) ( Xbox Adaptive Controller )
   
 Please select the option based on your need and follow the instructions.
+
+# Collaborators
+
+Thanks to all the developers and testers helping to create this project. Special thanks to [gdsports](https://github.com/gdsports) for finding/fixing bugs and developing new features. 
+
+
 
 
   
