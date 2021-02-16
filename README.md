@@ -36,12 +36,10 @@ The software for this project is offered in three flavors and you can select the
   2. [16_Buttons README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons_Joystick/README.md) ( 16 Buttons and a dual axis joystick )
   3. [32_Buttons README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/32_Buttons_Joystick/README.md) ( 32 Buttons and a dual axis joystick )
   4. [NSGamepad README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/NSGamepad/README.md) ( Nintendo Switch & PS4 )
+  5. [XACGamepad README.md](https://github.com/milador/RaspberryPi-Joystick/blob/master/XACGamepad/README.md) ( Xbox Adaptive Controller )
   
-Please select the opention based on your need and follow the instructions.
+Please select the option based on your need and follow the instructions.
 
-# Usage
-
-You can find sample python codes for each version of joysticks which can be used to test functionality of RaspberryPi Joystick. The sample codes can be modified and used in your own projects.
 
   
   
