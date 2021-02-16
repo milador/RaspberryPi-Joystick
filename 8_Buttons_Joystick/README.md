@@ -24,9 +24,6 @@ sudo apt-get install build-essential python-dev python-pip git
 sudo echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
 sudo echo "dwc2" | sudo tee -a /etc/modules
 sudo echo "libcomposite" | sudo tee -a /etc/modules
-KERNEL_RELEASE=`uname -r`
-sudo cp /lib/modules/${KERNEL_RELEASE}/kernel/drivers/usb/gadget/function/usb_f_hid.ko /lib/modules/${KERNEL_RELEASE}/kernel/drivers/usb/gadget/function/usb_f_hid.ko.orig
-sudo cp rpi-5.10/usb_f_hid.ko /lib/modules/${KERNEL_RELEASE}/kernel/drivers/usb/gadget/function/
 ```
 
 3.	Create the virtual joystick HID config script
