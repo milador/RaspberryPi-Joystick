@@ -9,12 +9,26 @@ We now go over the hardware and software requirements.
 
 # Hardware requirements  
 
+## RaspberryPi Zero
+
   1. [Raspberry Pi zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) x 1
   2. Micro SD card x 1
   3. [Pi Zero USB Stem](https://www.sparkfun.com/products/14526) x 1
   4. mice and keyboard to setup (optional)
+  5. [Mini Color PiTFT Ad Blocking Pi-Hole Kit](https://www.adafruit.com/product/4475) or [OLED Bonnet Pack for Raspberry Pi Zero](https://www.adafruit.com/product/3192)  (optional)
+  6. BT mice or keyboard for XAC 
   
 Note : You can also use an OTG adapter cable and a power supply through micro USB ports instead of Pi Zero USB Stem.
+  
+## RaspberryPi 4
+
+  1. [Raspberry Pi 4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) x 1
+  2. Micro SD card x 1
+  3. USB C OTG adapter cable
+  4. mice and keyboard to setup (optional)
+  5. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484)  (optional)
+  6. BT mice or keyboard for XAC   
+
 
 # Hardware Assembly Instructions   
 
