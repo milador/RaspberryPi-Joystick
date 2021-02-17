@@ -57,7 +57,7 @@ class JOYSTICK_XY(IntEnum):
     MinOutputValue = -127
     MaxOutputValue = 127
     DeadZoneValue = 5
-    OperationMode = 1  # 0: Don't Keep position after each mice move, 1: Keep position after each mice move
+    OperationMode = 0  # 0: Don't Keep position after each mice move, 1: Keep position after each mice move
     ReactionTimeValue = 0.01  #10 ms
 
 # Map keyboard keys or mouse buttons to joystick buttons.
@@ -134,11 +134,13 @@ def map_joystick(value, operation_value, deadzone_value, input_value_min, input_
     output_span = output_value_max - output_value_min
 
     # Convert the input range into a 0 to 1 range (float value)   
-    if (value>=-deadzone_value and value<=deadzone_value):
+    if (value>=-deadzone_value and value<=deadzone_value and operation_value==1):
         value_scaled = 0.5
-    elif (value<-deadzone_value and operation_value==1):
+    elif (value>=input_value_min and value<=input_value_max and operation_value==0):
+        value_scaled = 0.5
+    elif (value<input_value_min and operation_value==1):
         value_scaled = 0.0
-    elif (value>deadzone_value and operation_value==1):
+    elif (value>input_value_max and operation_value==1):
         value_scaled = 1.0
     else:
         value_scaled = float(value - input_value_min) / float(input_span)
