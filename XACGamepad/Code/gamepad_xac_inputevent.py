@@ -62,15 +62,21 @@ class JOYSTICK_XY(IntEnum):
 
 # Map keyboard keys or mouse buttons to joystick buttons.
 EVENT2BUTTON = {
-    str(evdev.ecodes.BTN_LEFT): LEFT_BUTTON.A,
-    str(evdev.ecodes.BTN_RIGHT): LEFT_BUTTON.B,
-    str(evdev.ecodes.BTN_MIDDLE): LEFT_BUTTON.BumperL,
-    str(evdev.ecodes.BTN_SIDE): LEFT_BUTTON.ThumbBtnL,
-    str(evdev.ecodes.BTN_EXTRA): LEFT_BUTTON.View,
-    str(evdev.ecodes.KEY_A): LEFT_BUTTON.Menu,
-    str(evdev.ecodes.KEY_S): LEFT_BUTTON.X1,
-    str(evdev.ecodes.KEY_D): LEFT_BUTTON.X2,
+    'BUTTONS': {
+        str(evdev.ecodes.BTN_LEFT): LEFT_BUTTON.A,
+        str(evdev.ecodes.BTN_RIGHT): LEFT_BUTTON.B,
+        str(evdev.ecodes.BTN_MIDDLE): LEFT_BUTTON.BumperL,
+        str(evdev.ecodes.BTN_SIDE): LEFT_BUTTON.ThumbBtnL,
+        str(evdev.ecodes.BTN_EXTRA): LEFT_BUTTON.View,
+        str(evdev.ecodes.KEY_A): LEFT_BUTTON.Menu,
+        str(evdev.ecodes.KEY_S): LEFT_BUTTON.X1,
+        str(evdev.ecodes.KEY_D): LEFT_BUTTON.X2
+    }, 
+    'OTHERS': {
+        str(evdev.ecodes.REL_WHEEL): LEFT_BUTTON.X1    
+    }
 }
+
 
 async def handle_events(device):
     global mice_x_in
@@ -80,8 +86,8 @@ async def handle_events(device):
         async for event in device.async_read_loop():
             if event.code == evdev.ecodes.KEY_PAUSE:
                 sys.exit(0)
-            if str(event.code) in EVENT2BUTTON:
-                joystick_button = EVENT2BUTTON[str(event.code)]
+            if str(event.code) in EVENT2BUTTON.get('BUTTONS'):
+                joystick_button = EVENT2BUTTON.get('BUTTONS')[str(event.code)]
                 if event.value == 1:
                     if DEBUG_MODE: 
                         print('Key or button down', 'joystick down', joystick_button)
@@ -93,8 +99,6 @@ async def handle_events(device):
             else:
                 """ Map mouse motion to thumbstick motion """
                 if event.code == evdev.ecodes.REL_X:
-                    #print('REL_X', event.value)
-                    #Joystick.xAxis(?)
                     if int(JOYSTICK_XY.OperationMode)==0:
                         mice_x_in = event.value
                     elif int(JOYSTICK_XY.OperationMode)==1:
@@ -104,8 +108,6 @@ async def handle_events(device):
                         print('REL_X', event.value , 'joystick_x_out', joystick_x_out)
                     Joystick.xAxis(joystick_x_out)
                 elif event.code == evdev.ecodes.REL_Y:
-                    #print('REL_Y', event.value)
-                    #Joystick.yAxis(?)
                     if int(JOYSTICK_XY.OperationMode)==0:
                         mice_y_in = event.value
                     elif int(JOYSTICK_XY.OperationMode)==1:
@@ -115,6 +117,11 @@ async def handle_events(device):
                         print('REL_Y', event.value , 'joystick_y_out', joystick_y_out)
                     Joystick.yAxis(joystick_y_out)
                 elif event.code == evdev.ecodes.REL_WHEEL:
+                    joystick_button = EVENT2BUTTON.get('OTHERS')[str(event.code)]
+                    if event.value == 1:
+                        Joystick.press(joystick_button)
+                    elif event.value == -1:
+                        Joystick.release(joystick_button)
                     if DEBUG_MODE: 
                         print('REL_WHEEL', event.value)
                 elif event.code == evdev.ecodes.REL_HWHEEL:
@@ -177,4 +184,12 @@ def main():
     loop.run_forever()
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        Joystick.end()
+        time.sleep(0.1)
+        try:
+            sys.exit(0)
+        except SystemExit:
+            os._exit(0)
