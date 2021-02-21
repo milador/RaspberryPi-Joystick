@@ -61,7 +61,7 @@ class JOYSTICK_XY(IntEnum):
     ReactionTimeValue = 0.01  #10 ms
 
 # Map keyboard keys or mouse buttons to joystick buttons.
-EVENT2BUTTON = {
+EVENT2ACTION = {
     'BUTTONS': {
         str(evdev.ecodes.BTN_LEFT): LEFT_BUTTON.A,
         str(evdev.ecodes.BTN_RIGHT): LEFT_BUTTON.B,
@@ -72,6 +72,12 @@ EVENT2BUTTON = {
         str(evdev.ecodes.KEY_S): LEFT_BUTTON.X1,
         str(evdev.ecodes.KEY_D): LEFT_BUTTON.X2
     }, 
+    'DIRECTIONS': {
+        str(evdev.ecodes.KEY_UP): {"x":   0, "y": -127},
+        str(evdev.ecodes.KEY_RIGHT): {"x":   127, "y": 0},
+        str(evdev.ecodes.KEY_DOWN): {"x":   0, "y": 127},
+        str(evdev.ecodes.KEY_LEFT): {"x":   -127, "y": 0}
+    },
     'OTHERS': {
         str(evdev.ecodes.REL_WHEEL): LEFT_BUTTON.X1    
     }
@@ -86,16 +92,30 @@ async def handle_events(device):
         async for event in device.async_read_loop():
             if event.code == evdev.ecodes.KEY_PAUSE:
                 sys.exit(0)
-            if str(event.code) in EVENT2BUTTON.get('BUTTONS'):
-                joystick_button = EVENT2BUTTON.get('BUTTONS')[str(event.code)]
+            if str(event.code) in EVENT2ACTION.get('BUTTONS'):
+                joystick_button = EVENT2ACTION.get('BUTTONS')[str(event.code)]
                 if event.value == 1:
                     if DEBUG_MODE: 
-                        print('Key or button down', 'joystick down', joystick_button)
+                        print('Key or button press', 'joystick button press', joystick_button)
                     Joystick.press(joystick_button)
+                    time.sleep(0.05)
                 elif event.value == 0:
                     if DEBUG_MODE: 
-                        print('Key or button up', 'joystick up', joystick_button)
+                        print('Key or button release', 'joystick button release', joystick_button)
                     Joystick.release(joystick_button)
+            elif str(event.code) in EVENT2ACTION.get('DIRECTIONS'):
+                joystick_move = EVENT2ACTION.get('DIRECTIONS')[str(event.code)]
+                if event.value == 1:
+                    if DEBUG_MODE: 
+                        print('Direction Key press', 'joystick axis move', joystick_move)
+                    Joystick.xAxis(joystick_move['x'])
+                    Joystick.yAxis(joystick_move['y'])
+                    time.sleep(0.05)
+                elif event.value == 0:
+                    if DEBUG_MODE: 
+                        print('Direction Key release', 'joystick axis release', joystick_move)
+                    Joystick.xAxis(0)
+                    Joystick.yAxis(0)
             else:
                 """ Map mouse motion to thumbstick motion """
                 if event.code == evdev.ecodes.REL_X:
@@ -105,7 +125,7 @@ async def handle_events(device):
                         mice_x_in = event.value + mice_x_in
                     joystick_x_out = map_joystick(mice_x_in,int(JOYSTICK_XY.OperationMode),int(JOYSTICK_XY.DeadZoneValue),int(JOYSTICK_XY.MinInputValue),int(JOYSTICK_XY.MaxInputValue),int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
                     if DEBUG_MODE: 
-                        print('REL_X', event.value , 'joystick_x_out', joystick_x_out)
+                        print('REL_X', event.value , 'joystick x axis out', joystick_x_out)
                     Joystick.xAxis(joystick_x_out)
                 elif event.code == evdev.ecodes.REL_Y:
                     if int(JOYSTICK_XY.OperationMode)==0:
@@ -114,10 +134,10 @@ async def handle_events(device):
                         mice_y_in = event.value + mice_y_in
                     joystick_y_out = map_joystick(mice_y_in,int(JOYSTICK_XY.OperationMode),int(JOYSTICK_XY.DeadZoneValue),int(JOYSTICK_XY.MinInputValue),int(JOYSTICK_XY.MaxInputValue),int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
                     if DEBUG_MODE: 
-                        print('REL_Y', event.value , 'joystick_y_out', joystick_y_out)
+                        print('REL_Y', event.value , 'joystick y axis out', joystick_y_out)
                     Joystick.yAxis(joystick_y_out)
                 elif event.code == evdev.ecodes.REL_WHEEL:
-                    joystick_button = EVENT2BUTTON.get('OTHERS')[str(event.code)]
+                    joystick_button = EVENT2ACTION.get('OTHERS')[str(event.code)]
                     if event.value == 1:
                         Joystick.press(joystick_button)
                     elif event.value == -1:
