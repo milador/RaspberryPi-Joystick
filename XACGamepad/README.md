@@ -325,3 +325,68 @@ sudo python3 gamepad_xac_inputevent.py
   
   1.9. That's it! You should now be able to use your BT keyboard/mouse to operate your XAC.
   
+  
+ # Autostart
+ 
+ We go over process to make the gamepad_xac_inputevent.py start automatically on boot 
+
+1.  Create xacgamepad service
+```
+sudo nano /etc/systemd/system/xacgamepad.service
+```   
+
+2.  Add following script to xacgamepad.service and save it
+
+```
+[Unit]
+Description=XAC Gamepad automatic start with systemd, respawn, after bluetooth
+After=bluetooth.target
+After=multi-user.target
+Requires=bluetooth.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u gamepad_xac_inputevent.py
+WorkingDirectory=/home/pi/RaspberryPi-Joystick/XACGamepad/Code
+Type=idle
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=xacgamepad
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
+```   
+
+3.  Create a rule to give permission for execution of python code and accessing input devices 
+
+```
+sudo nano /etc/udev/rules.d/xacdevice.rules
+```   
+
+4.  Add rules to give permission for execution of python code and accessing input devices to xacdevice.rules and save it.
+
+```
+KERNEL=="hidg0", NAME="%k", GROUP="pi", MODE="0666"
+KERNELS=="input*", MODE="0666" GROUP="plugdev"
+```   
+
+5.  Enable and start the xacgamepad.service
+
+```
+systemctl daemon-reload
+systemctl enable xacgamepad.service
+systemctl start xacgamepad.service
+```   
+Use following to check status of running service :
+
+```
+systemctl status xacgamepad.service
+```   
+
+6.  Perform reboot
+
+```
+sudo reboot
+```   
