@@ -13,7 +13,7 @@ StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=xacgamepad
 User=pi
-Group=xacdevice
+Group=pi
 
 [Install]
 WantedBy=multi-user.target
