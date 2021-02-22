@@ -1,7 +1,7 @@
-# File name: 8_buttons_keyboard.py 
+# File name: gamepad_xac_keyboard.py 
 # Created by https://github.com/milador/RaspberryPi-Joystick
 # Author: Milad Hajihassan
-# Date created: 25/1/2020
+# Date created: 14/2/2020
 # Python Version: 1.0
 
 import os
