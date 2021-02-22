@@ -18,7 +18,16 @@ sudo apt-get update
 sudo apt-get install build-essential python-dev python-pip git
 ```
 
-2.	Enable libcomposite and other necessary modules and drivers
+2.	Set up USB gadget mode
+
+  2.1. Download source code and necessary scripts
+  
+```
+git clone https://github.com/milador/RaspberryPi-Joystick
+cd RaspberryPi-Joystick/8_Buttons_Joystick
+```
+
+  3.2. Enable libcomposite and other necessary modules and drivers
 
 ```
 sudo echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
@@ -188,47 +197,37 @@ The data sent to the host device for the 8 buttons and dual axis joystick config
 <img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_8_buttons_packets.png" width="50%" height="50%" alt="raspberry pi joystick 8 buttons data packets"/>
 </p>
 
-# Usage
+# Testing
 
-A sample code to convert keyboard actions to joystick actions using command line and a keyboard is available to test the functionality.
+1.  8_buttons_keyboard.py: A sample code to convert keyboard actions to joystick actions using command line and a keyboard is available to test the functionality. This method has packets exposed which is not recommended for usage. 
 
-1.  Download the 8 buttons keyboard input interface code: [8_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons_Joystick/Code/8_buttons_keyboard.py)
+  1.1. Change the path to Code sub-directory ( You can skip 1.2 to 1.6 )
 
-  1.1. Create a new python file using following command:
+```
+cd RaspberryPi-Joystick/8_Buttons_Joystick/Code
+```  
+  
+  1.2. Download the 8 buttons XAC keyboard input interface code: [joystick_8_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons_Joystick/Code/joystick_8_buttons_keyboard.py)
+
+  1.3. Create a new python file using following command:
   
 ```
-sudo nano 8_buttons_keyboard.py
-sudo chmod +x 8_buttons_keyboard.py
+sudo nano joystick_8_buttons_keyboard.py
+sudo chmod +x joystick_8_buttons_keyboard.py
 ```   
 
-Note : Make sure you are in /home/pi directory 
+  1.4. Copy and paste the joystick_8_buttons_keyboard.py code available under Code directory.
 
-  1.2. Copy and paste the 8_buttons_keyboard.py code available under Code directory.
-
-  1.3. Save 8_buttons_keyboard.py file and exit
+  1.5. Save joystick_8_buttons_keyboard.py file and exit
   
-  1.4. Test operating RaspberryPi-Joystick using 8_buttons_keyboard.py code with a physical keyboard or SSH
+  1.6. Test operating RaspberryPi-Joystick using joystick_8_buttons_keyboard.py code with a physical keyboard or SSH
   
 ```
-sudo python 8_buttons_keyboard.py
+sudo python joystick_8_buttons_keyboard.py
 ```   
 
-  1.5. Use "q" key to exit.
+  1.7. Usage:
 
-2.	Add 8_buttons_keyboard.py code to startup scripts and run it automatically after OS boot
-
-  2.1. Open /etc/rc.local
-  
-```
-sudo nano /etc/rc.local
-```
-  2.2. Add following command on the line above "exit 0" and save it. ( Add it on the line before "exit 0" )
-  
-```
-sudo python 8_buttons_keyboard.py
-```
-
-3. 8_buttons_keyboard.py usage:
 
 * Key 1: Button 1
 * Key 2: Button 2
@@ -242,6 +241,115 @@ sudo python 8_buttons_keyboard.py
 * Key w: Analog Up
 * Key a: Analog Left
 * Key s: Analog Down
+* Key q: Exit
 
+
+2.  Joystick_8.py: A class created to handle button actions and dual axis joystick actions.
+
+3.  joystick_8_buttons_demo.py: A sample code that automatically press buttons and move joystick
+
+  3.1. Change the path to Code sub-directory
+
+  3.2. Start running the python script
+  
+```
+sudo python joystick_8_buttons_demo.py
+```   
+
+
+# Usage
+
+1.  Pair BT keyboard/mouse using RaspberryPi GUI taskbar.
+
+  1.1. Click on Bluetooth button icon on top right of RaspberryPi GUI taskbar.
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_bt_pair_open.PNG" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
+</p>
+
+  1.2. Click on Add Device
+  
+  1.3. Select your BT keyboard/mouse and Click on Pair button
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_bt_pair_add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
+</p>
+
+  1.4. Change the path to Code sub-directory 
+
+```
+cd RaspberryPi-Joystick/8_Buttons_Joystick/Code
+```  
+
+  1.5. Test the joystick_8_buttons_inputevent python script
+  
+```
+sudo python3 joystick_8_buttons_inputevent.py
+```   
+  1.6. Connect RaspberryPi to one of the USB ports on your host device. Make sure you use an external power source to power RPi Zero. Wait 30 seconds for it to initialize.
+  
+  1.7. That's it! You should now be able to use your BT keyboard/mouse to operate as 8 buttons joystick.
   
   
+ # Autostart
+ 
+ We go over process to make the joystick_8_buttons_inputevent.py start automatically on boot 
+
+1.  Create 8joystick service
+```
+sudo nano /etc/systemd/system/8joystick.service
+```   
+
+2.  Add following script to 8joystick.service and save it
+
+```
+[Unit]
+Description=8 Button joystick automatic start with systemd, respawn, after bluetooth
+After=bluetooth.target
+After=multi-user.target
+Requires=bluetooth.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u joystick_8_buttons_inputevent.py
+WorkingDirectory=/home/pi/RaspberryPi-Joystick/8_Buttons_Joystick/Code
+Type=idle
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=8joystick
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
+```   
+
+3.  Create a rule to give permission for execution of python code and accessing input devices 
+
+```
+sudo nano /etc/udev/rules.d/rpidevice.rules
+```   
+
+4.  Add rules to give permission for execution of python code and accessing input devices to rpidevice.rules and save it.
+
+```
+KERNEL=="hidg0", NAME="%k", GROUP="pi", MODE="0666"
+KERNELS=="input*", MODE="0666" GROUP="plugdev"
+```   
+
+5.  Enable and start the 8joystick.service
+
+```
+systemctl daemon-reload
+systemctl enable 8joystick.service
+systemctl start 8joystick.service
+```   
+Use following to check status of running service :
+
+```
+systemctl status 8joystick.service
+```   
+
+6.  Perform reboot
+
+```
+sudo reboot
+```   
