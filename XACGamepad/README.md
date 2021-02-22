@@ -307,23 +307,9 @@ cd RaspberryPi-Joystick/XACGamepad/Code
 ```
 sudo python3 gamepad_xac_inputevent.py
 ```   
-
-  1.5. Add gamepad_xac_inputevent.py code to startup scripts and run it automatically after OS boot
+  1.6. Connect RaspberryPi to one of the USB ports on XAC. Make sure you use an external power source to power both XAC and RPi Zero. Wait 30 seconds for it to initialize.
   
-  1.6. Open /etc/rc.local
-  
-```
-sudo nano /etc/rc.local
-```
-  1.7. Add following command on the line above "exit 0" and save it. 
-  
-```
-sudo python3 gamepad_xac_inputevent.py
-```   
-
-  1.8. Connect RaspberryPi to one of the USB ports on XAC. Make sure you use an external power source to power both XAC and RPi Zero. Wait 30 seconds for it to initialize.
-  
-  1.9. That's it! You should now be able to use your BT keyboard/mouse to operate your XAC.
+  1.7. That's it! You should now be able to use your BT keyboard/mouse to operate your XAC.
   
   
  # Autostart
