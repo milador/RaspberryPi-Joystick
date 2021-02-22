@@ -222,7 +222,7 @@ The data sent to the host device for the 8 buttons and dual axis joystick config
 
 # Testing
 
-1.  xac_keyboard.py: A sample code to convert keyboard actions to joystick actions using command line and a keyboard is available to test the functionality. This method has packets exposed which is not recommended for usage. 
+1.  gamepad_xac_keyboard.py: A sample code to convert keyboard actions to joystick actions using command line and a keyboard is available to test the functionality. This method has packets exposed which is not recommended for usage. 
 
   1.1. Change the path to Code sub-directory ( You can skip 1.2 to 1.6 )
 
@@ -230,23 +230,23 @@ The data sent to the host device for the 8 buttons and dual axis joystick config
 cd RaspberryPi-Joystick/XACGamepad/Code
 ```  
   
-  1.2. Download the 8 buttons XAC keyboard input interface code: [xac_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/XACGamepad/Code/xac_keyboard.py)
+  1.2. Download the 8 buttons XAC keyboard input interface code: [gamepad_xac_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/XACGamepad/Code/gamepad_xac_keyboard.py)
 
   1.3. Create a new python file using following command:
   
 ```
-sudo nano xac_keyboard.py
-sudo chmod +x xac_keyboard.py
+sudo nano gamepad_xac_keyboard.py
+sudo chmod +x gamepad_xac_keyboard.py
 ```   
 
-  1.4. Copy and paste the xac_keyboard.py code available under Code directory.
+  1.4. Copy and paste the gamepad_xac_keyboard.py code available under Code directory.
 
-  1.5. Save xac_keyboard.py file and exit
+  1.5. Save gamepad_xac_keyboard.py file and exit
   
   1.6. Test operating RaspberryPi-Joystick using xac_keyboard.py code with a physical keyboard or SSH
   
 ```
-sudo python xac_keyboard.py
+sudo python gamepad_xac_keyboard.py
 ```   
 
   1.7. Usage:
@@ -348,10 +348,10 @@ WantedBy=multi-user.target
 3.  Create a rule to give permission for execution of python code and accessing input devices 
 
 ```
-sudo nano /etc/udev/rules.d/xacdevice.rules
+sudo nano /etc/udev/rules.d/rpidevice.rules
 ```   
 
-4.  Add rules to give permission for execution of python code and accessing input devices to xacdevice.rules and save it.
+4.  Add rules to give permission for execution of python code and accessing input devices to rpidevice.rules and save it.
 
 ```
 KERNEL=="hidg0", NAME="%k", GROUP="pi", MODE="0666"
