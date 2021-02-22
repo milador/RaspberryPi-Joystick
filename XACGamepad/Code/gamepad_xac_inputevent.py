@@ -184,6 +184,10 @@ def main():
     """ Trigger XAC joystick with USB or BT mouse and keyboard  """
 
     # Examine all input devices and find keyboards and mice.
+    while len(evdev.list_devices()) == 0:
+        if DEBUG_MODE: 
+            print("Waiting for keyboard or mice")
+        time.sleep(1)
     # Process all keyboard and mouse input events.
     for devpath in evdev.list_devices():
         device = evdev.InputDevice(devpath)
