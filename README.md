@@ -62,6 +62,15 @@ Please select the option based on your need and follow the instructions.
 Thanks to all the developers and testers helping to create this project. Special thanks to [gdsports](https://github.com/gdsports) for finding/fixing bugs and developing new features. 
 
 
+# License
+
+Creative Commons Attribution-NonCommercial-ShareAlike (CC-BY-NC-SA): A creative commons license that bans commercial use and requires you to release any modified works under this license.
+
+<p align="center">
+<img align="center" src="https://upload.wikimedia.org/wikipedia/commons/b/bd/CC-BY-NC-SA.svg" width="50%" height="50%" alt="CC-BY-NC-SA"/>
+</p>
+
+
 
 
   
