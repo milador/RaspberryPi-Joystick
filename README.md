@@ -64,8 +64,6 @@ Thanks to all the developers and testers helping to create this project. Special
 
 # License
 
-# License
-
 ## Creative Commons Attribution-NonCommercial-ShareAlike (CC-BY-NC-SA)
 
 Copyright (c) 2019 Milador
