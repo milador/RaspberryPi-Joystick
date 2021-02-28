@@ -53,9 +53,8 @@ sudo echo "libcomposite" | sudo tee -a /etc/modules
 
   4.3. Make changes to Linux USB gadget HID driver module for the Xbox Adaptive Controller
 ```
-KERNEL_RELEASE=`uname -r`
-sudo cp /lib/modules/${KERNEL_RELEASE}/kernel/drivers/usb/gadget/function/usb_f_hid.ko /lib/modules/${KERNEL_RELEASE}/kernel/drivers/usb/gadget/function/usb_f_hid.ko.orig
-sudo cp ./Drivers/rpi-5.10/usb_f_hid.ko /lib/modules/${KERNEL_RELEASE}/kernel/drivers/usb/gadget/function/
+cd RaspberryPi-Joystick/XACGamepad/Drivers
+sudo cp -R 5.* /lib/modules/
 ```
 
 5.	Create the virtual joystick HID config script
