@@ -8,14 +8,12 @@ cd /sys/kernel/config/usb_gadget/
 mkdir -p 32_buttons_rpi_joystick
 cd 32_buttons_rpi_joystick
 
-sudo su
-
 # Define USB specification
 echo 0x1d6b > idVendor # Linux Foundation
 echo 0x0104 > idProduct # Multifunction Composite Joystick Gadget
 echo 0x0100 > bcdDevice # v1.0.0
 echo 0x0200 > bcdUSB # USB2
-echo 0x02 > bDeviceClass
+echo 0x00 > bDeviceClass
 echo 0x00 > bDeviceSubClass
 echo 0x00 > bDeviceProtocol
 
@@ -31,15 +29,14 @@ echo "RaspberryPi Joystick" > strings/0x409/product
 mkdir functions/hid.usb0
 echo 0 > functions/hid.usb0/protocol
 echo 0 > functions/hid.usb0/subclass
-echo 3 > functions/hid.usb0/report_length
+echo 6 > functions/hid.usb0/report_length
 
 # Write report descriptor ( X and Y analog joysticks plus 32 buttons )
 echo "05010904A1011581257F0901A10009300931750895028102C0A10005091901292015002501750195208102C0C0" | xxd -r -ps > functions/hid.usb0/report_desc
 
 
 # Create configuration file
-mkdir configs/c.1
-mkdir configs/c.1/strings/0x409
+mkdir -p configs/c.1/strings/0x409
 
 echo 0x80 > configs/c.1/bmAttributes
 echo 100 > configs/c.1/MaxPower # 100 mA
@@ -49,6 +46,6 @@ echo "RaspberryPi Joystick Configuration" > configs/c.1/strings/0x409/configurat
 ln -s functions/hid.usb0 configs/c.1
 
 # Activate device 
-sudo ls /sys/class/udc > UDC
+ls /sys/class/udc > UDC
 
 sleep 10

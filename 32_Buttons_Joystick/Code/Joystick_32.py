@@ -27,8 +27,8 @@ SOFTWARE.
 from struct import pack
 import threading
 
-class Joystick_16():
-    """Joystick 16 buttons Linux USB Gadget Interface"""
+class Joystick_32():
+    """Joystick 32 buttons Linux USB Gadget Interface"""
     def __init__(self):
         self.thread_lock = threading.Lock()
         with self.thread_lock:
@@ -39,7 +39,7 @@ class Joystick_16():
         return
 
     def begin(self, devname):
-        """Start Joystick_16"""
+        """Start Joystick_32"""
         with self.thread_lock:
             self.devhandle = open(devname, 'wb+')
             self.x_axis = 0
@@ -49,7 +49,7 @@ class Joystick_16():
         return
 
     def end(self):
-        """End Joystick_16"""
+        """End Joystick_32"""
         with self.thread_lock:
             self.devhandle.close()
             self.x_axis = 0
@@ -59,23 +59,23 @@ class Joystick_16():
         return
 
     def write(self):
-        """Send Joystick_16 state"""
-        self.devhandle.write(pack('<bbH',
+        """Send Joystick_32 state"""
+        self.devhandle.write(pack('<bbL',
             self.x_axis, self.y_axis, self.my_buttons))
         self.devhandle.flush()
         return
 
     def press(self, button_number):
-        """Press button 0..15"""
-        button_number = button_number & 0x0f    # Limit value range 0..15
+        """Press button 0..31"""
+        button_number = button_number & 0x1f    # Limit value range 0..31
         with self.thread_lock:
             self.my_buttons |= (1<<button_number)
             self.write()
         return
 
     def release(self, button_number):
-        """Release button 0..15"""
-        button_number = button_number & 0x0f    # Limit value range 0..15
+        """Release button 0..31"""
+        button_number = button_number & 0x1f    # Limit value range 0..31
         with self.thread_lock:
             self.my_buttons &= ~(1<<button_number)
             self.write()
@@ -89,9 +89,9 @@ class Joystick_16():
         return
 
     def buttons(self, buttons):
-        """Set all buttons 0..15"""
+        """Set all buttons 0..31"""
         with self.thread_lock:
-            self.my_buttons = buttons & 0xffff
+            self.my_buttons = buttons & 0xffffffff
             self.write()
         return
 
@@ -110,15 +110,15 @@ class Joystick_16():
         return
 
 def main():
-    """ test Joystick_16 class """
+    """ test Joystick_32 class """
     import time
 
-    joystick = Joystick_16()
+    joystick = Joystick_32()
     joystick.begin('/dev/hidg0')
 
     while True:
         # Press and hold every button
-        for button in range(0, 16):
+        for button in range(0, 32):
             joystick.press(button)
             time.sleep(0.1)
         time.sleep(1)
@@ -126,7 +126,7 @@ def main():
         joystick.releaseAll()
         time.sleep(1)
         # Press all buttons at the same time
-        joystick.buttons(0xffff)
+        joystick.buttons(0xffffffff)
         time.sleep(1)
         # Release all buttons
         joystick.releaseAll()
