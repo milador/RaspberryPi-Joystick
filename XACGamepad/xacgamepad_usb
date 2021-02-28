@@ -8,8 +8,6 @@ cd /sys/kernel/config/usb_gadget/
 mkdir -p xacgamepad
 cd xacgamepad
 
-sudo su
-
 # Define USB specification
 echo 0x1d6b > idVendor # Linux Foundation
 echo 0x0104 > idProduct # Multifunction Composite Joystick Gadget

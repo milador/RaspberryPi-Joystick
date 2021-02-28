@@ -1,6 +1,6 @@
 # Linux USB gadget HID driver for the Xbox Adaptive Controller
 
-The Linux USB gadget HID driver on the Raspberry Pi Zero W does not
+The Linux USB gadget HID driver on the Raspberry Pi Zero W does not work
 with the Xbox Adaptive Controller (XAC). The changes described below
 makes the driver compatible with the XAC.
 
@@ -10,14 +10,77 @@ Raspberry Pi OS from source code.
 
 https://www.raspberrypi.org/documentation/linux/kernel/building.md
 
-Make the changes to f_hid.c as described below. Compile and build again. Copy
-usb_f_hid.ko to the Pi Zero. Then install it as shown below.
+Be sure to install the dependencies and toolchains. Choose whether
+cross-compiling or compiling on a Raspberry Pi.
+
+```bash
+git clone --depth=1 --branch rpi-5.10.y https://github.com/raspberrypi/linux
+cd linux
+git checkout raspberrypi-kernel_1.20210201-1
+```
+
+Make the changes to f_hid.c as described below.
+
+Build the kernel three times for the different CPU types currently in use.
+Copy the driver usb_f_hid.ko to the RaspberryPi-Joystick directory.
+
+```bash
+DEST=${HOME}/RaspberryPi-Joystick/XACGamepad/Drivers
+TAIL=kernel/drivers/usb/gadget/function
+NUMCPU=8    # change for your system. 4 if using Raspberry Pi 3 or 4.
+
+## For Pi 1, Pi Zero, Pi Zero W, or Compute Module:
+KERNEL=kernel
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
+make -j ${NUMCPU} ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+DESTDIR="${DEST}/5.10.11+/${TAIL}"
+if [ ! -d ${DESTDIR} ]
+then
+    mkdir -p ${DESTDIR}
+fi
+find . -name usb_f_hid.ko -print0 |xargs -0 -I{} cp {} "${DESTDIR}"
+
+## For Pi 2, Pi 3, Pi 3+, or Compute Module 3:
+KERNEL=kernel7
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
+make -j ${NUMCPU} ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+DESTDIR="${DEST}/5.10.11-v7+/${TAIL}"
+if [ ! -d ${DESTDIR} ]
+then
+    mkdir -p ${DESTDIR}
+fi
+find . -name usb_f_hid.ko -print0 |xargs -0 -I{} cp {} "${DESTDIR}"
+
+## For Raspberry Pi 4 and 400:
+
+KERNEL=kernel7l
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
+make -j ${NUMCPU} ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+DESTDIR="${DEST}/5.10.11-v7l+/${TAIL}"
+if [ ! -d ${DESTDIR} ]
+then
+    mkdir -p ${DESTDIR}
+fi
+find . -name usb_f_hid.ko -print0 |xargs -0 -I{} cp {} "${DESTDIR}"
+```
+
+At this point update the github repo with the latest drivers.
+
+To install them on a Raspberry Pi do the following.
 
 ```
-KERNEL_RELEASE=`uname -r`
-sudo cp /lib/modules/${KERNEL_RELEASE}/kernel/drivers/usb/gadget/function/usb_f_hid.ko /lib/modules/${KERNEL_RELEASE}/kernel/drivers/usb/gadget/function/usb_f_hid.ko.orig
-sudo cp rpi-5.10/usb_f_hid.ko /lib/modules/${KERNEL_RELEASE}/kernel/drivers/usb/gadget/function/
+cd ${HOME}
+git clone https://github.com/RaspberryPi-Joystick.git
+cd RaspberryPi-Joystick/XACGamepad/Drivers
+sudo cp -R 5.* /lib/modules/
 ```
+
+Kernel Release|Description
+------------|-------------------------------------------------
+5.10.11+    |For Pi 1, Pi Zero, Pi Zero W, or Compute Module
+5.10.11-v7+ |For Pi 2, Pi 3, Pi 3+, or Compute Module 3
+5.10.11-v7l+|For Raspberry Pi 4 or Pi 400
+
 
 ## Driver Changes
 
