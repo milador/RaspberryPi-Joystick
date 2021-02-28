@@ -1,20 +1,20 @@
 """
-Test Joystick_16 class by pressing and releasing all buttons then moving
+Test Joystick_32 class by pressing and releasing all buttons then moving
 the joystick in all directions.
 """
 
 import time
-from Joystick_16 import *
+from Joystick_32 import *
 
 def main():
-    """ test Joystick_16 class """
+    """ test Joystick_32 class """
 
-    joystick = Joystick_16()
+    joystick = Joystick_32()
     joystick.begin('/dev/hidg0')
 
     while True:
         # Press and hold every button
-        for button in range(0, 16):
+        for button in range(0, 32):
             joystick.press(button)
             time.sleep(0.1)
         time.sleep(1)
@@ -22,7 +22,7 @@ def main():
         joystick.releaseAll()
         time.sleep(1)
         # Press all buttons at the same time
-        joystick.buttons(0xffff)
+        joystick.buttons(0xffffffff)
         time.sleep(1)
         # Release all buttons
         joystick.releaseAll()
