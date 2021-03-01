@@ -28,9 +28,10 @@ Note : You can also use an OTG adapter cable and a power supply through micro US
   1. [Raspberry Pi 4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) x 1
   2. Micro SD card x 1
   3. USB C OTG adapter cable
-  4. mice and keyboard to setup (optional)
-  5. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484)  (optional)
-  6. BT mice or keyboard for XAC   
+  4. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/)
+  5. mice and keyboard to setup (optional)
+  6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484)  (optional)
+  7. BT mice or keyboard for XAC   
 
 
 # Hardware Assembly Instructions   
