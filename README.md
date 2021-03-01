@@ -1,6 +1,10 @@
 # RaspberryPi-Joystick
 
-The goal of this project is to create a virtual USB HID joystick using Raspberry Pi. 
+The goal of this project is to create a virtual USB HID joystick using Raspberry Pi which can convert BT mice/keyboard or USB mice/keyboard to joystick HID actions.
+
+This Raspberry Pi joystick converter can be used to operate Xbox Adaptive Controller or NS console as practical use cases.
+
+A RaspberryPi 4B or a raspberry pi zero W can be used for this project.
 
 The new versions of raspberry pi zero W come with USB OTG and bluetooth chip which makes it possible to use Bluetooth HID devices as well as USB HID.
 
@@ -10,45 +14,9 @@ This project is in development process at the moment.
 
 We now go over the hardware and software requirements.
 
-# Hardware requirements  
+# Requirements and installation instructions   
 
-## RaspberryPi Zero
-
-  1. [Raspberry Pi zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) x 1
-  2. Micro SD card x 1
-  3. [Pi Zero USB Stem](https://www.sparkfun.com/products/14526) x 1
-  4. mice and keyboard to setup (optional)
-  5. [Mini Color PiTFT Ad Blocking Pi-Hole Kit](https://www.adafruit.com/product/4475) or [OLED Bonnet Pack for Raspberry Pi Zero](https://www.adafruit.com/product/3192)  (optional)
-  6. BT mice or keyboard for XAC 
-  
-Note : You can also use an OTG adapter cable and a power supply through micro USB ports instead of Pi Zero USB Stem.
-  
-## RaspberryPi 4
-
-  1. [Raspberry Pi 4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) x 1
-  2. Micro SD card x 1
-  3. USB C OTG adapter cable
-  4. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/)
-  5. mice and keyboard to setup (optional)
-  6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484)  (optional)
-  7. BT mice or keyboard for XAC   
-
-
-# Hardware Assembly Instructions   
-
-  1. Solder the Pi Zero USB Stem
-  
-The main part of the assembly process is to solder the Pi Zero USB Stem to the Raspberry pi zero W. You can find the assembly instructions of Pi Zero USB Stem on [zerostem.io website](https://zerostem.io/installation/). 
-
-Note: You can skip this step if you using an OTG adapter 
-
-  2. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
-  
-  3. Connect your raspberry pi zero to a monitor through HDMI cable and a mice and keyboard. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
-  
-# Software installation instructions   
-
-The software for this project is offered in three flavors and you can select the version that matches your needs.
+The requirements for this project varies based on the needs and the gadget configuration. You can select the version that matches your needs.
 
   1. [8_Buttons](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons_Joystick/) ( 8 Buttons and a dual axis joystick )
   2. [16_Buttons](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons_Joystick/) ( 16 Buttons and a dual axis joystick )

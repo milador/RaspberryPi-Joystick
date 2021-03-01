@@ -1,4 +1,48 @@
-# Linux USB XAC GamePad Gadget Installation Instructions 
+# USB XAC GamePad Gadget Installation Instructions 
+
+# Hardware requirements  
+
+## RaspberryPi Zero
+
+  1. [Raspberry Pi zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) x 1
+  2. Micro SD card x 1
+  3. [Pi Zero USB Stem](https://www.sparkfun.com/products/14526) x 1
+  4. USB B OTG adapter cable (For USB mice/keyboard usage) x 1
+  5. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/) (For USB mice/keyboard usage. Not needed with USB Stem) x 1
+  6. mice and keyboard to setup (optional)
+  7. [Mini Color PiTFT Ad Blocking Pi-Hole Kit](https://www.adafruit.com/product/4475) or [OLED Bonnet Pack for Raspberry Pi Zero](https://www.adafruit.com/product/3192) x 1 (optional)
+  6. BT mice/keyboard or USB mice/keyboard as input 
+  
+Note : You can also use an OTG adapter cable and a power supply through micro USB ports instead of Pi Zero USB Stem.
+  
+## RaspberryPi 4
+
+  1. [Raspberry Pi 4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) x 1
+  2. Micro SD card x 1
+  3. USB C OTG adapter cable x 1
+  4. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/) x1
+  5. mice and keyboard to setup (optional)
+  6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484) x 1  (optional)
+  7. BT mice/keyboard or USB mice/keyboard as input 
+
+
+# Hardware Assembly Instructions   
+
+  1. Connect USB cable/connection based on your hardware
+  
+  1.1. Rpi zero & zero w : Solder the Pi Zero USB Stem or use a USB B OTG adapter cable and Dual USB Male Extra Power Data Y Extension Cable (if you are using USB Keyboard/mice)
+  
+The main part of the assembly process is to solder the Pi Zero USB Stem to the Raspberry pi zero W. You can find the assembly instructions of Pi Zero USB Stem on [zerostem.io website](https://zerostem.io/installation/). 
+
+Note: You can skip this step if you using an OTG adapter 
+
+  1.2. Rpi 4 : USB C OTG adapter cable ( Use Dual USB Male Extra Power Data Y Extension Cable if you are using USB Keyboard/mice)
+
+  2. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
+  
+  3. Connect your raspberry pi to a monitor through HDMI cable and a mice and keyboard. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
+  
+  
   
 # Software requirements  
 
@@ -60,8 +104,8 @@ sudo cp -R 5.* /lib/modules/
 5.	Create the virtual joystick HID config script
 
 ```
-sudo touch /usr/bin/xacgamepad_usb
-sudo chmod +x /usr/bin/xacgamepad_usb
+sudo touch /usr/bin/xac_gamepad_usb
+sudo chmod +x /usr/bin/xac_gamepad_usb
 ```
 
 6.	Add virtual joystick HID config script to startup scripts and run it automatically after OS boot
@@ -74,7 +118,7 @@ sudo nano /etc/rc.local
   6.2. Add following command on the line above "exit 0" and save it. ( Add it on the line before "exit 0" )
   
 ```
-/usr/bin/xacgamepad_usb # Raspberry XAC GamePad joystick libcomposite configuration
+/usr/bin/xac_gamepad_usb # Raspberry XAC GamePad joystick libcomposite configuration
 ```
 
 7.	Create the joystick HID gadget 
@@ -82,10 +126,10 @@ sudo nano /etc/rc.local
   7.1. Create a new gadget
 
 ```
-sudo nano /usr/bin/xacgamepad_usb
+sudo nano /usr/bin/xac_gamepad_usb
 ```
 
-  7.2. Add the following code to the xacgamepad_usb gadget and save it.
+  7.2. Add the following code to the xac_gamepad_usb gadget and save it.
   
 ```
 # Created by https://github.com/milador/RaspberryPi-Joystick
@@ -95,8 +139,8 @@ sleep 30
 
 # Create XAC Gamepad gadget
 cd /sys/kernel/config/usb_gadget/
-mkdir -p xacgamepad
-cd xacgamepad
+mkdir -p xac_gamepad
+cd xac_gamepad
 
 sudo su
 
@@ -191,7 +235,7 @@ sudo reboot
 10.  Startup your Rpi zero and enter following commands to test the configuration:
    
 ```
-sudo /usr/bin/xacgamepad_usb
+sudo /usr/bin/xac_gamepad_usb
 ls -la /dev/hidg*
 ```   
 
@@ -278,8 +322,12 @@ sudo python gamepad_xac_keyboard.py
 sudo python gamepad_xac_demo.py
 ```   
 
+# Usage Setup
 
-# Usage
+Connect RaspberryPi to one of the USB ports on your host device. Make sure you use an external power source to power RPi Zero. Wait 30 seconds for it to initialize.
+
+
+## Bluetooth
 
 1.  Pair BT keyboard/mouse using RaspberryPi GUI taskbar.
 
@@ -295,20 +343,23 @@ sudo python gamepad_xac_demo.py
 <img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_bt_pair_add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
 </p>
 
-  1.4. Change the path to Code sub-directory 
+# Usage
+
+
+1. Change the path to Code sub-directory 
 
 ```
 cd RaspberryPi-Joystick/XACGamepad/Code
 ```  
 
-  1.5. Test the gamepad_xac_inputevent python script
+2. Test the gamepad_xac_inputevent python script
   
 ```
 sudo python3 gamepad_xac_inputevent.py
 ```   
-  1.6. Connect RaspberryPi to one of the USB ports on XAC. Make sure you use an external power source to power both XAC and RPi Zero. Wait 30 seconds for it to initialize.
+3. Connect RaspberryPi to one of the USB ports on XAC. Make sure you use an external power source to power both XAC and RPi Zero. Wait 30 seconds for it to initialize.
   
-  1.7. That's it! You should now be able to use your BT keyboard/mouse to operate your XAC.
+4. That's it! You should now be able to use your BT keyboard/mouse to operate your XAC.
   
   
  # Autostart
@@ -317,7 +368,7 @@ sudo python3 gamepad_xac_inputevent.py
 
 1.  Create xacgamepad service
 ```
-sudo nano /etc/systemd/system/xacgamepad.service
+sudo nano /etc/systemd/system/xac_gamepad.service
 ```   
 
 2.  Add following script to xacgamepad.service and save it
@@ -347,10 +398,10 @@ WantedBy=multi-user.target
 3.  Create a rule to give permission for execution of python code and accessing input devices 
 
 ```
-sudo nano /etc/udev/rules.d/rpidevice.rules
+sudo nano /etc/udev/rules.d/rpi_device.rules
 ```   
 
-4.  Add rules to give permission for execution of python code and accessing input devices to rpidevice.rules and save it.
+4.  Add rules to give permission for execution of python code and accessing input devices to rpi_device.rules and save it.
 
 ```
 KERNEL=="hidg0", NAME="%k", GROUP="pi", MODE="0666"
@@ -361,13 +412,13 @@ KERNELS=="input*", MODE="0666" GROUP="plugdev"
 
 ```
 systemctl daemon-reload
-systemctl enable xacgamepad.service
-systemctl start xacgamepad.service
+systemctl enable xac_gamepad.service
+systemctl start xac_gamepad.service
 ```   
 Use following to check status of running service :
 
 ```
-systemctl status xacgamepad.service
+systemctl status xac_gamepad.service
 ```   
 
 6.  Perform reboot

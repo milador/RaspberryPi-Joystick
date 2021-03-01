@@ -1,5 +1,51 @@
-# Linux USB Gadget NSGamepad Installation Instructions 
+# USB Gadget NSGamepad Installation Instructions 
 
+# Hardware requirements  
+
+## RaspberryPi Zero
+
+  1. [Raspberry Pi zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) x 1
+  2. Micro SD card x 1
+  3. [Pi Zero USB Stem](https://www.sparkfun.com/products/14526) x 1
+  4. [Mayflash Magic NS](https://www.amazon.com/Mayflash-Magic-NS-Wireless-Controller-Nintendo/dp/B079B5KHWQ) x 1
+  5. USB B OTG adapter cable (For USB mice/keyboard usage) x 1
+  6. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/) (For USB mice/keyboard usage. Not needed with USB Stem) x 1
+  7. mice and keyboard to setup (optional)
+  8. [Mini Color PiTFT Ad Blocking Pi-Hole Kit](https://www.adafruit.com/product/4475) or [OLED Bonnet Pack for Raspberry Pi Zero](https://www.adafruit.com/product/3192) x 1 (optional)
+  9. BT mice/keyboard or USB mice/keyboard as input 
+  
+Note : You can also use an OTG adapter cable and a power supply through micro USB ports instead of Pi Zero USB Stem.
+  
+## RaspberryPi 4
+
+  1. [Raspberry Pi 4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) x 1
+  2. Micro SD card x 1
+  3. [Mayflash Magic NS](https://www.amazon.com/Mayflash-Magic-NS-Wireless-Controller-Nintendo/dp/B079B5KHWQ) x 1
+  4. USB C OTG adapter cable x 1
+  5. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/) x1
+  6. mice and keyboard to setup (optional)
+  7. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484) x 1  (optional)
+  8. BT mice/keyboard or USB mice/keyboard as input 
+
+
+# Hardware Assembly Instructions   
+
+  1. Connect USB cable/connection based on your hardware
+  
+  1.1. Rpi zero & zero w : Solder the Pi Zero USB Stem or use a USB B OTG adapter cable and Dual USB Male Extra Power Data Y Extension Cable (if you are using USB Keyboard/mice)
+  
+The main part of the assembly process is to solder the Pi Zero USB Stem to the Raspberry pi zero W. You can find the assembly instructions of Pi Zero USB Stem on [zerostem.io website](https://zerostem.io/installation/). 
+
+Note: You can skip this step if you using an OTG adapter 
+
+  1.2. Rpi 4 : USB C OTG adapter cable ( Use Dual USB Male Extra Power Data Y Extension Cable if you are using USB Keyboard/mice)
+
+  2. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
+  
+  3. Connect your raspberry pi to a monitor through HDMI cable and a mice and keyboard. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
+  
+  
+  
 # Software requirements  
 
   1. Install latest version of Raspbian OS on an SD card according to the official documents on [raspberrypi.org](https://www.raspberrypi.org/documentation/installation/installing-images/).
@@ -18,7 +64,16 @@ sudo apt-get update
 sudo apt-get install build-essential python-dev python-pip git
 ```
 
-2.	Enable libcomposite and other necessary modules and drivers
+2.	Set up USB gadget mode
+
+  2.1. Download source code and necessary scripts
+  
+```
+git clone https://github.com/milador/RaspberryPi-Joystick
+cd RaspberryPi-Joystick/NSGamepad
+```
+
+  3.2. Enable libcomposite and other necessary modules and drivers
 
 ```
 sudo echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
@@ -29,8 +84,8 @@ sudo echo "libcomposite" | sudo tee -a /etc/modules
 3.	Create the virtual joystick HID config script
 
 ```
-sudo touch /usr/bin/nsgamepad_usb
-sudo chmod +x /usr/bin/nsgamepad_usb
+sudo touch /usr/bin/ns_gamepad_usb
+sudo chmod +x /usr/bin/ns_gamepad_usb
 ```
 
 4.	Add virtual joystick HID config script to startup scripts and run it automatically after OS boot
@@ -43,7 +98,7 @@ sudo nano /etc/rc.local
   4.2. Add following command on the line above "exit 0" and save it. ( Add it on the line before "exit 0" )
   
 ```
-/usr/bin/nsgamepad_usb # Raspberry NS Gamepad libcomposite configuration
+/usr/bin/ns_gamepad_usb # Raspberry NSGamepad joystick libcomposite configuration
 ```
 
 5.	Create the NS Gamepad HID gadget 
@@ -51,10 +106,10 @@ sudo nano /etc/rc.local
   5.1. Create a new gadget
 
 ```
-sudo nano /usr/bin/nsgamepad_usb
+sudo nano /usr/bin/ns_gamepad_usb
 ```
 
-  5.2. Add the following code to the nsgamepad_usb gadget and save it.
+  5.2. Add the following code to the ns_gamepad_usb gadget and save it.
   
 ```
 # Created by https://github.com/milador/RaspberryPi-Joystick
@@ -64,9 +119,9 @@ sudo nano /usr/bin/nsgamepad_usb
 
 sleep 30
 
-# Create nsgamepad gadget
+# Create ns_gamepad gadget
 cd /sys/kernel/config/usb_gadget/
-mkdir -p nsgamepad
+mkdir -p ns_gamepad
 cd nsgamepad
 
 # Define USB specification
@@ -109,7 +164,7 @@ ls /sys/class/udc > UDC
 sleep 30
 ```
 
-The report descriptor is created to define a generic gamepad with 2 sticks, 1 dpad, and 14 buttons HID device. The report descriptor used in the nsgamepad_usb gadget definition is presented in hexadecimal values as follows:
+The report descriptor is created to define a generic gamepad with 2 sticks, 1 dpad, and 14 buttons HID device. The report descriptor used in the ns_gamepad_usb gadget definition is presented in hexadecimal values as follows:
 
 ```
 05010905a10115002501350045017501950e05091901290e81029502810105012507463b017504950165140939814265009501810126ff0046ff000930093109320935750895048102750895018101c0
@@ -159,7 +214,6 @@ The actual USB Report Descriptor can be defined as following:
 0xC0,              // End Collection
 
 // 80 bytes
-
 ```
 
 6. Save and reboot the Rpi zero:
@@ -174,7 +228,7 @@ sudo reboot
 8.  Startup your Rpi zero and enter following commands to test the configuration:
    
 ```
-sudo /usr/bin/nsgamepad_usb
+sudo /usr/bin/ns_gamepad_usb
 ls -la /dev/hidg*
 ```   
 
@@ -194,16 +248,90 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 <img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_nsgamepad_properties.PNG" width="50%" height="50%" alt="raspberry pi nsgamepad properties"/>
 </p>
 
+# Data packets
+
+The data sent to the host device for the 14 buttons , 1 dpad, and dual axis joystick configuration of the joystick contains 6 bytes, 2 are for the XY and 4 are the buttons. 
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_ns_packets.png" width="50%" height="50%" alt="raspberry pi NS Gamepad data packets"/>
+</p>
+
+# Testing
+
+1.  gamepad_ns_keyboard.py: A sample code to convert keyboard actions to joystick actions using command line and a keyboard is available to test the functionality. This method has packets exposed which is not recommended for usage. 
+
+  1.1. Change the path to Code sub-directory ( You can skip 1.2 to 1.6 )
+
+```
+cd RaspberryPi-Joystick/NSGamepad/Code
+```  
+  
+  1.2. Download the NSGamepad keyboard input interface code: [gamepad_ns_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/NSGamepad/Code/gamepad_ns_keyboard.py)
+
+  1.3. Create a new python file using following command:
+  
+```
+sudo nano gamepad_ns_keyboard.py
+sudo chmod +x gamepad_ns_keyboard.py
+```   
+
+  1.4. Copy and paste the gamepad_ns_keyboard.py code available under Code directory.
+
+  1.5. Save gamepad_ns_keyboard.py file and exit
+  
+  1.6. Test operating RaspberryPi-Joystick using gamepad_ns_keyboard.py code with a physical keyboard or SSH
+  
+```
+sudo python gamepad_ns_keyboard.py
+```   
+
+
+2.  NSGamepad.py: A class created to handle button actions,dpad and dual axis joystick actions.
+
+3.  gamepad_ns_demo.py: A sample code that automatically press buttons and move joystick
+
+  3.1. Change the path to Code sub-directory
+
+  3.2. Start running the python script
+  
+```
+sudo python gamepad_ns_demo.py
+```   
+
+
+# Usage Setup
+
+Connect RaspberryPi to one of the USB ports on your host device. Make sure you use an external power source to power RPi Zero. Wait 30 seconds for it to initialize.
+
+
+## Bluetooth
+
+1.  Pair BT keyboard/mouse using RaspberryPi GUI taskbar.
+
+  1.1. Click on Bluetooth button icon on top right of RaspberryPi GUI taskbar.
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_bt_pair_open.PNG" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
+</p>
+
+  1.2. Click on Add Device
+  
+  1.3. Select your BT keyboard/mouse and Click on Pair button
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_bt_pair_add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
+</p>
+
+
+
 # Usage
 
-The file nsgamepad_usb, based on 8_buttons_joystick_usb, configures the USB OTG
+The file ns_gamepad_usb, based on 8_buttons_joystick_usb, configures the USB OTG
 port as a gamepad with 2 analog sticks, 1 dpad, and 14 buttons. Be sure to run
 it as root using sudo. Or set it up to auto run from /etc/rc.local. See the
 docs for 8_joystick.
 
 ```
 $ cd NSGamepad
-$ sudo ./nsgamepad_usb
+$ sudo ./ns_gamepad_usb
 ```
 
 The class and test program are in Code/NSGamepad.py.
@@ -218,16 +346,26 @@ To run the gamepad demo program do the following. The program presses and
 releases all buttons then rotates the joysticks and dpad.
 
 ```
-$ cd Code
-$ sudo python3 gamepad_demo.py
+$ cd RaspberryPi-Joystick/NSGamepad/Code
+$ sudo python3 gamepad_ns_demo.py
 ```
+
+To test the gamepad_ns_inputevent python script run following command:
+  
+```
+sudo python3 gamepad_ns_inputevent.py
+```   
+
+That's it! You should now be able to use your BT keyboard/mouse to operate as NSGamepad.
+  
+
 
 ## Nintendo Switch
 To run the gamepad keyboard program for a Nintendo Switch do the following.
 
 ```
 $ cd Code
-$ sudo python3 gamepad_keyboard.py
+$ sudo python3 gamepad_ns_keyboard.py
 ```
 
 The active keys for a Nintendo Switch are listed below
@@ -271,7 +409,7 @@ To run the gamepad keyboard program for a Playstation 4 do the following.
 
 ```
 $ cd Code
-$ sudo python3 gamepad_keyboard_ps4.py
+$ sudo python3 gamepad_ns_keyboard_ps4.py
 ```
 
 The active keys for a Playstation 4 are listed below
@@ -302,3 +440,69 @@ To control a Playstation 4, use a Mayflash Magic S Pro adapter. This adapter
 supports PS4 and Nintendo Switch. Plug the Zero into the Mayflash adapter then
 plug the Mayflash adapter into the PS4. Configure the adapter to "PS4" mode.
 The LED should be blue.
+  
+  
+ # Autostart
+ 
+ We go over process to make the gamepad_ns_inputevent.py start automatically on boot 
+
+1.  Create ns_gamepad service
+```
+sudo nano /etc/systemd/system/ns_gamepad.service
+```   
+
+2.  Add following script to ns_gamepad.service and save it
+
+```
+[Unit]
+Description=NS Gamepad automatic start with systemd, respawn, after bluetooth
+After=bluetooth.target
+After=multi-user.target
+Requires=bluetooth.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u gamepad_ns_inputevent.py
+WorkingDirectory=/home/pi/RaspberryPi-Joystick/NSGamepad/Code
+Type=idle
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=ns_gamepad
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
+```   
+
+3.  Create a rule to give permission for execution of python code and accessing input devices 
+
+```
+sudo nano /etc/udev/rules.d/rpi_device.rules
+```   
+
+4.  Add rules to give permission for execution of python code and accessing input devices to rpi_device.rules and save it.
+
+```
+KERNEL=="hidg0", NAME="%k", GROUP="pi", MODE="0666"
+KERNELS=="input*", MODE="0666" GROUP="plugdev"
+```   
+
+5.  Enable and start the ns_gamepad.service
+
+```
+systemctl daemon-reload
+systemctl enable ns_gamepad.service
+systemctl start ns_gamepad.service
+```   
+Use following to check status of running service :
+
+```
+systemctl status ns_gamepad.service
+```   
+
+6.  Perform reboot
+
+```
+sudo reboot
+```   

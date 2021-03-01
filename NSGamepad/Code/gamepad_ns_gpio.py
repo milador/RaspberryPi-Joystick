@@ -6,9 +6,9 @@ $ sudo apt update
 $ sudo apt install gpiozero
 
 Must be run as root like this:
-$ sudo ./nsgamepad_usb
+$ sudo ./ns_gamepad_usb
 $ cd Code
-$ sudo python3 gamepad_gpio.py
+$ sudo python3 gamepad_ns_gpio.py
 """
 import time
 import threading

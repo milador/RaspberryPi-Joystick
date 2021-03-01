@@ -11,7 +11,7 @@ Type=idle
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=xacgamepad
+SyslogIdentifier=xac_gamepad
 User=pi
 Group=pi
 

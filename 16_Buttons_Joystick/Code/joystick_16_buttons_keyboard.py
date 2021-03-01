@@ -1,4 +1,4 @@
-# File name: 16_buttons_keyboard.py 
+# File name: joystick_16_buttons_keyboard.py 
 # Created by https://github.com/milador/RaspberryPi-Joystick
 # Author: Milad Hajihassan
 # Date created: 14/2/2021

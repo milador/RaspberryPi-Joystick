@@ -1,0 +1,22 @@
+[Unit]
+Description=NS Gamepad automatic start with systemd, respawn, after bluetooth
+After=bluetooth.target
+After=multi-user.target
+Requires=bluetooth.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u gamepad_ns_inputevent.py
+WorkingDirectory=/home/pi/RaspberryPi-Joystick/NSGamepad/Code
+Type=idle
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=ns_gamepad
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
+
+
+

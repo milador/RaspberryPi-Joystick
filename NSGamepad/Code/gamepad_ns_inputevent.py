@@ -13,10 +13,10 @@ sudo apt install python3-evdev
 
 cd NSGamepad
 # Create USB gamepad gadget
-sudo ./nsgamepad_usb
+sudo ./ns_gamepad_usb
 cd Code
 # Read keyboard and mouse events then press/release gamepad buttons.
-sudo python3 gamepad_inputevent.py
+sudo python3 gamepad_ns_inputevent.py
 
 """
 

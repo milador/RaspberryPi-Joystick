@@ -1,4 +1,4 @@
-# File name: 32_buttons_keyboard.py 
+# File name: joystick_32_buttons_keyboard.py 
 # Created by https://github.com/milador/RaspberryPi-Joystick
 # Author: Milad Hajihassan
 # Date created: 14/2/2021

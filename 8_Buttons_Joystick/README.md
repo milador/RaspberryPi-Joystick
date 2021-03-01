@@ -1,4 +1,47 @@
-# Linux USB Gadget 8 Buttons Installation Instructions 
+# USB Gadget 8 Buttons Installation Instructions 
+
+# Hardware requirements  
+
+## RaspberryPi Zero
+
+  1. [Raspberry Pi zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) x 1
+  2. Micro SD card x 1
+  3. [Pi Zero USB Stem](https://www.sparkfun.com/products/14526) x 1
+  4. USB B OTG adapter cable (For USB mice/keyboard usage) x 1
+  5. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/) (For USB mice/keyboard usage. Not needed with USB Stem) x 1
+  6. mice and keyboard to setup (optional)
+  7. [Mini Color PiTFT Ad Blocking Pi-Hole Kit](https://www.adafruit.com/product/4475) or [OLED Bonnet Pack for Raspberry Pi Zero](https://www.adafruit.com/product/3192) x 1 (optional)
+  6. BT mice/keyboard or USB mice/keyboard as input 
+  
+Note : You can also use an OTG adapter cable and a power supply through micro USB ports instead of Pi Zero USB Stem.
+  
+## RaspberryPi 4
+
+  1. [Raspberry Pi 4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) x 1
+  2. Micro SD card x 1
+  3. USB C OTG adapter cable x 1
+  4. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/) x1
+  5. mice and keyboard to setup (optional)
+  6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484) x 1  (optional)
+  7. BT mice/keyboard or USB mice/keyboard as input 
+
+
+# Hardware Assembly Instructions   
+
+  1. Connect USB cable/connection based on your hardware
+  
+  1.1. Rpi zero & zero w : Solder the Pi Zero USB Stem or use a USB B OTG adapter cable and Dual USB Male Extra Power Data Y Extension Cable (if you are using USB Keyboard/mice)
+  
+The main part of the assembly process is to solder the Pi Zero USB Stem to the Raspberry pi zero W. You can find the assembly instructions of Pi Zero USB Stem on [zerostem.io website](https://zerostem.io/installation/). 
+
+Note: You can skip this step if you using an OTG adapter 
+
+  1.2. Rpi 4 : USB C OTG adapter cable ( Use Dual USB Male Extra Power Data Y Extension Cable if you are using USB Keyboard/mice)
+
+  2. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
+  
+  3. Connect your raspberry pi to a monitor through HDMI cable and a mice and keyboard. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
+  
   
 # Software requirements  
 
@@ -207,7 +250,7 @@ The data sent to the host device for the 8 buttons and dual axis joystick config
 cd RaspberryPi-Joystick/8_Buttons_Joystick/Code
 ```  
   
-  1.2. Download the 8 buttons XAC keyboard input interface code: [joystick_8_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons_Joystick/Code/joystick_8_buttons_keyboard.py)
+  1.2. Download the 8 buttons keyboard input interface code: [joystick_8_buttons_keyboard.py](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons_Joystick/Code/joystick_8_buttons_keyboard.py)
 
   1.3. Create a new python file using following command:
   
@@ -256,8 +299,12 @@ sudo python joystick_8_buttons_keyboard.py
 sudo python joystick_8_buttons_demo.py
 ```   
 
+# Usage Setup
 
-# Usage
+Connect RaspberryPi to one of the USB ports on your host device. Make sure you use an external power source to power RPi Zero. Wait 30 seconds for it to initialize.
+
+
+## Bluetooth
 
 1.  Pair BT keyboard/mouse using RaspberryPi GUI taskbar.
 
@@ -273,32 +320,36 @@ sudo python joystick_8_buttons_demo.py
 <img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_bt_pair_add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
 </p>
 
-  1.4. Change the path to Code sub-directory 
+
+# Usage
+
+
+1. Change the path to Code sub-directory 
 
 ```
 cd RaspberryPi-Joystick/8_Buttons_Joystick/Code
 ```  
 
-  1.5. Test the joystick_8_buttons_inputevent python script
+2. Test the joystick_8_buttons_inputevent python script
   
 ```
 sudo python3 joystick_8_buttons_inputevent.py
 ```   
-  1.6. Connect RaspberryPi to one of the USB ports on your host device. Make sure you use an external power source to power RPi Zero. Wait 30 seconds for it to initialize.
+3. Connect RaspberryPi to one of the USB ports on your host device. Make sure you use an external power source to power RPi Zero. Wait 30 seconds for it to initialize.
   
-  1.7. That's it! You should now be able to use your BT keyboard/mouse to operate as 8 buttons joystick.
+4. That's it! You should now be able to use your BT keyboard/mouse to operate as 8 buttons joystick.
   
   
  # Autostart
  
  We go over process to make the joystick_8_buttons_inputevent.py start automatically on boot 
 
-1.  Create 8joystick service
+1.  Create 8_buttons_joystick service
 ```
-sudo nano /etc/systemd/system/8joystick.service
+sudo nano /etc/systemd/system/8_buttons_joystick.service
 ```   
 
-2.  Add following script to 8joystick.service and save it
+2.  Add following script to 8_buttons_joystick.service and save it
 
 ```
 [Unit]
@@ -314,7 +365,7 @@ Type=idle
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=8joystick
+SyslogIdentifier=8_buttons_joystick
 User=pi
 Group=pi
 
@@ -325,27 +376,27 @@ WantedBy=multi-user.target
 3.  Create a rule to give permission for execution of python code and accessing input devices 
 
 ```
-sudo nano /etc/udev/rules.d/rpidevice.rules
+sudo nano /etc/udev/rules.d/rpi_device.rules
 ```   
 
-4.  Add rules to give permission for execution of python code and accessing input devices to rpidevice.rules and save it.
+4.  Add rules to give permission for execution of python code and accessing input devices to rpi_device.rules and save it.
 
 ```
 KERNEL=="hidg0", NAME="%k", GROUP="pi", MODE="0666"
 KERNELS=="input*", MODE="0666" GROUP="plugdev"
 ```   
 
-5.  Enable and start the 8joystick.service
+5.  Enable and start the 8_buttons_joystick.service
 
 ```
 systemctl daemon-reload
-systemctl enable 8joystick.service
-systemctl start 8joystick.service
+systemctl enable 8_buttons_joystick.service
+systemctl start 8_buttons_joystick.service
 ```   
 Use following to check status of running service :
 
 ```
-systemctl status 8joystick.service
+systemctl status 8_buttons_joystick.service
 ```   
 
 6.  Perform reboot

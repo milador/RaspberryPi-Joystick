@@ -1,0 +1,22 @@
+[Unit]
+Description=32 Button joystick automatic start with systemd, respawn, after bluetooth
+After=bluetooth.target
+After=multi-user.target
+Requires=bluetooth.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u joystick_32_buttons_inputevent.py
+WorkingDirectory=/home/pi/RaspberryPi-Joystick/32_Buttons_Joystick/Code
+Type=idle
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=32_buttons_joystick
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
+
+
+
