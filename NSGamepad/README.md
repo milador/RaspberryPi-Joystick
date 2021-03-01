@@ -13,9 +13,7 @@
   7. mice and keyboard to setup (optional)
   8. [Mini Color PiTFT Ad Blocking Pi-Hole Kit](https://www.adafruit.com/product/4475) or [OLED Bonnet Pack for Raspberry Pi Zero](https://www.adafruit.com/product/3192) x 1 (optional)
   9. BT mice/keyboard or USB mice/keyboard as input 
-  
-Note : You can also use an OTG adapter cable and a power supply through micro USB ports instead of Pi Zero USB Stem.
-  
+    
 ## RaspberryPi 4
 
   1. [Raspberry Pi 4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) x 1
@@ -44,7 +42,7 @@ Note: You can skip this step if you using an OTG adapter
   
   3. Connect your raspberry pi to a monitor through HDMI cable and a mice and keyboard. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
   
-  
+Note: Make sure the USB cable is connected to host before running the codes or you may get 108 error.
   
 # Software requirements  
 
