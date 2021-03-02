@@ -32,7 +32,7 @@
 ## RaspberryPi Zero W
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/raspberrypi0_setup_diagram.PNG" width="50%" height="50%" alt="raspberry pi 0 W setup assembly"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/raspberrypi0_setup_diagram.png" width="50%" height="50%" alt="raspberry pi 0 W setup assembly"/>
 </p>
 
 ### Option1 : 
@@ -80,7 +80,7 @@ Note: Make sure the USB cable is connected to host before running the codes or y
 ## RaspberryPi 4 B
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/raspberrypi4_setup_diagram.PNG" width="50%" height="50%" alt="raspberry pi 4 B setup assembly"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/raspberrypi4_setup_diagram.png" width="50%" height="50%" alt="raspberry pi 4 B setup assembly"/>
 </p>
  
   1. Connect the (USB C Male to USB A Male) cable to the (USB C Female) connector of RaspberryPi 4 B.
