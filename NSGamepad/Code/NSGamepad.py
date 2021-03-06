@@ -129,6 +129,10 @@ class NSGamepad():
 
     def press(self, button_number):
         """Press button 0..13"""
+        if button_number < 0:
+            button_number = 0
+        if button_number > 13:
+            button_number = 13
         with self.thread_lock:
             self.my_buttons |= (1<<button_number)
             self.write()
@@ -136,6 +140,10 @@ class NSGamepad():
 
     def release(self, button_number):
         """Release button 0..13"""
+        if button_number < 0:
+            button_number = 0
+        if button_number > 13:
+            button_number = 13
         with self.thread_lock:
             self.my_buttons &= ~(1<<button_number)
             self.write()
@@ -151,7 +159,7 @@ class NSGamepad():
     def buttons(self, buttons):
         """Set all buttons 0..13"""
         with self.thread_lock:
-            self.my_buttons = buttons
+            self.my_buttons = buttons & 0x3fff
             self.write()
         return
 

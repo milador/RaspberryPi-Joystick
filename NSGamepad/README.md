@@ -31,6 +31,18 @@
 
 ## RaspberryPi Zero W
 
+![Nintendo Switch connected to Raspberry Pi Zero W](./images/Switch_PiZW.jpg)
+
+The photo shows a bare mininum configuration with Pi Zero W, USB micro cable, Mayflash adapter, and Nintendo Switch in docking station.
+The docking station is powered by a wall adapter. The small HDMI monitor also has its own wall adapter.
+No soldering is required.
+
+For now, the GUI desktop is required to BT pair and connect.
+The easiest way to do this is to install VNC server on the Pi, configure WiFi,
+and install RealVNC VNC Viewer on Windows or Mac.
+
+https://www.raspberrypi.org/documentation/remote-access/vnc/
+
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/raspberrypi0_setup_diagram.png" width="50%" height="50%" alt="raspberry pi 0 W setup assembly"/>
 </p>
@@ -78,6 +90,29 @@ Note: Make sure the USB cable is connected to host before running the codes or y
 
   
 ## RaspberryPi 4 B
+
+![Nintendo Switch connected to Raspberry Pi 4B](./images/Switch_Pi4B.jpg)
+
+The photo shows a bare mininum configuration with Pi4B, USB Y cable,
+Mayflash adapter, and Nintendo Switch in docking station. The Y cable is
+required to draw power from both USB ports on the Switch dock. One USB port
+does not provide enough current for the 4B. The docking station is powered by a
+wall adapter. The small HDMI monitor also has its own wall adapter. No
+soldering is required.
+
+For now, the GUI desktop is required to BT pair and connect.
+The easiest way to do this is to install VNC server on the Pi, configure WiFi,
+and install RealVNC VNC Viewer on Windows or Mac.
+
+Alternatively, access the Pi desktop GUI by connecting a monitor to the Pi HDMI
+port then connect a USB keyboard and mouse.
+
+https://www.raspberrypi.org/documentation/remote-access/vnc/
+
+![Nintendo Switch connected to Raspberry Pi 400](./images/Switch_Pi400.jpg)
+
+The configuration for the Pi 400 is nearly identical except for the
+substitution of the Pi 4B with the Pi 400.
 
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/raspberrypi4_setup_diagram.png" width="50%" height="50%" alt="raspberry pi 4 B setup assembly"/>
@@ -161,65 +196,9 @@ sudo nano /etc/rc.local
 
 5.	Create the NS Gamepad HID gadget 
 
-  5.1. Create a new gadget
-
 ```
-sudo nano /usr/bin/ns_gamepad_usb
-```
-
-  5.2. Add the following code to the ns_gamepad_usb gadget and save it.
-  
-```
-# Created by https://github.com/milador/RaspberryPi-Joystick
-#!/bin/bash
-# This must run as root!
-# This creates a generic gamepad with 2 sticks, 1 dpad, and 14 buttons.
-
-sleep 30
-
-# Create ns_gamepad gadget
-cd /sys/kernel/config/usb_gadget/
-mkdir -p ns_gamepad
-cd nsgamepad
-
-# Define USB specification
-echo 0x1d6b > idVendor # Linux Foundation
-echo 0x0104 > idProduct # Gamepad
-echo 0x0100 > bcdDevice # v1.0.0
-echo 0x0101 > bcdUSB # USB2
-echo 0x00 > bDeviceClass
-echo 0x00 > bDeviceSubClass
-echo 0x00 > bDeviceProtocol
-
-# Perform localization
-mkdir -p strings/0x409
-
-echo "Raspberry Pi" > strings/0x409/manufacturer
-echo "NSGamepad" > strings/0x409/product
-
-# Define the functions of the device
-mkdir functions/hid.usb0
-echo 0 > functions/hid.usb0/protocol
-echo 0 > functions/hid.usb0/subclass
-echo 8 > functions/hid.usb0/report_length
-
-# Write report descriptor ( 2 analog sticks, 1 dpad, 14 buttons )
-echo "05010905a10115002501350045017501950e05091901290e81029502810105012507463b017504950165140939814265009501810126ff0046ff000930093109320935750895048102750895018101c0" | xxd -r -ps > functions/hid.usb0/report_desc
-
-# Create configuration file
-mkdir configs/c.1
-mkdir configs/c.1/strings/0x409
-
-echo 0x80 > configs/c.1/bmAttributes
-echo 100 > configs/c.1/MaxPower # 100 mA
-
-# Link the configuration file
-ln -s functions/hid.usb0 configs/c.1
-
-# Activate device
-ls /sys/class/udc > UDC
-
-sleep 30
+chmod +x ns_gamepad_usb
+sudo cp ns_gamepad_usb /usr/bin/
 ```
 
 The report descriptor is created to define a generic gamepad with 2 sticks, 1 dpad, and 14 buttons HID device. The report descriptor used in the ns_gamepad_usb gadget definition is presented in hexadecimal values as follows:
