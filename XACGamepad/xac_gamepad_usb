@@ -22,7 +22,7 @@ mkdir -p strings/0x409
 
 echo "0123456789" > strings/0x409/serialnumber
 echo "Raspberry Pi" > strings/0x409/manufacturer
-echo "RaspberryPi XAC Gamepad" > strings/0x409/product
+echo "XACGamepad" > strings/0x409/product
 
 
 # Define the functions of the device

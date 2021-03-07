@@ -24,36 +24,46 @@
   6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484) x 1  (optional)
   7. BT mice/keyboard or USB mice/keyboard as input 
   8. Power Supply
+  
+## RaspberryPi 400
+
+  1. [Raspberry Pi 400](https://www.raspberrypi.org/products/raspberry-pi-400/) x 1
+  2. Micro SD card x 1
+  3. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/) x 1
+  4. Micro USB C Male to USB A Male cable x 1
+  5. Mice and keyboard to setup (optional)
+  6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484) x 1  (optional)
+  7. BT mice/keyboard or USB mice/keyboard as input 
+  8. Power Supply
 
 # Hardware Assembly Instructions   
 
 ## RaspberryPi Zero W
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/raspberrypi0_setup_diagram.png" width="50%" height="50%" alt="raspberry pi 0 W setup assembly"/>
+<img align="center" src="./Images/PiZW_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 0 W setup assembly"/>
 </p>
 
 ### Option1 : 
 
-  1. Solder the Pi Zero USB Stem . The main part of the assembly process is to solder the Pi Zero USB Stem to the Raspberry pi zero W. You can find the assembly instructions of Pi Zero USB Stem on [zerostem.io website](https://zerostem.io/installation/). 
+  1. Solder the Pi Zero USB Stem. The main part of the assembly process is to solder the Pi Zero USB Stem to the Raspberry pi zero W. You can find the assembly instructions of Pi Zero USB Stem on [zerostem.io website](https://zerostem.io/installation/). 
 
   2. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
   
-  3. Connect an (OTG Micro USB B to USB A Female) adapter to the RaspberryPi Zero W through (Micro USB B) data connector.
+  3. Connect an (OTG Micro USB B to USB A Female) adapter to the RaspberryPi Zero W through (Micro USB B) data port.
   
   4. Connect a mice and keyboard via (OTG Micro USB B to USB A Female) adapter. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
   
   5. Connect your raspberry pi to a monitor through HDMI cable. You can also use SSH and skip this step. 
 
-  6. Connect power supply through (Micro USB B) power connector and power RaspberryPi Zero W.
+  6. Connect power supply through (Micro USB B) power port and power RaspberryPi Zero W.
   
-  7. Connect RaspberryPi Zero W to your host device via Pi Zero USB Stem (USB A Male) connector.
-
-
+  7. Connect RaspberryPi Zero W to your host device via Pi Zero USB Stem (USB A Male) port.
+  
   
 ### Option2 : 
   
-  1. Connect an (OTG Micro USB B to USB A Female) adapter to the RaspberryPi Zero W through (Micro USB B) data connector.
+  1. Connect an (OTG Micro USB B to USB A Female) adapter to the RaspberryPi Zero W through (Micro USB B) data port.
 
   2. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
   
@@ -61,24 +71,25 @@
   
   4. Connect your raspberry pi to a monitor through HDMI cable. You can also use SSH and skip this step. 
 
-  5. Connect power supply through (Micro USB B) connector and power RaspberryPi Zero W.
+  5. Connect power supply through (Micro USB B) port and power RaspberryPi Zero W.
   
   6. Perform the software setup and disconnect (OTG Micro USB B to USB A Female) adapter.
   
-  7. Connect the (Micro USB B Male to USB A Male) cable to (Micro USB B) data connector on RaspberryPi Zero W.
+  7. Connect the (Micro USB B Male to USB A Male) cable to (Micro USB B) data port on RaspberryPi Zero W.
   
   8. Connect RaspberryPi Zero W to your host device via (Micro USB B Male to USB A Male) cable.
   
-Note: Make sure the USB cable is connected to host before running the codes or you may get 108 error.
+  
+Note: Make sure the USB cable is connected to host device before running the codes or you may get 108 error.
 
   
 ## RaspberryPi 4 B
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/raspberrypi4_setup_diagram.png" width="50%" height="50%" alt="raspberry pi 4 B setup assembly"/>
+<img align="center" src="./Images/Pi4_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 4 B setup assembly"/>
 </p>
  
-  1. Connect the (USB C Male to USB A Male) cable to the (USB C Female) connector of RaspberryPi 4 B.
+  1. Connect the (USB C Male to USB A Male) cable to the (USB C Female) port of RaspberryPi 4 B.
   
   2. Connect the other end of (USB C Male to USB A Male) cable to (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable.
 
@@ -88,14 +99,40 @@ Note: Make sure the USB cable is connected to host before running the codes or y
   
   5. Connect your raspberry pi to a monitor through HDMI cable. You can also use SSH and skip this step. 
 
-  6. Connect power supply to (USB A Male) power connector of (Power Data Y Extension) Cable.
+  6. Connect power supply to (USB A Male) power port of (Power Data Y Extension) Cable.
   
   7. Perform the software setup.
   
-  8. Connect RaspberryPi 4 B to your host device via (USB A Male) data connector of (Power Data Y Extension) Cable.
+  8. Connect RaspberryPi 4 B to your host device via (USB A Male) data port of (Power Data Y Extension) Cable.
 
   
-Note: Make sure the USB cable is connected to host before running the codes or you may get 108 error.
+Note: Make sure the USB cable is connected to host device before running the codes or you may get 108 error.
+
+## RaspberryPi 400
+
+<p align="center">
+<img align="center" src="./Images/Pi400_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 400 B setup assembly"/>
+</p>
+ 
+  1. Connect the (USB C Male to USB A Male) cable to the (USB C Female) port of RaspberryPi 400.
+  
+  2. Connect the other end of (USB C Male to USB A Male) cable to (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable.
+
+  3. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
+  
+  4. Connect a mice and keyboard via (USB A Female) ports on RaspberryPi 400. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
+  
+  5. Connect your raspberry pi to a monitor through HDMI cable. You can also use SSH and skip this step. 
+
+  6. Connect power supply to (USB A Male) power port of (Power Data Y Extension) Cable.
+  
+  7. Perform the software setup.
+  
+  8. Connect RaspberryPi 400 to your host device via (USB A Male) data port of (Power Data Y Extension) Cable.
+
+  
+Note: Make sure the USB cable is connected to host device before running the codes or you may get 108 error.
+
   
 # Software requirements  
 
@@ -154,70 +191,11 @@ sudo nano /etc/rc.local
 
 5.	Create the joystick HID gadget 
 
-  5.1. Create a new gadget
-
 ```
-sudo nano /usr/bin/8_buttons_rpi_joystick_usb
+sudo chmod +x 8_buttons_rpi_joystick_usb
+sudo cp 8_buttons_rpi_joystick_usb /usr/bin/
 ```
 
-  5.2. Add the following code to the 8_buttons_rpi_joystick_usb gadget and save it.
-  
-```
-# Created by https://github.com/milador/RaspberryPi-Joystick
-#!/bin/bash
-
-sleep 30
-
-# Create 8_buttons_rpi_joystick gadget
-cd /sys/kernel/config/usb_gadget/
-mkdir -p 8_buttons_rpi_joystick
-cd 8_buttons_rpi_joystick
-
-sudo su
-
-# Define USB specification
-echo 0x1d6b > idVendor # Linux Foundation
-echo 0x0104 > idProduct # Multifunction Composite Joystick Gadget
-echo 0x0100 > bcdDevice # v1.0.0
-echo 0x0200 > bcdUSB # USB2
-echo 0xEF > bDeviceClass
-echo 0x02 > bDeviceSubClass
-echo 0x01 > bDeviceProtocol
-
-# Perform localization
-mkdir -p strings/0x409
-
-echo "0123456789" > strings/0x409/serialnumber
-echo "Raspberry Pi" > strings/0x409/manufacturer
-echo "RaspberryPi Joystick" > strings/0x409/product
-
-
-# Define the functions of the device
-mkdir functions/hid.usb0
-echo 0 > functions/hid.usb0/protocol
-echo 0 > functions/hid.usb0/subclass
-echo 3 > functions/hid.usb0/report_length
-
-# Write report descriptor ( X and Y analog joysticks plus 8 buttons )
-echo "05010904A1011581257F0901A10009300931750895028102C005091901290815002501750195088102C0" | xxd -r -ps > functions/hid.usb0/report_desc
-
-# Create configuration file
-mkdir configs/c.1
-mkdir configs/c.1/strings/0x409
-
-echo 0x80 > configs/c.1/bmAttributes
-echo 200 > configs/c.1/MaxPower # 200 mA
-echo "RaspberryPi Joystick configuration" > configs/c.1/strings/0x409/configuration
-
-# Link the configuration file
-ln -s functions/hid.usb0 configs/c.1
-
-# Activate device 
-ls /sys/class/udc > UDC
-
-sleep 10
-
-```
 
 The report descriptor is created to define a dual axis joystick and 8 buttons joystick HID device. The report descriptor used in the 8_buttons_rpi_joystick_usb gadget definition is presented in hexadecimal values as follows:
 
@@ -279,11 +257,11 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 9.  Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_cpanel.PNG" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
+<img align="center" src="./Images/8Buttons_Cpanel.PNG" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
 </p>
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_8_buttons_properties.PNG" width="50%" height="50%" alt="raspberry pi 8 buttons joystick properties"/>
+<img align="center" src="./Images/8Buttons_Properties.PNG" width="50%" height="50%" alt="raspberry pi 8 buttons joystick properties"/>
 </p>
 
 # Data packets
@@ -291,7 +269,7 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 The data sent to the host device for the 8 buttons and dual axis joystick configuration of the joystick contains 3 bytes, 2 are for the XY and 1 are the buttons. The first two bytes are for dual axis joystick(X,Y) and the other byte of the data is for 8 buttons.
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_joystick_8_buttons_packets.png" width="50%" height="50%" alt="raspberry pi joystick 8 buttons data packets"/>
+<img align="center" src="./Images/8Buttons_Packets.PNG" width="50%" height="50%" alt="raspberry pi joystick 8 buttons data packets"/>
 </p>
 
 # Testing
@@ -364,14 +342,14 @@ Connect RaspberryPi to one of the USB ports on your host device. Make sure you u
 
   1.1. Click on Bluetooth button icon on top right of RaspberryPi GUI taskbar.
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_bt_pair_open.PNG" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/Images/BT_Pair_Open.PNG" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
 </p>
 
   1.2. Click on Add Device
   
   1.3. Select your BT keyboard/mouse and Click on Pair button
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/rpi_bt_pair_add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/Images/BT_Pair_Add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
 </p>
 
 
