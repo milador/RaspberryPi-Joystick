@@ -375,14 +375,14 @@ Connect RaspberryPi to one of the USB ports on your host device. Make sure you u
 
   1.1. Click on Bluetooth button icon on top right of RaspberryPi GUI taskbar.
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/Images/BT_Pair_Open.png" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
+<img align="center" src="https://github.com/milador/RaspberryPi-Joystick/blob/master/Resources/Images/BT_Pair_Open.PNG" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
 </p>
 
   1.2. Click on Add Device
   
   1.3. Select your BT keyboard/mouse and Click on Pair button
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/Images/BT_Pair_Add.png" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/Images/BT_Pair_Add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
 </p>
 
 # Usage
