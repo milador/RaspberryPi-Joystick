@@ -161,9 +161,11 @@ Note: Make sure the USB cable is connected to XAC running the codes or you may g
   1.3. Install the required packages
 ```
 sudo apt-get update
-sudo apt full-upgrade
+sudo rpi-update 43998c82a7e88df284b7aa30221b2d0d21b2b86a          #sudo apt full-upgrade
 sudo apt-get install python3-evdev python3-gpiozero python-dev python-pip git
 ```
+
+Note: 43998c82a7e88df284b7aa30221b2d0d21b2b86a is the hash for kernel release 5.10.11
 
   1.4. Install the optional packages
 ```
