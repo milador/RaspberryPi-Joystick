@@ -2,7 +2,7 @@ from typing import Optional
 import time
 from fastapi import FastAPI,Path
 from fastapi.middleware.cors import CORSMiddleware
-
+from Joystick_16 import *
 joystick = Joystick_16()
 joystick.begin('/dev/hidg0')
 """
@@ -71,6 +71,25 @@ tags_metadata = [
         "description": "",
     }
 ]
+
+
+@app.post('/stick_l', tags=["sticks"])
+def lstick(
+        x: int = Path(default=0,ge=-127, le=127),
+        y: int = Path(default=0,ge=-127, le=127)
+    ):
+    joystick.leftXAxis(x)
+    joystick.leftYAxis(y)
+    return "Ok"
+
+@app.post('/stick_r', tags=["sticks"])
+def rstick(
+        x: int = Path(default=0,ge=-127, le=127),
+        y: int = Path(default=0,ge=-127, le=127)
+    ):
+    joystick.rightXAxis(x)
+    joystick.rightYAxis(y)
+    return "Ok"
 
 
 @app.post("/button_0", tags=["button"])

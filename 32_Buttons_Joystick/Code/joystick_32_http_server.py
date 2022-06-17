@@ -2,47 +2,11 @@ from typing import Optional
 import time
 from fastapi import FastAPI,Path
 from fastapi.middleware.cors import CORSMiddleware
+from Joystick_32 import *
+import time
 
-
- import time
-
-joystick = Joystick_8()
+joystick = Joystick_32()
 joystick.begin('/dev/hidg0')
-"""
-    while True:
-        # Press and hold every button
-        for button in range(0, 8):
-            joystick.press(button)
-            time.sleep(0.1)
-        time.sleep(1)
-        # Release all buttons
-        joystick.releaseAll()
-        time.sleep(1)
-        # Press all buttons at the same time
-        joystick.buttons(0xff)
-        time.sleep(1)
-        # Release all buttons
-        joystick.releaseAll()
-        time.sleep(1)
-
-        # Move the stick
-        stick = [
-            {"x":   0, "y":   0},
-            {"x":   0, "y": -127},
-            {"x": 127, "y": -127},
-            {"x": 127, "y":   0},
-            {"x": 127, "y": 127},
-            {"x":   0, "y": 127},
-            {"x":-127, "y": 127},
-            {"x":-127, "y":   0},
-            {"x":-127, "y":-127},
-            {"x":   0, "y":   0},
-        ]
-        for direction in range(0, 10):
-            joystick.xAxis(stick[direction]['x'])
-            joystick.yAxis(stick[direction]['y'])
-            time.sleep(0.5)
-"""
 
 
 app = FastAPI()
@@ -74,6 +38,24 @@ tags_metadata = [
         "description": "",
     }
 ]
+
+@app.post('/stick_l', tags=["sticks"])
+def lstick(
+        x: int = Path(default=0,ge=-127, le=127),
+        y: int = Path(default=0,ge=-127, le=127)
+    ):
+    joystick.leftXAxis(x)
+    joystick.leftYAxis(y)
+    return "Ok"
+
+@app.post('/stick_r', tags=["sticks"])
+def rstick(
+        x: int = Path(default=0,ge=-127, le=127),
+        y: int = Path(default=0,ge=-127, le=127)
+    ):
+    joystick.rightXAxis(x)
+    joystick.rightYAxis(y)
+    return "Ok"
 
 
 @app.post("/button_0", tags=["button"])
@@ -337,6 +319,7 @@ def press_button_32():
     time.sleep(0.5)
     joystick.release(32)
     return "Ok"
+    
 @app.post("/release_buttons", tags=["meta"])
 def release_button():
     joystick.releaseAll()
