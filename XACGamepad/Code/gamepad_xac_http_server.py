@@ -8,41 +8,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 joystick = Joystick_8()
 joystick.begin('/dev/hidg0')
-"""
-    while True:
-        # Press and hold every button
-        for button in range(0, 8):
-            joystick.press(button)
-            time.sleep(0.1)
-        time.sleep(1)
-        # Release all buttons
-        joystick.releaseAll()
-        time.sleep(1)
-        # Press all buttons at the same time
-        joystick.buttons(0xff)
-        time.sleep(1)
-        # Release all buttons
-        joystick.releaseAll()
-        time.sleep(1)
-
-        # Move the stick
-        stick = [
-            {"x":   0, "y":   0},
-            {"x":   0, "y": -127},
-            {"x": 127, "y": -127},
-            {"x": 127, "y":   0},
-            {"x": 127, "y": 127},
-            {"x":   0, "y": 127},
-            {"x":-127, "y": 127},
-            {"x":-127, "y":   0},
-            {"x":-127, "y":-127},
-            {"x":   0, "y":   0},
-        ]
-        for direction in range(0, 10):
-            joystick.xAxis(stick[direction]['x'])
-            joystick.yAxis(stick[direction]['y'])
-            time.sleep(0.5)
-"""
 
 
 app = FastAPI()
