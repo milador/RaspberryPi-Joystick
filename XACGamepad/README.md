@@ -19,8 +19,8 @@
 
   1. [Raspberry Pi 4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) x 1
   2. Micro SD card x 1
-  3. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/) x 1
-  4. Micro USB C Male to USB A Male cable x 1
+  3. [USB C Male to USB C Female Data and Power Splitter](https://www.amazon.com/Splitter-Headphone-Charger-Pixel2XL-Note20Ultra/dp/B09BBFLD22/) x 1
+  4. USB C Male to USB A Male cable x 1
   5. Mice and keyboard to setup (optional)
   6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484) x 1  (optional)
   7. BT mice/keyboard or USB mice/keyboard as input 
@@ -31,8 +31,8 @@
 
   1. [Raspberry Pi 400](https://www.raspberrypi.org/products/raspberry-pi-400/) x 1
   2. Micro SD card x 1
-  3. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/) x 1
-  4. Micro USB C Male to USB A Male cable x 1
+  3. [USB C Male to USB C Female Data and Power Splitter](https://www.amazon.com/Splitter-Headphone-Charger-Pixel2XL-Note20Ultra/dp/B09BBFLD22/) x 1
+  4. USB C Male to USB A Male cable x 1
   5. Mice and keyboard to setup (optional)
   6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484) x 1  (optional)
   7. BT mice/keyboard or USB mice/keyboard as input 
@@ -98,9 +98,9 @@ Note: Make sure the USB cable is connected to XAC running the codes or you may g
 <img align="center" src="./Images/Pi4_XAC_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 4 B XAC setup assembly"/>
 </p>
  
-  1. Connect the (USB C Male to USB A Male) cable to the (USB C Female) port of RaspberryPi 4 B.
+  1. Connect the (USB C Male to USB C Female Data and Power Splitter) cable to the (USB C Female) port of RaspberryPi 4 B.
   
-  2. Connect the other end of (USB C Male to USB A Male) cable to (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable.
+  2. Connect the (USB C Male to USB A Male) cable to the (USB C Female) data port of (USB C Male to USB C Female Data and Power Splitter) cable.
 
   3. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
   
@@ -108,13 +108,13 @@ Note: Make sure the USB cable is connected to XAC running the codes or you may g
   
   5. Connect your raspberry pi to a monitor through HDMI cable. You can also use SSH and skip this step. 
 
-  6. Connect power supply to (USB A Male) power port of (Power Data Y Extension) Cable.
+  6. Connect power supply to the (USB C Female) power port of (USB C Data and Power Splitter) cable.
   
   7. Perform the software setup.
   
-  8. Connect RaspberryPi 4 B to your XAC via (USB A Male) data port of (Power Data Y Extension) Cable.
+  8. Connect the other end of (USB C Male to USB A Male) cable to one of the (USB A Female) ports of XAC. This will connect your XAC to the RaspberryPi 4 B.
   
-  9. Connect XAC to your XBOX or Computer
+  9. Connect XAC to your XBOX or Computer via (USB C Male to USB A Male) cable.
 
   
 Note: Make sure the USB cable is connected to XAC before running the codes or you may get 108 error.
@@ -125,23 +125,23 @@ Note: Make sure the USB cable is connected to XAC before running the codes or yo
 <img align="center" src="./Images/Pi400_XAC_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 400 XAC setup assembly"/>
 </p>
  
-  1. Connect the (USB C Male to USB A Male) cable to the (USB C Female) port of RaspberryPi 400.
+  1. Connect the (USB C Male to USB C Female Data and Power Splitter) cable to the (USB C Female) port of RaspberryPi 400.
   
-  2. Connect the other end of (USB C Male to USB A Male) cable to (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable.
-
+  2. Connect the (USB C Male to USB A Male) cable to the (USB C Female) data port of (USB C Male to USB C Female Data and Power Splitter) cable.
+  
   3. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
   
   4. Connect a mice and keyboard via (USB A Female) ports on RaspberryPi 400. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
   
   5. Connect your raspberry pi to a monitor through HDMI cable. You can also use SSH and skip this step. 
 
-  6. Connect power supply to (USB A Male) power port of (Power Data Y Extension) Cable.
+  6. Connect power supply to the (USB C Female) power port of (USB C Data and Power Splitter) cable.
   
   7. Perform the software setup.
   
-  8. Connect RaspberryPi 400 to your XAC via (USB A Male) data port of (Power Data Y Extension) Cable.
+  8. Connect the other end of (USB C Male to USB A Male) cable to one of the (USB A Female) ports of XAC. This will connect your XAC to the RaspberryPi 400.
   
-  9. Connect XAC to your XBOX or Computer
+  9. Connect XAC to your XBOX or Computer via (USB C Male to USB A Male) cable.
 
   
 Note: Make sure the USB cable is connected to XAC running the codes or you may get 108 error.
