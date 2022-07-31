@@ -4,7 +4,7 @@
 sudo apt update
 sudo apt install -y python3-pip python3-gpiozero python3-evdev git
 
-#Step 2: Cloned code from github
+#Step 2: Clone code from github
 git clone https://github.com/milador/RaspberryPi-Joystick
 cd RaspberryPi-Joystick/8_Buttons_Joystick
 
@@ -36,7 +36,7 @@ then
 /usr/bin/8_buttons_rpi_joystick_usb' /etc/rc.local
 fi
 
-#Step 5: Install rpi_device rule to give permission anf allow hidg0 access
+#Step 5: Install rpi_device rule to give permission and allow hidg0 access
 RULE_NAME='rpi_device.rules'
 sudo cp ${RULE_NAME} /etc/udev/rules.d/
 echo "Rule added"
