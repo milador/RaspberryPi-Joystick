@@ -36,13 +36,14 @@ then
 /usr/bin/8_buttons_rpi_joystick_usb' /etc/rc.local
 fi
 
+cd /home/pi/RaspberryPi-Joystick/8_Buttons_Joystick/
+ 
 #Step 5: Install rpi_device rule to give permission and allow hidg0 access
 RULE_NAME='rpi_device.rules'
 sudo cp ${RULE_NAME} /etc/udev/rules.d/
 echo "Rule added"
 
 #Step 6: Install 8_Buttons_Joystick service and start it
-cd /home/pi/RaspberryPi-Joystick/8_Buttons_Joystick/
 SERVICE_NAME='8_buttons_joystick.service'
 IS_ACTIVE=$(sudo systemctl is-active $SERVICE_NAME)
 if [ "$IS_ACTIVE" = "active" ]; then
