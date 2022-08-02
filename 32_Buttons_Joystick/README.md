@@ -88,7 +88,7 @@ Note: Make sure the USB cable is connected to host device before running the cod
 ## RaspberryPi 4 B
 
 <p align="center">
-<img align="center" src="./Images/Pi4_XAC_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 4 B XAC setup assembly"/>
+<img align="center" src="./Images/Pi4_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 4 B XAC setup assembly"/>
 </p>
  
   1. Connect the (USB C Male to USB C Female Data and Power Splitter) cable to the (USB C Female) port of RaspberryPi 4 B.
@@ -115,7 +115,7 @@ Note: Make sure the USB cable is connected to XAC before running the codes or yo
 ## RaspberryPi 400
 
 <p align="center">
-<img align="center" src="./Images/Pi400_XAC_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 400 XAC setup assembly"/>
+<img align="center" src="./Images/Pi400_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 400 XAC setup assembly"/>
 </p>
  
   1. Connect the (USB C Male to USB C Female Data and Power Splitter) cable to the (USB C Female) port of RaspberryPi 400.
