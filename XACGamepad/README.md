@@ -188,6 +188,7 @@ uname -a
   
 ```
 git clone https://github.com/milador/RaspberryPi-Joystick
+cd RaspberryPi-Joystick/XACGamepad
 ```
 
   4.2. Enable libcomposite and other necessary modules and drivers
@@ -200,8 +201,9 @@ sudo echo "libcomposite" | sudo tee -a /etc/modules
 
   4.3. Make changes to Linux USB gadget HID driver module for the Xbox Adaptive Controller
 ```
-cd RaspberryPi-Joystick/XACGamepad/Drivers
+cd Drivers
 sudo cp -R 5.* /lib/modules/
+cd ..
 ```
 
 5.	Create the virtual joystick HID config script
@@ -227,7 +229,6 @@ sudo nano /etc/rc.local
 7.	Create the joystick HID gadget 
 
 ```
-cd..
 sudo chmod +x xac_gamepad_usb
 sudo cp xac_gamepad_usb /usr/bin/
 ```
