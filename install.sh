@@ -142,5 +142,5 @@ fi
 #Step 9: Rebooting RaspberryPi
 echo "Step 9: Rebooting RaspberryPi."
 sleep 3
-#sudo reboot
+sudo reboot
 
