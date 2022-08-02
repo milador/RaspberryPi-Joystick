@@ -1,7 +1,5 @@
 # Hardware requirements and setup 
 
-# Hardware requirements  
-
 ## RaspberryPi Zero
 
   1. [Raspberry Pi zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) x 1
