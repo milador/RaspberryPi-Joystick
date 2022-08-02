@@ -56,11 +56,7 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 4.  Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
 
 <p align="center">
-<img align="center" src="./Images/16Buttons_Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
-</p>
-
-<p align="center">
-<img align="center" src="./Images/16Buttons_Properties.png" width="50%" height="50%" alt="raspberry pi 16 buttons joystick properties"/>
+<img align="center" src="./Resources/Images/Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
 </p>
 
 
