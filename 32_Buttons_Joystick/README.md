@@ -43,7 +43,7 @@
 ## RaspberryPi Zero W
 
 <p align="center">
-<img align="center" src="./Images/PiZW_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 0 W setup assembly"/>
+<img align="center" src="../Resources/Images/PiZW_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 0 W setup assembly"/>
 </p>
 
 ### Option1 : 
@@ -88,7 +88,7 @@ Note: Make sure the USB cable is connected to host device before running the cod
 ## RaspberryPi 4 B
 
 <p align="center">
-<img align="center" src="./Images/Pi4_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 4 B XAC setup assembly"/>
+<img align="center" src="../Resources/Images/Pi4_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 4 B XAC setup assembly"/>
 </p>
  
   1. Connect the (USB C Male to USB C Female Data and Power Splitter) cable to the (USB C Female) port of RaspberryPi 4 B.
@@ -115,7 +115,7 @@ Note: Make sure the USB cable is connected to XAC before running the codes or yo
 ## RaspberryPi 400
 
 <p align="center">
-<img align="center" src="./Images/Pi400_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 400 XAC setup assembly"/>
+<img align="center" src="../Resources/Images/Pi400_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 400 XAC setup assembly"/>
 </p>
  
   1. Connect the (USB C Male to USB C Female Data and Power Splitter) cable to the (USB C Female) port of RaspberryPi 400.
@@ -269,11 +269,11 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 9.  Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
 
 <p align="center">
-<img align="center" src="./Images/32Buttons_Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
+<img align="center" src="../Resources/Images/32Buttons_Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
 </p>
 
 <p align="center">
-<img align="center" src="./Images/32Buttons_Properties.png" width="50%" height="50%" alt="raspberry pi 32 buttons joystick properties"/>
+<img align="center" src="../Resources/Images/32Buttons_Properties.png" width="50%" height="50%" alt="raspberry pi 32 buttons joystick properties"/>
 </p>
 
 # Data packets
@@ -281,7 +281,7 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 The data sent to the host device for the 32 buttons and dual axis joystick configuration of the joystick contains 6 bytes, 2 are for the XY and 4 are the buttons. The first two bytes are for dual axis joystick(X,Y) and the other bytes of the data is for 32 buttons.
 
 <p align="center">
-<img align="center" src="./Images/32Buttons_Packets.png" width="50%" height="50%" alt="raspberry pi joystick 32 buttons data packets"/>
+<img align="center" src="../Resources/Images/32Buttons_Packets.png" width="50%" height="50%" alt="raspberry pi joystick 32 buttons data packets"/>
 </p>
 
 # Testing
@@ -354,14 +354,14 @@ Connect RaspberryPi to one of the USB ports on your host device. Make sure you u
 
   1.1. Click on Bluetooth button icon on top right of RaspberryPi GUI taskbar.
 <p align="center">
-<img align="center" src="https://github.com/milador/RaspberryPi-Joystick/blob/master/Resources/Images/BT_Pair_Open.PNG" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
+<img align="center" src="../Resources/Images/BT_Pair_Open.PNG" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
 </p>
 
   1.2. Click on Add Device
   
   1.3. Select your BT keyboard/mouse and Click on Pair button
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/Images/BT_Pair_Add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
+<img align="center" src="../Resources/Images/BT_Pair_Add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
 </p>
 
 # Usage

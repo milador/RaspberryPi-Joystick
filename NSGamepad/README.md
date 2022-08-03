@@ -44,7 +44,7 @@
 
 ## RaspberryPi Zero W
 
-![Nintendo Switch connected to Raspberry Pi Zero W](./Images/Switch_PiZW.jpg)
+![Nintendo Switch connected to Raspberry Pi Zero W](../Resources/Images/Switch_PiZW.jpg)
 
 The photo shows a bare mininum configuration with Pi Zero W, USB micro cable, Mayflash adapter, and Nintendo Switch in docking station.
 The docking station is powered by a wall adapter. The small HDMI monitor also has its own wall adapter.
@@ -57,7 +57,7 @@ and install RealVNC VNC Viewer on Windows or Mac.
 https://www.raspberrypi.org/documentation/remote-access/vnc/
 
 <p align="center">
-<img align="center" src="./Images/PiZW_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 0 W NS setup assembly"/>
+<img align="center" src="../Resources/Images/PiZW_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 0 W NS setup assembly"/>
 </p>
 
 ### Option1 : 
@@ -118,7 +118,7 @@ Note: Make sure the USB cable is connected to host before running the codes or y
   
 ## RaspberryPi 4 B
 
-![Nintendo Switch connected to Raspberry Pi 4B](./Images/Switch_Pi4B.jpg)
+![Nintendo Switch connected to Raspberry Pi 4B](../Resources/Images/Switch_Pi4B.jpg)
 
 The photo shows a bare mininum configuration with Pi4B, USB Y cable,
 Mayflash adapter, and Nintendo Switch in docking station. The Y cable is
@@ -137,7 +137,7 @@ port then connect a USB keyboard and mouse.
 https://www.raspberrypi.org/documentation/remote-access/vnc/
 
 <p align="center">
-<img align="center" src="./Images/Pi4_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 4 B NS setup assembly"/>
+<img align="center" src="../Resources/Images/Pi4_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 4 B NS setup assembly"/>
 </p>
  
   1. Connect the (USB C Male to USB A Male) cable to the (USB C Female) connector of RaspberryPi 4 B.
@@ -169,13 +169,13 @@ Note: Make sure the USB cable is connected to host before running the codes or y
 
 ## RaspberryPi 400
   
-![Nintendo Switch connected to Raspberry Pi 400](./Images/Switch_Pi400.jpg)
+![Nintendo Switch connected to Raspberry Pi 400](../Resources/Images/Switch_Pi400.jpg)
 
 The configuration for the Pi 400 is nearly identical except for the
 substitution of the Pi 4B with the Pi 400.
 
 <p align="center">
-<img align="center" src="./Images/Pi400_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 400 NS setup assembly"/>
+<img align="center" src="../Resources/Images/Pi400_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 400 NS setup assembly"/>
 </p>
  
   1. Connect the (USB C Male to USB A Male) cable to the (USB C Female) connector of RaspberryPi 400.
@@ -345,11 +345,11 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 9.  Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
 
 <p align="center">
-<img align="center" src="./Images/NS_Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
+<img align="center" src="../Resources/Images/NS_Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
 </p>
 
 <p align="center">
-<img align="center" src="./Images/NS_Properties.png" width="50%" height="50%" alt="raspberry pi nsgamepad properties"/>
+<img align="center" src="../Resources/Images/NS_Properties.png" width="50%" height="50%" alt="raspberry pi nsgamepad properties"/>
 </p>
 
 # Data packets
@@ -357,7 +357,7 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 The data sent to the host device for the 14 buttons , 1 dpad, and dual axis joystick configuration of the joystick contains 6 bytes, 2 are for the XY and 4 are the buttons. 
 
 <p align="center">
-<img align="center" src="./Images/NS_Packets.png" width="50%" height="50%" alt="raspberry pi NS Gamepad data packets"/>
+<img align="center" src="../Resources/Images/NS_Packets.png" width="50%" height="50%" alt="raspberry pi NS Gamepad data packets"/>
 </p>
 
 # Testing
@@ -414,14 +414,14 @@ Connect RaspberryPi to one of the USB ports on your host device. Make sure you u
 
   1.1. Click on Bluetooth button icon on top right of RaspberryPi GUI taskbar.
 <p align="center">
-<img align="center" src="https://github.com/milador/RaspberryPi-Joystick/blob/master/Resources/Images/BT_Pair_Open.PNG" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
+<img align="center" src="../Resources/Images/BT_Pair_Open.PNG" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
 </p>
 
   1.2. Click on Add Device
   
   1.3. Select your BT keyboard/mouse and Click on Pair button
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/Images/BT_Pair_Add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
+<img align="center" src="../Resources/Images/BT_Pair_Add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
 </p>
 
 # Usage
