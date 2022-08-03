@@ -23,7 +23,7 @@ Install latest version of Raspbian OS on an SD card according to the official do
  
 1.	Login to your Raspberry Pi
 2.	Open a web browser 
-3.	Download [install.sh](https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/develop/Install/install.sh) to your main /home/pi/ directory
+3.	Download [install.sh](https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/develop/Install/install.sh) to your main /home/pi/ directory ( Make sure you save it as .sh or shell script )
 4.	Run the shell script to install the software. You can pass an argument to define your desired configuration.
 
 Note: The configuration for XAC Compatible Gamepad will be selected if no argument is passed.
@@ -57,7 +57,7 @@ sh install.sh ns
 sh install.sh xac
 ```
 5.	Raspberry Pi will reboot once the installation process is complete.
-6.	Startup your Rpi and enter following command to test the configuration:
+6.	Startup your Rpi and enter following command to test the configuration ( Optional ):
    
 ```
 ls -la /dev/hidg*
@@ -75,15 +75,142 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 <img align="center" src="./Resources/Images/Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
 </p>
 
+ ### Option 2
+ 
+1.	Download/Clone project repository in your computer 
+2.	Enter the "Insall" directory 
+3.	Open install_windows.bat file with a text editor 
+4.	Change the ip address and set your raspberry pi local ip address 
+5.	Set the raspberry pi password if it is no longer set to "raspberry"
+6.	Save the file
+7.	Run the install_windows.bat file to install the software.
 
-# Usage Setup
+Note: The configuration for XAC Compatible Gamepad will be installed by default. Change the last line of setup.sh for other gamepad configurations.
+  
+- 8 Button Gamepad
+```
+sh ./install.sh 8b
+```
+
+- 16 Button Gamepad
+```
+sh ./install.sh 16b
+```
+
+- 32 Button Gamepad
+```
+sh ./install.sh 32b
+```
+
+- NS Compatible Gamepad
+```
+sh ./install.sh ns
+```
+
+- XAC Compatible Gamepad
+```
+sh ./install.sh xac
+```
+8.	Raspberry Pi will reboot once the installation process is complete.
+
+9.	Startup your Rpi and enter following command to test the configuration ( Optional ):
+   
+```
+ls -la /dev/hidg*
+```   
+
+You should get something similar to following which means it's working and ready to use.
+
+```
+crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
+```   
+
+10.	Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
+
+<p align="center">
+<img align="center" src="./Resources/Images/Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
+</p>
+
+### Option 3
+ 
+1.	Download/Clone project repository in your computer 
+2.	Enter the "Insall" directory 
+3.	Open Command line or terminal 
+4.	Enter following command:
+
+#### Windows
+
+```
+plink -ssh -v -pw raspberry pi@10.0.0.0 -m setup.sh
+```
+
+#### Mac
+
+```
+ssh pi@10.0.0.0 'bash -s' < setup.sh
+```
+
+  1.1.	Change the ip address and set your raspberry pi local ip address 
+  
+  1.2.	Set the raspberry pi password if it is no longer set to "raspberry"
+  
+5.	Press enter to execute the command to install the software.
+
+Note: The configuration for XAC Compatible Gamepad will be installed by default. Change the last line of setup.sh for other gamepad configurations.
+  
+- 8 Button Gamepad
+```
+sh install.sh 8b
+```
+
+- 16 Button Gamepad
+```
+sh install.sh 16b
+```
+
+- 32 Button Gamepad
+```
+sh install.sh 32b
+```
+
+- NS Compatible Gamepad
+```
+sh install.sh ns
+```
+
+- XAC Compatible Gamepad
+```
+sh install.sh xac
+```
+6.	Raspberry Pi will reboot once the installation process is complete.
+
+7.	Startup your Rpi and enter following command to test the configuration ( Optional ):
+   
+```
+ls -la /dev/hidg*
+```   
+
+You should get something similar to following which means it's working and ready to use.
+
+```
+crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
+```   
+
+8.	Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
+
+<p align="center">
+<img align="center" src="./Resources/Images/Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
+</p>
+
+## Usage Setup
 
 1.	Connect RaspberryPi to one of the USB ports on your host device. Make sure you use an external power source to power RPi Zero. 
 2.	Make sure all the USB and Bluetooth input devices are connected.
 3.	Wait 30 seconds for it to initialize.
+4.	Move your input mice or press the keys on the input keyboard to initiate the connection if they are already paired.
 
 
-## Bluetooth
+### Bluetooth Connection 
 
 1.  Pair BT keyboard/mouse using RaspberryPi GUI taskbar.
 
