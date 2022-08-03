@@ -1,0 +1,1 @@
+plink -ssh -v -pw raspberry pi@10.0.0.0 -m setup.sh
