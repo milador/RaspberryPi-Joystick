@@ -138,7 +138,7 @@ Note: Make sure the USB cable is connected to host device before running the cod
  
 1.	Download Dependencies
 
-  1.1. Startup the raspberrypi zero W
+  1.1. Startup the raspberrypi
   
   1.2. Open the command line
   

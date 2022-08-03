@@ -137,7 +137,7 @@ Note: Make sure the USB cable is connected to the host before running the codes 
  
 1.	Download Dependencies
 
-  1.1. Startup the raspberrypi zero W
+  1.1. Startup the raspberrypi
   
   1.2. Open the command line
   
