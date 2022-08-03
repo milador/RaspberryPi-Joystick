@@ -13,7 +13,7 @@
   7. BT mice/keyboard or USB mice/keyboard as input 
   8. Power Supply
     
-## RaspberryPi 4
+## RaspberryPi 4 B
 
   1. [Raspberry Pi 4B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) x 1
   2. Micro SD card x 1
