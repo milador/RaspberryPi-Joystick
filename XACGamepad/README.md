@@ -10,10 +10,9 @@
   4. OTG Micro USB B to USB A Female adapter (For USB mice/keyboard usage) x 1
   5. Micro USB B Male to USB A Male cable x 1
   6. Mice and keyboard to setup (optional)
-  7. [Mini Color PiTFT Ad Blocking Pi-Hole Kit](https://www.adafruit.com/product/4475) or [OLED Bonnet Pack for Raspberry Pi Zero](https://www.adafruit.com/product/3192) x 1 (optional)
-  8. BT mice/keyboard or USB mice/keyboard as input 
-  9. Power Supply
-  10. XBOX Adaptive Controller
+  7. BT mice/keyboard or USB mice/keyboard as input 
+  8. Power Supply
+  9. XBOX Adaptive Controller
     
 ## RaspberryPi 4 B
 
@@ -22,10 +21,9 @@
   3. [USB C Male to USB C Female Data and Power Splitter](https://www.amazon.com/Splitter-Headphone-Charger-Pixel2XL-Note20Ultra/dp/B09BBFLD22/) x 1
   4. USB C Male to USB A Male cable x 1
   5. Mice and keyboard to setup (optional)
-  6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484) x 1  (optional)
-  7. BT mice/keyboard or USB mice/keyboard as input 
-  8. Power Supply
-  9. XBOX Adaptive Controller
+  6. BT mice/keyboard or USB mice/keyboard as input 
+  7. Power Supply
+  8. XBOX Adaptive Controller
   
 ## RaspberryPi 400
 
@@ -34,10 +32,9 @@
   3. [USB C Male to USB C Female Data and Power Splitter](https://www.amazon.com/Splitter-Headphone-Charger-Pixel2XL-Note20Ultra/dp/B09BBFLD22/) x 1
   4. USB C Male to USB A Male cable x 1
   5. Mice and keyboard to setup (optional)
-  6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484) x 1  (optional)
-  7. BT mice/keyboard or USB mice/keyboard as input 
-  8. Power Supply
-  9. XBOX Adaptive Controller
+  6. BT mice/keyboard or USB mice/keyboard as input 
+  7. Power Supply
+  8. XBOX Adaptive Controller
 
 # Hardware Assembly Instructions   
 
@@ -71,7 +68,7 @@
   
 ### Option2 : 
   
-  1. Connect an (OTG Micro USB B to USB A Female) adapter to the RaspberryPi Zero W through (Micro USB B) data port.
+  1. Connect the (OTG Micro USB B to USB A Female) adapter to the RaspberryPi Zero W through (Micro USB B) data port.
 
   2. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
   
@@ -114,7 +111,7 @@ Note: Make sure the USB cable is connected to XAC running the codes or you may g
   
   8. Connect the other end of (USB C Male to USB A Male) cable to one of the (USB A Female) ports of XAC. This will connect your XAC to the RaspberryPi 4 B.
   
-  9. Connect XAC to your XBOX or Computer via (USB C Male to USB A Male) cable.
+  9. Connect XAC to your XBOX or Computer via another (USB C Male to USB A Male) cable.
 
   
 Note: Make sure the USB cable is connected to XAC before running the codes or you may get 108 error.
@@ -141,7 +138,7 @@ Note: Make sure the USB cable is connected to XAC before running the codes or yo
   
   8. Connect the other end of (USB C Male to USB A Male) cable to one of the (USB A Female) ports of XAC. This will connect your XAC to the RaspberryPi 400.
   
-  9. Connect XAC to your XBOX or Computer via (USB C Male to USB A Male) cable.
+  9. Connect XAC to your XBOX or Computer via another (USB C Male to USB A Male) cable.
 
   
 Note: Make sure the USB cable is connected to XAC running the codes or you may get 108 error.
