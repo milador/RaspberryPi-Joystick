@@ -1,0 +1,2 @@
+KERNEL=="hidg0", NAME="%k", GROUP="pi", MODE="0666"
+KERNELS=="input*", MODE="0666" GROUP="plugdev"

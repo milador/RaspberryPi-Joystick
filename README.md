@@ -14,9 +14,18 @@ This project is in development process at the moment.
 
 We now go over the hardware and software requirements.
 
-# Requirements and installation instructions   
+# Setup 
 
-The requirements for this project varies based on the needs and the gadget configuration. You can select the version that matches your needs.
+Here are the hardware and software setup process instructions:
+
+## [Hardware requirements and setup](./HARDWARE_SETUP.md) ( HARDWARE_SETUP.md )
+
+## [Software requirements and setup](./SOFTWARE_SETUP.md) ( SOFTWARE_SETUP.md )
+
+
+# Manual setup instructions   
+
+The setup process for each gamepad configuration can be performed manually as well. You can chose the configuration that matches your needs and follow the steps.
 
   1. [8_Buttons](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons_Joystick/) ( 8 Buttons and a dual axis joystick )
   2. [16_Buttons](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons_Joystick/) ( 16 Buttons and a dual axis joystick )

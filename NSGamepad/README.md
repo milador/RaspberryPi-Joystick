@@ -10,11 +10,10 @@
   4. [Pi Zero USB Stem](https://www.sparkfun.com/products/14526) x 1
   5. OTG Micro USB B to USB A Female adapter (For USB mice/keyboard usage) x 1
   6. Micro USB B Male to USB A Male cable x 1
-  7. Mice and keyboard to setup (optional)
-  8. [Mini Color PiTFT Ad Blocking Pi-Hole Kit](https://www.adafruit.com/product/4475) or [OLED Bonnet Pack for Raspberry Pi Zero](https://www.adafruit.com/product/3192) x 1 (optional)
-  9. BT mice/keyboard or USB mice/keyboard as input 
-  10. Power Supply
-  11. [Mayflash Magic NS](https://www.amazon.com/Mayflash-Magic-NS-Wireless-Controller-Nintendo/dp/B079B5KHWQ) x 1
+  7. Mice and keyboard for setup (optional)
+  8. BT mice/keyboard or USB mice/keyboard as input 
+  9. Power Supply
+  10. [Mayflash Magic NS](https://www.amazon.com/Mayflash-Magic-NS-Wireless-Controller-Nintendo/dp/B079B5KHWQ) x 1
     
 ## RaspberryPi 4 B
 
@@ -23,28 +22,29 @@
   3. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/) x 1
   4. Micro USB C Male to USB A Male cable x 1
   5. Mice and keyboard to setup (optional)
-  6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484) x 1  (optional)
-  7. BT mice/keyboard or USB mice/keyboard as input 
-  8. Power Supply
-  9. [Mayflash Magic NS](https://www.amazon.com/Mayflash-Magic-NS-Wireless-Controller-Nintendo/dp/B079B5KHWQ) x 1
-  
+  6. BT mice/keyboard or USB mice/keyboard as input 
+  7. USB C Power Supply
+  8. [Mayflash Magic NS](https://www.amazon.com/Mayflash-Magic-NS-Wireless-Controller-Nintendo/dp/B079B5KHWQ) x 1
+  9. Micro USB C Male to USB A Female cable x 1 ( It's provided in the Mayflash box)
+
 ## RaspberryPi 400
 
   1. [Raspberry Pi 400](https://www.raspberrypi.org/products/raspberry-pi-400/) x 1
   2. Micro SD card x 1
   3. [USB Female to Dual USB Male Extra Power Data Y Extension Cable](https://www.amazon.com/Black-Female-Extension-Mobile-CableCC/dp/B00ZUE6PVE/) x 1
   4. Micro USB C Male to USB A Male cable x 1
-  5. Mice to setup (optional)
-  6. [Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4484) x 1  (optional)
-  7. BT mice/keyboard or USB mice/keyboard as input 
-  8. Power Supply
-  9. [Mayflash Magic NS](https://www.amazon.com/Mayflash-Magic-NS-Wireless-Controller-Nintendo/dp/B079B5KHWQ) x 1
+  5. Mice for setup (optional)
+  6. BT mice/keyboard or USB mice/keyboard as input 
+  7. USB C Power Supply
+  8. [Mayflash Magic NS](https://www.amazon.com/Mayflash-Magic-NS-Wireless-Controller-Nintendo/dp/B079B5KHWQ) x 1
+  9. Micro USB C Male to USB A Female cable x 1 ( It's provided in the Mayflash box)
+
 
 # Hardware Assembly Instructions   
 
 ## RaspberryPi Zero W
 
-![Nintendo Switch connected to Raspberry Pi Zero W](./Images/Switch_PiZW.jpg)
+![Nintendo Switch connected to Raspberry Pi Zero W](../Resources/Images/Switch_PiZW.jpg)
 
 The photo shows a bare mininum configuration with Pi Zero W, USB micro cable, Mayflash adapter, and Nintendo Switch in docking station.
 The docking station is powered by a wall adapter. The small HDMI monitor also has its own wall adapter.
@@ -57,7 +57,7 @@ and install RealVNC VNC Viewer on Windows or Mac.
 https://www.raspberrypi.org/documentation/remote-access/vnc/
 
 <p align="center">
-<img align="center" src="./Images/PiZW_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 0 W NS setup assembly"/>
+<img align="center" src="../Resources/Images/PiZW_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 0 W NS setup assembly"/>
 </p>
 
 ### Option1 : 
@@ -76,7 +76,7 @@ https://www.raspberrypi.org/documentation/remote-access/vnc/
   
   7. Perform the software setup.
   
-  8. Disconnect (OTG Micro USB B to USB A Female) adapter and power supply through (Micro USB B) power port.
+  8. Disconnect (OTG Micro USB B to USB A Female) adapter and connect power supply through (Micro USB B) power port.
   
   9. Connect RaspberryPi Zero W to your Mayflash Magic NS via connecting Pi Zero USB Stem (USB A Male) port to (USB A Female) port of Mayflash Magic NS. 
   
@@ -89,7 +89,7 @@ https://www.raspberrypi.org/documentation/remote-access/vnc/
   
 ### Option2 : 
   
-  1. Connect an (OTG Micro USB B to USB A Female) adapter to the RaspberryPi Zero W through (Micro USB B) data port.
+  1. Connect the (OTG Micro USB B to USB A Female) adapter to the RaspberryPi Zero W through (Micro USB B) data port.
 
   2. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
   
@@ -101,7 +101,7 @@ https://www.raspberrypi.org/documentation/remote-access/vnc/
   
   6. Perform the software setup.
   
-  7. Disconnect (OTG Micro USB B to USB A Female) adapter and power supply through (Micro USB B) power port.
+  7. Disconnect (OTG Micro USB B to USB A Female) adapter and connect power supply through (Micro USB B) power port.
   
   8. Connect the (Micro USB B Male to USB A Male) cable to (Micro USB B) data port on RaspberryPi Zero W.
   
@@ -118,7 +118,7 @@ Note: Make sure the USB cable is connected to host before running the codes or y
   
 ## RaspberryPi 4 B
 
-![Nintendo Switch connected to Raspberry Pi 4B](./Images/Switch_Pi4B.jpg)
+![Nintendo Switch connected to Raspberry Pi 4B](../Resources/Images/Switch_Pi4B.jpg)
 
 The photo shows a bare mininum configuration with Pi4B, USB Y cable,
 Mayflash adapter, and Nintendo Switch in docking station. The Y cable is
@@ -137,73 +137,60 @@ port then connect a USB keyboard and mouse.
 https://www.raspberrypi.org/documentation/remote-access/vnc/
 
 <p align="center">
-<img align="center" src="./Images/Pi4_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 4 B NS setup assembly"/>
+<img align="center" src="../Resources/Images/Pi4_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 4 B NS setup assembly"/>
 </p>
  
-  1. Connect the (USB C Male to USB A Male) cable to the (USB C Female) connector of RaspberryPi 4 B.
+  1. Connect the (USB C Male to USB C Female Data and Power Splitter) cable to the (USB C Female) port of RaspberryPi 4 B.
+  
+  2. Connect the (USB C Male to USB A Male) cable to the (USB C Female) data port of (USB C Male to USB C Female Data and Power Splitter) cable.
 
-  2. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
+  3. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
   
-  3. Connect a mice and keyboard via (USB A Female) ports on RaspberryPi 4 B. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
+  4. Connect a mice and keyboard via (USB A Female) ports on RaspberryPi 4 B. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
   
-  4. Connect your raspberry pi to a monitor through HDMI cable. You can also use SSH and skip this step. 
+  5. Connect your raspberry pi to a monitor through HDMI cable. You can also use SSH and skip this step. 
   
-  5. Connect power supply through (USB C) port.  
+  6. Connect power supply through (USB C) power port of the (USB C Male to USB C Female Data and Power Splitter) cable.  
   
-  6. Perform the software setup.
+  7. Perform the software setup.
   
-  7. Disconnect power supply through (USB C) port.  
-  
-  8. Connect the (USB C Male to USB A Male) cable to the (USB C Female) connector of RaspberryPi 4 B.
-
-  9. Connect the (Micro USB C Male to USB A Male) cable to (USB A Female) port of Mayflash Magic NS. 
-  
-  10. Connect the (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable to (USB A Male) port of Mayflash Magic NS. 
-  
-  9. Connect the power (USB A Male) port of the (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable to power source.
-  
-  10. Connect the data (USB A Male) port of the (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable to your NS Switch.
+  8. Connect the other end of (USB C Male to USB A Male) to (USB A Female) port of Mayflash Magic NS.  
+      
+  9. Connect the (USB C Male) port of the (USB C Male to USB A Female) cable to your NS Switch.
   
   
 Note: Make sure the USB cable is connected to host before running the codes or you may get 108 error.
 
 ## RaspberryPi 400
   
-![Nintendo Switch connected to Raspberry Pi 400](./Images/Switch_Pi400.jpg)
+![Nintendo Switch connected to Raspberry Pi 400](../Resources/Images/Switch_Pi400.jpg)
 
 The configuration for the Pi 400 is nearly identical except for the
 substitution of the Pi 4B with the Pi 400.
 
 <p align="center">
-<img align="center" src="./Images/Pi400_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 400 NS setup assembly"/>
+<img align="center" src="../Resources/Images/Pi400_NS_Setup_Diagram.png" width="50%" height="50%" alt="raspberry pi 400 NS setup assembly"/>
 </p>
  
-  1. Connect the (USB C Male to USB A Male) cable to the (USB C Female) connector of RaspberryPi 400.
+  1. Connect the (USB C Male to USB C Female Data and Power Splitter) cable to the (USB C Female) port of RaspberryPi 400.
+  
+  2. Connect the (USB C Male to USB A Male) cable to the (USB C Female) data port of (USB C Male to USB C Female Data and Power Splitter) cable.
 
-  2. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
+  3. Insert the flashed micro SD card with the latest version of Raspbian OS into micro SD card slot.
   
-  3. Connect a mice via (USB A Female) ports on RaspberryPi 400. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
+  4. Connect a mice and keyboard via (USB A Female) ports on RaspberryPi 4 B. This step is required to install the necessary code and make Rpi act as a virtual joystick device. You can also use SSH and skip this step. 
   
-  4. Connect your raspberry pi to a monitor through HDMI cable. You can also use SSH and skip this step. 
+  5. Connect your raspberry pi to a monitor through HDMI cable. You can also use SSH and skip this step. 
   
-  5. Connect power supply through (USB C) port.  
+  6. Connect power supply through (USB C) power port of the (USB C Male to USB C Female Data and Power Splitter) cable.  
   
-  6. Perform the software setup.
+  7. Perform the software setup.
   
-  7. Disconnect power supply through (USB C) port.  
+  8. Connect the other end of (USB C Male to USB A Male) to (USB A Female) port of Mayflash Magic NS.  
+      
+  9. Connect the (USB C Male) port of the (USB C Male to USB A Female) cable to your NS Switch.
   
-  8. Connect the (USB C Male to USB A Male) cable to the (USB C Female) connector of RaspberryPi 400.
-
-  9. Connect the (Micro USB C Male to USB A Male) cable to (USB A Female) port of Mayflash Magic NS. 
-  
-  10. Connect the (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable to (USB A Male) port of Mayflash Magic NS. 
-  
-  9. Connect the power (USB A Male) port of the (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable to power source.
-  
-  10. Connect the data (USB A Male) port of the (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable to your NS Switch.
-  
-  
-Note: Make sure the USB cable is connected to host before running the codes or you may get 108 error.
+Note: Make sure the USB cable is connected to host device before running the codes or you may get 108 error.
 
 
 # Software requirements  
@@ -214,7 +201,7 @@ Note: Make sure the USB cable is connected to host before running the codes or y
  
 1.	Download Dependencies
 
-  1.1. Startup the raspberrypi zero W
+  1.1. Startup the raspberrypi
   
   1.2. Open the command line
   
@@ -345,11 +332,11 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 9.  Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
 
 <p align="center">
-<img align="center" src="./Images/NS_Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
+<img align="center" src="../Resources/Images/NS_Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
 </p>
 
 <p align="center">
-<img align="center" src="./Images/NS_Properties.png" width="50%" height="50%" alt="raspberry pi nsgamepad properties"/>
+<img align="center" src="../Resources/Images/NS_Properties.png" width="50%" height="50%" alt="raspberry pi nsgamepad properties"/>
 </p>
 
 # Data packets
@@ -357,7 +344,7 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 The data sent to the host device for the 14 buttons , 1 dpad, and dual axis joystick configuration of the joystick contains 6 bytes, 2 are for the XY and 4 are the buttons. 
 
 <p align="center">
-<img align="center" src="./Images/NS_Packets.png" width="50%" height="50%" alt="raspberry pi NS Gamepad data packets"/>
+<img align="center" src="../Resources/Images/NS_Packets.png" width="50%" height="50%" alt="raspberry pi NS Gamepad data packets"/>
 </p>
 
 # Testing
@@ -414,17 +401,15 @@ Connect RaspberryPi to one of the USB ports on your host device. Make sure you u
 
   1.1. Click on Bluetooth button icon on top right of RaspberryPi GUI taskbar.
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/Images/BT_Pair_Open.png" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
+<img align="center" src="../Resources/Images/BT_Pair_Open.PNG" width="50%" height="50%" alt="RaspberryPi GUI taskbar bluetooth menu"/>
 </p>
 
   1.2. Click on Add Device
   
   1.3. Select your BT keyboard/mouse and Click on Pair button
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/RaspberryPi-Joystick/master/Resources/Images/BT_Pair_Add.png" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
+<img align="center" src="../Resources/Images/BT_Pair_Add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
 </p>
-
-
 
 # Usage
 
