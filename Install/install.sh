@@ -43,10 +43,10 @@ echo "Step 1: Kernel version is currently set to ${KERNEL_VERSION}"
 
 #Step 2: Install and update dependencies
 sudo apt update
-if [ $KERNEL_VERSION = "5.10.11" ] || [$GADGET_NAME != "XACGamepad"]; then
+if [ $KERNEL_VERSION = "5.10.11" ] || [ $GADGET_NAME != "XACGamepad" ]; then
     echo "Step 2: Kernel version is already setup"
 else
-    sudo rpi-update 43998c82a7e88df284b7aa30221b2d0d21b2b86a -y
+    sudo SKIP_WARNING=1 rpi-update 43998c82a7e88df284b7aa30221b2d0d21b2b86a -y
     echo "Step 2: Kernel version is successfully downgraded to 5.10.11"
 fi
 sudo apt install -y python3-pip python3-gpiozero python3-evdev git
