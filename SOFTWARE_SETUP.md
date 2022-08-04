@@ -77,13 +77,15 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 
  ### Option 2
  
-1.	Download/Clone project repository in your computer 
-2.	Enter the "Insall" directory 
-3.	Open install_windows.bat file with a text editor 
-4.	Change the ip address and set your raspberry pi local ip address 
-5.	Set the raspberry pi password if it is no longer set to "raspberry"
-6.	Save the file
-7.	Run the install_windows.bat file to install the software.
+1.	Download/Clone project repository in your computer .
+2.	Insert the Micro SD Card with flashed Raspberry Pi OS and power your Raspberry Pi.
+3.	Find the local ip address of your Raspberry Pi. You can use **_ifconfig_** command in Raspberry Pi or tools such as IP Scanner.
+4.	Enter the "Insall" directory
+5.	Open install_windows.bat file with a text editor 
+6.	Change the ip address and set your raspberry pi local ip address from step 3.
+7.	Set the raspberry pi password if it is no longer set to "raspberry".
+8.	Save the file
+9.	Run the install_windows.bat file to install the software.
 
 Note: The configuration for XAC Compatible Gamepad will be installed by default. Change the last line of setup.sh for other gamepad configurations.
   
@@ -134,10 +136,16 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 ### Option 3
  
 1.	Download/Clone project repository in your computer 
-2.	Enter the "Insall" directory 
-3.	Open Command line or terminal 
-4.	Enter following command:
+2.	Insert the Micro SD Card with flashed Raspberry Pi OS and power your Raspberry Pi.
+3.	Find the local ip address of your Raspberry Pi. You can use **_ifconfig_** command in Raspberry Pi or tools such as IP Scanner.
+4.	Enter the "Insall" directory 
+5.	Open Command line or terminal 
+6.	Enter following command:
 
+  6.1.	Change the ip address and set your Raspberry Pi local ip address from step 3.
+  
+  6.2.	Set the raspberry pi password if it is no longer set to "raspberry"
+	
 #### Windows
 
 ```
@@ -150,11 +158,8 @@ plink -ssh -v -pw raspberry pi@10.0.0.0 -m setup.sh
 ssh pi@10.0.0.0 'bash -s' < setup.sh
 ```
 
-  1.1.	Change the ip address and set your raspberry pi local ip address 
   
-  1.2.	Set the raspberry pi password if it is no longer set to "raspberry"
-  
-5.	Press enter to execute the command to install the software.
+7.	Press enter to execute the command to install the software.
 
 Note: The configuration for XAC Compatible Gamepad will be installed by default. Change the last line of setup.sh for other gamepad configurations.
   
@@ -182,9 +187,9 @@ sh install.sh ns
 ```
 sh install.sh xac
 ```
-6.	Raspberry Pi will reboot once the installation process is complete.
+8.	Raspberry Pi will reboot once the installation process is complete.
 
-7.	Startup your Rpi and enter following command to test the configuration ( Optional ):
+9.	Startup your Rpi and enter following command to test the configuration ( Optional ):
    
 ```
 ls -la /dev/hidg*
@@ -196,7 +201,7 @@ You should get something similar to following which means it's working and ready
 crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 ```   
 
-8.	Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
+10.	Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
 
 <p align="center">
 <img align="center" src="./Resources/Images/Cpanel.png" width="50%" height="50%" alt="raspberry pi joystick device in cpanel"/>
