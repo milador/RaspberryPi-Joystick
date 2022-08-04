@@ -13,13 +13,16 @@ from Gamepad_XAC import *
 Joystick = Gamepad_XAC()
 Joystick.begin('/dev/hidg0')
 
-DEBUG_MODE = True
+DEBUG_MODE = False
 
 mice_x_in = 0
 mice_y_in = 0
 
 joystick_x_out = 0
 joystick_y_out = 0
+
+reaction_time = 0.0
+
 
 """
 USB HID joysticks may optionally expose digital buttons through the HID
@@ -52,13 +55,13 @@ class RIGHT_BUTTON(IntEnum):
     X2 = 7
     
 class JOYSTICK_XY(IntEnum):
-    MinInputValue = -15
-    MaxInputValue = 15
+    MinInputValue = -16
+    MaxInputValue = 16
     MinOutputValue = -127
     MaxOutputValue = 127
-    DeadZoneValue = 5
+    DeadZoneValue = 1
     OperationMode = 0  # 0: Don't Keep position after each mice move, 1: Keep position after each mice move
-    ReactionTimeValue = 0.01  #10 ms
+    ReactionTimeValue =  10  #10 ms
 
 # Map keyboard keys or mouse buttons to joystick buttons.
 EVENT2ACTION = {
@@ -87,6 +90,8 @@ EVENT2ACTION = {
 async def handle_events(device):
     global mice_x_in
     global mice_y_in
+    global joystick_x_out
+    global joystick_y_out
     # Grab exclusive access means the shell and/or GUI no longer receives the input events
     with device.grab_context():
         async for event in device.async_read_loop():
@@ -118,21 +123,27 @@ async def handle_events(device):
                     Joystick.yAxis(0)
             else:
                 """ Map mouse motion to thumbstick motion """
-                if event.code == evdev.ecodes.REL_X:
-                    if int(JOYSTICK_XY.OperationMode)==0:
-                        mice_x_in = event.value
-                    elif int(JOYSTICK_XY.OperationMode)==1:
-                        mice_x_in = event.value + mice_x_in
-                    joystick_x_out = map_joystick(mice_x_in,int(JOYSTICK_XY.OperationMode),int(JOYSTICK_XY.DeadZoneValue),int(JOYSTICK_XY.MinInputValue),int(JOYSTICK_XY.MaxInputValue),int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
+                if event.code == evdev.ecodes.REL_X and int(JOYSTICK_XY.OperationMode)== 0 and event.value != 0:
+                    mice_x_in = event.value
+                    joystick_x_out = map_joystick(mice_x_in,int(JOYSTICK_XY.DeadZoneValue),int(JOYSTICK_XY.MinInputValue),int(JOYSTICK_XY.MaxInputValue),int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
                     if DEBUG_MODE: 
                         print('REL_X', event.value , 'joystick x axis out', joystick_x_out)
                     Joystick.xAxis(joystick_x_out)
-                elif event.code == evdev.ecodes.REL_Y:
-                    if int(JOYSTICK_XY.OperationMode)==0:
-                        mice_y_in = event.value
-                    elif int(JOYSTICK_XY.OperationMode)==1:
-                        mice_y_in = event.value + mice_y_in
-                    joystick_y_out = map_joystick(mice_y_in,int(JOYSTICK_XY.OperationMode),int(JOYSTICK_XY.DeadZoneValue),int(JOYSTICK_XY.MinInputValue),int(JOYSTICK_XY.MaxInputValue),int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
+                if event.code == evdev.ecodes.REL_X and int(JOYSTICK_XY.OperationMode) == 1:
+                    mice_x_in = event.value + mice_x_in
+                    joystick_x_out = map_joystick(mice_x_in,int(JOYSTICK_XY.DeadZoneValue),int(JOYSTICK_XY.MinInputValue),int(JOYSTICK_XY.MaxInputValue),int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
+                    if DEBUG_MODE: 
+                        print('REL_X', event.value , 'joystick x axis out', joystick_x_out)
+                    Joystick.xAxis(joystick_x_out)
+                elif event.code == evdev.ecodes.REL_Y and int(JOYSTICK_XY.OperationMode)== 0 and event.value != 0:
+                    mice_y_in = event.value
+                    joystick_y_out = map_joystick(mice_y_in,int(JOYSTICK_XY.DeadZoneValue),int(JOYSTICK_XY.MinInputValue),int(JOYSTICK_XY.MaxInputValue),int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
+                    if DEBUG_MODE: 
+                        print('REL_Y', event.value , 'joystick y axis out', joystick_y_out)
+                    Joystick.yAxis(joystick_y_out)
+                elif event.code == evdev.ecodes.REL_Y and int(JOYSTICK_XY.OperationMode)== 1:
+                    mice_y_in = event.value + mice_y_in
+                    joystick_y_out = map_joystick(mice_y_in,int(JOYSTICK_XY.DeadZoneValue),int(JOYSTICK_XY.MinInputValue),int(JOYSTICK_XY.MaxInputValue),int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
                     if DEBUG_MODE: 
                         print('REL_Y', event.value , 'joystick y axis out', joystick_y_out)
                     Joystick.yAxis(joystick_y_out)
@@ -147,27 +158,38 @@ async def handle_events(device):
                 elif event.code == evdev.ecodes.REL_HWHEEL:
                     if DEBUG_MODE: 
                         print('REL_HWHEEL', event.value)
-                elif event.code == evdev.ecodes.ABS_X:
+                elif event.code == evdev.ecodes.ABS_X and event.value != 0:
                     if DEBUG_MODE: 
                         print('ABS_X', event.value)
-                elif event.code == evdev.ecodes.ABS_Y:
+                elif event.code == evdev.ecodes.ABS_Y and event.value != 0:
                     if DEBUG_MODE: 
                         print('ABS_Y', event.value)
-            time.sleep(int(JOYSTICK_XY.ReactionTimeValue))
-                    
-def map_joystick(value, operation_value, deadzone_value, input_value_min, input_value_max, output_value_min, output_value_max):
+                else:
+                    time.sleep(reaction_time)
+                    info = device.read_one()
+                    if(info == None):
+                        if joystick_x_out != 0:
+                           Joystick.xAxis(0)
+                        if joystick_y_out != 0:
+                           Joystick.yAxis(0)
+                    else:
+                        device.write_event(info)
+                    if DEBUG_MODE: 
+                        print('Joystick centering')
+
+
+
+def map_joystick(value, deadzone_value, input_value_min, input_value_max, output_value_min, output_value_max):
     # Figure out the range 
     input_span = input_value_max - input_value_min
     output_span = output_value_max - output_value_min
 
     # Convert the input range into a 0 to 1 range (float value)   
-    if (value>=-deadzone_value and value<=deadzone_value and operation_value==1):
+    if (value>=-deadzone_value and value<=deadzone_value):
         value_scaled = 0.5
-    elif (value>=input_value_min and value<=input_value_max and operation_value==0):
-        value_scaled = 0.5
-    elif (value<input_value_min and operation_value==1):
+    elif (value<input_value_min):
         value_scaled = 0.0
-    elif (value>input_value_max and operation_value==1):
+    elif (value>input_value_max):
         value_scaled = 1.0
     else:
         value_scaled = float(value - input_value_min) / float(input_span)
@@ -181,8 +203,9 @@ def map_joystick(value, operation_value, deadzone_value, input_value_min, input_
         return int(output_value_min + (value_scaled * output_span))
 
 def main():
+    global reaction_time
+    reaction_time = float(JOYSTICK_XY.ReactionTimeValue/1000)
     """ Trigger XAC joystick with USB or BT mouse and keyboard  """
-
     # Examine all input devices and find keyboards and mice.
     while len(evdev.list_devices()) == 0:
         if DEBUG_MODE: 
