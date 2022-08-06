@@ -430,8 +430,9 @@ Restart=always
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=xacgamepad
-User=pi
-Group=pi
+ExecStartPre=/bin/sleep 10
+User=root
+Group=root
 
 [Install]
 WantedBy=multi-user.target

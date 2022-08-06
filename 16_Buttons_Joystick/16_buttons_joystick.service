@@ -12,8 +12,9 @@ Restart=always
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=16_buttons_joystick
-User=pi
-Group=pi
+ExecStartPre=/bin/sleep 10
+User=root
+Group=root
 
 [Install]
 WantedBy=multi-user.target
