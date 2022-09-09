@@ -24,7 +24,7 @@ joystick_y_out = 0
 """
 USB HID joysticks may optionally expose digital buttons through the HID
 interface.  
-"""ThirtyTwo
+"""
 
 class THIRTYTWO_BUTTON(IntEnum):
     BOne = 0
