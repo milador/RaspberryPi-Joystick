@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-8 button, 2 axis joystick triggered by USB and BT mouse events.
+32 button, 2 axis joystick triggered by USB and BT mouse events.
 """
 
 import sys
@@ -8,9 +8,9 @@ import asyncio
 import time    
 import evdev        # sudo apt install python3-evdev
 from enum import IntEnum
-from Joystick_8 import *
+from Joystick_32 import *
 
-Joystick = Joystick_8()
+Joystick = Joystick_32()
 Joystick.begin('/dev/hidg0')
 
 DEBUG_MODE = True
@@ -23,10 +23,10 @@ joystick_y_out = 0
 
 """
 USB HID joysticks may optionally expose digital buttons through the HID
-interface. 
-"""
+interface.  
+"""ThirtyTwo
 
-class EIGHT_BUTTON(IntEnum):
+class THIRTYTWO_BUTTON(IntEnum):
     BOne = 0
     BTwo = 1
     BThree = 2
@@ -35,7 +35,30 @@ class EIGHT_BUTTON(IntEnum):
     BSix = 5
     BSeven = 6
     BEight = 7
-
+    BNine = 8
+    BTen = 9
+    BEleven = 10
+    BTwelve = 11
+    BThirteen = 12
+    BFourteen = 13
+    BFifteen  = 14
+    BSixteen = 15
+    BSeventeen = 16
+    BEighteen = 17
+    BNineteen = 18
+    BTwenty = 19
+    BTwentyOne = 20
+    BTwentyTwo = 21
+    BTwentyThree = 22
+    BTwentyFour = 23
+    BTwentyFive = 24
+    BTwentySix = 25
+    BTwentySeven = 26
+    BTwelveEight = 27
+    BTwentyNine = 28
+    BThirty = 29
+    BThirtyOne = 30
+    BThirtyTwo = 31
     
 class JOYSTICK_XY(IntEnum):
     MinInputValue = -16
@@ -49,23 +72,40 @@ class JOYSTICK_XY(IntEnum):
 # Map keyboard keys or mouse buttons to joystick buttons.
 EVENT2ACTION = {
     'BUTTONS': {
-        str(evdev.ecodes.BTN_LEFT): EIGHT_BUTTON.BOne,
-        str(evdev.ecodes.BTN_RIGHT): EIGHT_BUTTON.BTwo,
-        str(evdev.ecodes.BTN_MIDDLE): EIGHT_BUTTON.BThree,
-        str(evdev.ecodes.BTN_SIDE): EIGHT_BUTTON.BFour,
-        str(evdev.ecodes.BTN_EXTRA): EIGHT_BUTTON.BFive,
-        str(evdev.ecodes.KEY_A): EIGHT_BUTTON.BSix,
-        str(evdev.ecodes.KEY_S): EIGHT_BUTTON.BSeven,
-        str(evdev.ecodes.KEY_D): EIGHT_BUTTON.BEight
+        str(evdev.ecodes.BTN_LEFT): THIRTYTWO_BUTTON.BOne,
+        str(evdev.ecodes.BTN_RIGHT): THIRTYTWO_BUTTON.BTwo,
+        str(evdev.ecodes.BTN_MIDDLE): THIRTYTWO_BUTTON.BThree,
+        str(evdev.ecodes.BTN_SIDE): THIRTYTWO_BUTTON.BFour,
+        str(evdev.ecodes.BTN_EXTRA): THIRTYTWO_BUTTON.BFive,
+        str(evdev.ecodes.KEY_1): THIRTYTWO_BUTTON.BOne,
+        str(evdev.ecodes.KEY_2): THIRTYTWO_BUTTON.BTwo,
+        str(evdev.ecodes.KEY_3): THIRTYTWO_BUTTON.BThree,
+        str(evdev.ecodes.KEY_4): THIRTYTWO_BUTTON.BFour,
+        str(evdev.ecodes.KEY_5): THIRTYTWO_BUTTON.BFive,
+        str(evdev.ecodes.KEY_6): THIRTYTWO_BUTTON.BSix,       
+        str(evdev.ecodes.KEY_7): THIRTYTWO_BUTTON.BSeven,
+        str(evdev.ecodes.KEY_8): THIRTYTWO_BUTTON.BEight,
+        str(evdev.ecodes.KEY_9): THIRTYTWO_BUTTON.BNine,
+        str(evdev.ecodes.KEY_R): THIRTYTWO_BUTTON.BTen,
+        str(evdev.ecodes.KEY_T): THIRTYTWO_BUTTON.BEleven,
+        str(evdev.ecodes.KEY_Y): THIRTYTWO_BUTTON.BTwelve,       
+        str(evdev.ecodes.KEY_U): THIRTYTWO_BUTTON.BThirteen,
+        str(evdev.ecodes.KEY_I): THIRTYTWO_BUTTON.BFourteen,
+        str(evdev.ecodes.KEY_O): THIRTYTWO_BUTTON.BFifteen,
+        str(evdev.ecodes.KEY_P): THIRTYTWO_BUTTON.BSixteen
     }, 
     'DIRECTIONS': {
         str(evdev.ecodes.KEY_UP): {"x":   0, "y": -127},
         str(evdev.ecodes.KEY_RIGHT): {"x":   127, "y": 0},
         str(evdev.ecodes.KEY_DOWN): {"x":   0, "y": 127},
-        str(evdev.ecodes.KEY_LEFT): {"x":   -127, "y": 0}
+        str(evdev.ecodes.KEY_LEFT): {"x":   -127, "y": 0},
+        str(evdev.ecodes.KEY_W): {"x":   0, "y": -127},
+        str(evdev.ecodes.KEY_D): {"x":   127, "y": 0},
+        str(evdev.ecodes.KEY_S): {"x":   0, "y": 127},
+        str(evdev.ecodes.KEY_A): {"x":   -127, "y": 0}
     },
     'OTHERS': {
-        str(evdev.ecodes.REL_WHEEL): EIGHT_BUTTON.BSix    
+        str(evdev.ecodes.REL_WHEEL): THIRTYTWO_BUTTON.BSix    
     }
 }
 
@@ -187,7 +227,7 @@ def map_joystick(value, deadzone_value, input_value_min, input_value_max, output
 def main():
     global reaction_time
     reaction_time = float(JOYSTICK_XY.ReactionTimeValue/1000)
-    """ Trigger XAC joystick with USB or BT mouse and keyboard  """
+    """ Trigger Gamepad with USB or BT mouse and keyboard  """
     # Examine all input devices and find keyboards and mice.
     while len(evdev.list_devices()) == 0:
         if DEBUG_MODE: 
