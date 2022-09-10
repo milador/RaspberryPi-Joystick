@@ -306,19 +306,27 @@ sudo python joystick_32_buttons_keyboard.py
   1.7. Usage:
 
 
-* Key 1: Button 4
-* Key 2: Button 8
-* Key 3: Button 12
-* Key 4: Button 16
-* Key 5: Button 20
-* Key 6: Button 24
-* Key 7: Button 28
-* Key 8: Button 32
-* Key d: Analog Right
-* Key w: Analog Up
-* Key a: Analog Left
-* Key s: Analog Down
-* Key q: Exit
+* Key 1: Button 1
+* Key 2: Button 2
+* Key 3: Button 3
+* Key 4: Button 4
+* Key 5: Button 5
+* Key 6: Button 6
+* Key 7: Button 7
+* Key 8: Button 8
+* Key 9: Button 9
+* Key R: Button 10
+* Key T: Button 11
+* Key Y: Button 12
+* Key U: Button 13
+* Key I: Button 14
+* Key O: Button 15
+* Key P: Button 16
+* Key D: Analog Right
+* Key W: Analog Up
+* Key A: Analog Left
+* Key S: Analog Down
+* Key Q: Exit
 
 
 2.  Joystick_32.py: A class created to handle button actions and dual axis joystick actions.

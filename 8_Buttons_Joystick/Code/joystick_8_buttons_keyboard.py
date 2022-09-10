@@ -10,8 +10,12 @@ import fcntl
 import termios
 import time
 import random
+from Joystick_8 import *
+from importlib import reload
 reload(sys)
-sys.setdefaultencoding("ISO-8859-1")
+
+joystick = Joystick_8()
+joystick.begin('/dev/hidg0')
 		
 def getch():
   import sys, tty, termios
@@ -53,83 +57,86 @@ def getch():
         sys.exit()
     else:
         clean_up()
-	pass
+    pass
     init()
       
   finally:
     termios.tcsetattr(0, termios.TCSANOW, old_settings)
   return ch
 
-def write_report(report):
-    with open('/dev/hidg0', 'rb+') as fd:
-        fd.write(report.encode())
 	
 # Initialization 
 def init():
     clean_up()
 
 def button_1(tf):
-    write_report('\x00\x00\x01')
+    joystick.press(0)
     time.sleep(tf)
     clean_up()	
 	
 def button_2(tf):
-    write_report('\x00\x00\x02')
+    joystick.press(1)
     time.sleep(tf)
     clean_up()	
 	
 def button_3(tf):
-    write_report('\x00\x00\x04')
+    joystick.press(2)
     time.sleep(tf)
     clean_up()	
 	
 def button_4(tf):
-    write_report('\x00\x00\x08')
+    joystick.press(3)
     time.sleep(tf)
     clean_up()	
 	
 def button_5(tf):
-    write_report('\x00\x00\x10')
+    joystick.press(4)
     time.sleep(tf)
     clean_up()	
 	
 def button_6(tf):
-    write_report('\x00\x00\x20')
+    joystick.press(5)
     time.sleep(tf)
     clean_up()	
 	
 def button_7(tf):
-    write_report('\x00\x00\x40')
+    joystick.press(6)
     time.sleep(tf)
     clean_up()	
 	
 def button_8(tf):
-    write_report('\x00\x00\x80')
+    joystick.press(7)
     time.sleep(tf)
     clean_up()	
 	
 def button_right(tf):
-    write_report('\x7F\x00\x00')
+    joystick.xAxis(127)
+    joystick.yAxis(0)
     time.sleep(tf)
     clean_up()	
 	
 def button_up(tf):
-    write_report('\x00\x7F\x00')
+    joystick.xAxis(0)
+    joystick.yAxis(-127)
     time.sleep(tf)
     clean_up()	
 	
 def button_left(tf):
-    write_report('\x81\x00\x00')
+    joystick.xAxis(-127)
+    joystick.yAxis(0)
     time.sleep(tf)
     clean_up()	
 	
 def button_down(tf):
-    write_report('\x00\x81\x00')
+    joystick.xAxis(0)
+    joystick.yAxis(127)
     time.sleep(tf)
     clean_up()	
 	
 def clean_up():
-    write_report('\x00\x00\x00')
+    joystick.releaseAll()
+    joystick.xAxis(0)
+    joystick.yAxis(0)
 
 
 def main():

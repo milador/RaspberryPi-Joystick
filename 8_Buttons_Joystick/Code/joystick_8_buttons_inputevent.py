@@ -54,15 +54,24 @@ EVENT2ACTION = {
         str(evdev.ecodes.BTN_MIDDLE): EIGHT_BUTTON.BThree,
         str(evdev.ecodes.BTN_SIDE): EIGHT_BUTTON.BFour,
         str(evdev.ecodes.BTN_EXTRA): EIGHT_BUTTON.BFive,
-        str(evdev.ecodes.KEY_A): EIGHT_BUTTON.BSix,
-        str(evdev.ecodes.KEY_S): EIGHT_BUTTON.BSeven,
-        str(evdev.ecodes.KEY_D): EIGHT_BUTTON.BEight
+        str(evdev.ecodes.KEY_1): EIGHT_BUTTON.BOne,
+        str(evdev.ecodes.KEY_2): EIGHT_BUTTON.BTwo,
+        str(evdev.ecodes.KEY_3): EIGHT_BUTTON.BThree,
+        str(evdev.ecodes.KEY_4): EIGHT_BUTTON.BFour,
+        str(evdev.ecodes.KEY_5): EIGHT_BUTTON.BFive,
+        str(evdev.ecodes.KEY_6): EIGHT_BUTTON.BSix,       
+        str(evdev.ecodes.KEY_7): EIGHT_BUTTON.BSeven,
+        str(evdev.ecodes.KEY_8): EIGHT_BUTTON.BEight
     }, 
     'DIRECTIONS': {
         str(evdev.ecodes.KEY_UP): {"x":   0, "y": -127},
         str(evdev.ecodes.KEY_RIGHT): {"x":   127, "y": 0},
         str(evdev.ecodes.KEY_DOWN): {"x":   0, "y": 127},
-        str(evdev.ecodes.KEY_LEFT): {"x":   -127, "y": 0}
+        str(evdev.ecodes.KEY_LEFT): {"x":   -127, "y": 0},
+        str(evdev.ecodes.KEY_W): {"x":   0, "y": -127},
+        str(evdev.ecodes.KEY_D): {"x":   127, "y": 0},
+        str(evdev.ecodes.KEY_S): {"x":   0, "y": 127},
+        str(evdev.ecodes.KEY_A): {"x":   -127, "y": 0}
     },
     'OTHERS': {
         str(evdev.ecodes.REL_WHEEL): EIGHT_BUTTON.BSix    

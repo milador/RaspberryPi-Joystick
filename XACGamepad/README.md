@@ -345,11 +345,11 @@ sudo python gamepad_xac_keyboard.py
 * Key 6: Button 6
 * Key 7: Button 7
 * Key 8: Button 8
-* Key d: Analog Right
-* Key w: Analog Up
-* Key a: Analog Left
-* Key s: Analog Down
-* Key q: Exit
+* Key D: Analog Right
+* Key W: Analog Up
+* Key A: Analog Left
+* Key S: Analog Down
+* Key Q: Exit
 
 
 2.  Gamepad_XAC.py: A class created to handle button actions and dual axis joystick actions.
