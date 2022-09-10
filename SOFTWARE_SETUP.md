@@ -23,7 +23,7 @@ Install latest version of Raspbian OS on an SD card according to the official do
  
 1.	Login to your Raspberry Pi
 2.	Open a web browser 
-3.	Download [install.sh](https://github.com/milador/RaspberryPi-Joystick/blob/master/Install/install.sh) to your main /home/pi/ directory ( Make sure you save it as .sh or shell script )
+3.	Download [install.sh](https://github.com/milador/RaspberryPi-Joystick/blob/develop/Install/install.sh) to your main /home/pi/ directory ( Make sure you save it as .sh or shell script )
 4.	Run the shell script to install the software. You can pass an argument to define your desired configuration.
 
 Note: The configuration for XAC Compatible Gamepad will be selected if no argument is passed.
