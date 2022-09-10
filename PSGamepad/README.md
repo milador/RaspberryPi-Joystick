@@ -231,7 +231,7 @@ sudo chmod +x ps_gamepad_usb
 sudo cp ps_gamepad_usb /usr/bin/
 ```
 
-The report descriptor is created to define a generic gamepad with 2 sticks, 1 dpad, and 14 buttons HID device. The report descriptor used in the ns_gamepad_usb gadget definition is presented in hexadecimal values as follows:
+The report descriptor is created to define a generic gamepad with 2 sticks, 1 dpad, and 14 buttons HID device. The report descriptor used in the ps_gamepad_usb  gadget definition is presented in hexadecimal values as follows:
 
 ```
 05010905a10115002501350045017501950e05091901290e81029502810105012507463b017504950165140939814265009501810126ff0046ff000930093109320935750895048102750895018101c0
@@ -344,7 +344,7 @@ sudo chmod +x gamepad_ps_keyboard.py
 
   1.4. Copy and paste the gamepad_ps_keyboard.py code available under Code directory.
 
-  1.5. Save gamepad_ns_keyboard.py file and exit
+  1.5. Save gamepad_ps_keyboard.py file and exit
   
   1.6. Test operating RaspberryPi-Joystick using gamepad_ps_keyboard.py code with a physical keyboard or SSH
   
@@ -396,7 +396,7 @@ To run the gamepad keyboard program for a Playstation 4 do the following.
 
 ```
 $ cd Code
-$ sudo python3 gamepad_ns_keyboard_ps4.py
+$ sudo python3 gamepad_ps_keyboard_ps4.py
 ```
 
 The active keys for a Playstation 4 are listed below
