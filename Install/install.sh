@@ -58,7 +58,6 @@ sudo apt install -y python3-pip python3-gpiozero python3-evdev git
 #Step 3: Clone code from github
 [ ! -d ${REPO_NAME} ] && git clone https://github.com/milador/RaspberryPi-Joystick
 cd ${REPO_NAME}/${GADGET_NAME}
-git checkout develop
 echo "Step 3: Repository was cloned"
 
 #Step 4: Load the USB gadget drivers
