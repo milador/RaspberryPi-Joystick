@@ -354,10 +354,6 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 
 The data sent to the host device for the 14 buttons , 1 dpad, and dual axis joystick configuration of the joystick contains 6 bytes, 2 are for the XY and 4 are the buttons. 
 
-<p align="center">
-<img align="center" src="../Resources/Images/NS_Packets.png" width="50%" height="50%" alt="raspberry pi NS Gamepad data packets"/>
-</p>
-
 # Testing
 
 1.  gamepad_ns_keyboard.py: A sample code to convert keyboard actions to joystick actions using command line and a keyboard is available to test the functionality. This method has packets exposed which is not recommended for usage. 

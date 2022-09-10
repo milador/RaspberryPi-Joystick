@@ -319,9 +319,6 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 
 The data sent to the host device for the 14 buttons , 1 dpad, and dual axis joystick configuration of the joystick contains 6 bytes, 2 are for the XY and 4 are the buttons. 
 
-<p align="center">
-<img align="center" src="../Resources/Images/PS_Packets.png" width="50%" height="50%" alt="raspberry pi PS Gamepad data packets"/>
-</p>
 
 # Testing
 
