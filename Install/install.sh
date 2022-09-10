@@ -25,14 +25,18 @@ elif [ $GADGET_TYPE = "ns" ]; then
     GADGET_NAME='NSGamepad'
     USB_GADGET_NAME='ns_gamepad_usb'
     SERVICE_NAME='ns_gamepad.service'
+elif [ $GADGET_TYPE = "ps" ]; then
+    GADGET_NAME='PSGamepad'
+    USB_GADGET_NAME='ps_gamepad_usb'
+    SERVICE_NAME='ns_gamepad.service'
 elif [ $GADGET_TYPE = "xac" ]; then
     GADGET_NAME='XACGamepad'
     USB_GADGET_NAME='xac_gamepad_usb'
     SERVICE_NAME='xac_gamepad.service'
 else
-    GADGET_NAME='8_Buttons_Joystick'
-    USB_GADGET_NAME='8_buttons_rpi_joystick_usb'
-    SERVICE_NAME='8_buttons_joystick.service'
+    GADGET_NAME='XACGamepad'
+    USB_GADGET_NAME='xac_gamepad_usb'
+    SERVICE_NAME='xac_gamepad.service'
 fi
 echo "Instaling $GADGET_NAME ..."
 
@@ -100,23 +104,26 @@ echo "Step 7: Successfully added rpi_device rule."
 #Step 8: Install xac_gamepad service and start it
 IS_ACTIVE=$(sudo systemctl is-active $SERVICE_NAME)
 if [ $GADGET_NAME = "8_Buttons_Joystick" ]; then
-    sudo systemctl stop '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'xac_gamepad.service'
-	sudo systemctl disable '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'xac_gamepad.service'
+    sudo systemctl stop '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'ps_gamepad.service' 'xac_gamepad.service'
+	sudo systemctl disable '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'ps_gamepad.service' 'xac_gamepad.service'
 elif [ $GADGET_NAME = "16_Buttons_Joystick" ]; then
-    sudo systemctl stop '8_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'xac_gamepad.service'
-	sudo systemctl disable '8_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'xac_gamepad.service'
+    sudo systemctl stop '8_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'ps_gamepad.service' 'xac_gamepad.service'
+	sudo systemctl disable '8_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'ps_gamepad.service' 'xac_gamepad.service'
 elif [ $GADGET_NAME = "32_Buttons_Joystick" ]; then
-    sudo systemctl stop '8_buttons_joystick.service' '16_buttons_joystick.service' 'ns_gamepad.service' 'xac_gamepad.service'
-	sudo systemctl disable '8_buttons_joystick.service' '16_buttons_joystick.service' 'ns_gamepad.service' 'xac_gamepad.service'
+    sudo systemctl stop '8_buttons_joystick.service' '16_buttons_joystick.service' 'ns_gamepad.service' 'ps_gamepad.service' 'xac_gamepad.service'
+	sudo systemctl disable '8_buttons_joystick.service' '16_buttons_joystick.service' 'ns_gamepad.service' 'ps_gamepad.service' 'xac_gamepad.service'
 elif [ $GADGET_NAME = "NSGamepad" ]; then
-    sudo systemctl stop '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'xac_gamepad.service'
-	sudo systemctl disable '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'xac_gamepad.service'
+    sudo systemctl stop '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'xac_gamepad.service' 'ps_gamepad.service'
+	sudo systemctl disable '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'xac_gamepad.service' 'ps_gamepad.service'
+elif [ $GADGET_NAME = "PSGamepad" ]; then
+    sudo systemctl stop '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'xac_gamepad.service' 'ns_gamepad.service'
+	sudo systemctl disable '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'xac_gamepad.service' 'ns_gamepad.service'
 elif [ $GADGET_NAME = "XACGamepad" ]; then
-    sudo systemctl stop '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service'
-	sudo systemctl disable '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service'
+    sudo systemctl stop '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'ps_gamepad.service'
+	sudo systemctl disable '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'ps_gamepad.service'
 else
-    sudo systemctl stop '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'xac_gamepad.service'
-	sudo systemctl disable '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'xac_gamepad.service'
+    sudo systemctl stop '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'ps_gamepad.service'
+	sudo systemctl disable '8_buttons_joystick.service' '16_buttons_joystick.service' '32_buttons_joystick.service' 'ns_gamepad.service' 'ps_gamepad.service'
 fi
 sudo systemctl daemon-reload 
 sudo systemctl reset-failed

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Interface to Linux USB NSGamepad Gadget
+Interface to Linux USB MFGamepad Gadget
 
 MIT License
 
@@ -77,8 +77,8 @@ class DS4Button(IntEnum):
     LOGO = 12
     TPAD = 13
 
-class NSGamepad():
-    """NSGamepad Linux USB Gadget Interface"""
+class MFGamepad():
+    """MFGamepad Linux USB Gadget Interface"""
     # pylint: disable=too-many-instance-attributes
     compass_dir_x = array.array('B', \
             [0, 0, 128, 255, 255, 255, 128, 0, \
@@ -99,7 +99,7 @@ class NSGamepad():
         self.dpad_y_axis = 128
 
     def begin(self, devname):
-        """Start NSGamepad"""
+        """Start MFGamepad"""
         with self.thread_lock:
             self.devhandle = open(devname, 'wb+')
             self.left_x_axis = 128
@@ -114,12 +114,12 @@ class NSGamepad():
         return
 
     def end(self):
-        """End NSGamepad"""
+        """End MFGamepad"""
         self.devhandle.close()
         return
 
     def write(self):
-        """Send NSGamepad state"""
+        """Send MFGamepad state"""
         self.devhandle.write(pack('<HBBBBBB',
             self.my_buttons, self.d_pad,
             self.left_x_axis, self.left_y_axis, \
@@ -244,10 +244,10 @@ class NSGamepad():
         return
 
 def main():
-    """ test NSGamepad class """
+    """ test MFGamepad class """
     import time
 
-    gamepad = NSGamepad()
+    gamepad = MFGamepad()
     gamepad.begin('/dev/hidg0')
 
     while True:

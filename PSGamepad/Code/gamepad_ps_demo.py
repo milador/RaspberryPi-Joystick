@@ -1,18 +1,18 @@
 """
-Demonstrate use of the NSGamepad class. nsgamepad_usb must be run first to
+Demonstrate use of the PSGamepad class. psgamepad_usb must be run first to
 create the USB gadget.
 
 
 Must be run as root like this:
-$ sudo ./ns_gamepad_usb
+$ sudo ./ps_gamepad_usb
 $ cd Code
-$ sudo python3 gamepad_ns_demo.py
+$ sudo python3 gamepad_ps_demo.py
 """
 import time
 from MFGamepad import *
 
 def main():
-    """ test NSGamepad class """
+    """ test PSGamepad class """
 
     gamepad = MFGamepad()
     gamepad.begin('/dev/hidg0')

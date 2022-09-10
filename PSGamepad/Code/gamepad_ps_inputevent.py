@@ -11,12 +11,12 @@ Bluetooth tray applet to Add Device.
 # Install input event module
 sudo apt install python3-evdev
 
-cd NSGamepad
+cd MFGamepad
 # Create USB gamepad gadget
-sudo ./ns_gamepad_usb
+sudo ./ps_gamepad_usb
 cd Code
 # Read keyboard and mouse events then press/release gamepad buttons.
-sudo python3 gamepad_ns_inputevent.py
+sudo python3 gamepad_ps_inputevent.py
 
 """
 
@@ -52,15 +52,19 @@ class GAMEPAD_XY(IntEnum):
 # Map keyboard keys or mouse buttons to gamepad buttons.
 EVENT2ACTION = {
     'BUTTONS': {
-        str(evdev.ecodes.BTN_LEFT): NSButton.A,
-        str(evdev.ecodes.BTN_RIGHT): NSButton.B,
-        str(evdev.ecodes.BTN_MIDDLE): NSButton.X,
-        str(evdev.ecodes.BTN_SIDE): NSButton.Y,
-        str(evdev.ecodes.BTN_EXTRA): NSButton.HOME,
-        str(evdev.ecodes.KEY_A): NSButton.A,
-        str(evdev.ecodes.KEY_B): NSButton.B,
-        str(evdev.ecodes.KEY_X): NSButton.X,
-        str(evdev.ecodes.KEY_Y): NSButton.Y,
+        str(evdev.ecodes.BTN_LEFT): DS4Button.SQUARE,
+        str(evdev.ecodes.BTN_RIGHT): DS4Button.CROSS,
+        str(evdev.ecodes.BTN_MIDDLE): DS4Button.CIRCLE,
+        str(evdev.ecodes.BTN_SIDE): DS4Button.TRIANGLE,
+        str(evdev.ecodes.BTN_EXTRA): DS4Button.OPTIONS,
+        str(evdev.ecodes.KEY_S): DS4Button.SQUARE,
+        str(evdev.ecodes.KEY_X): DS4Button.CROSS,
+        str(evdev.ecodes.KEY_O): DS4Button.CIRCLE,
+        str(evdev.ecodes.KEY_A): DS4Button.TRIANGLE,
+        str(evdev.ecodes.KEY_1): DS4Button.L1,
+        str(evdev.ecodes.KEY_2): DS4Button.L2,
+        str(evdev.ecodes.KEY_8): DS4Button.R1,
+        str(evdev.ecodes.KEY_9): DS4Button.R2
     }, 
     'DIRECTIONS': {
         str(evdev.ecodes.KEY_UP): {"x":   128, "y": 0},
@@ -69,9 +73,10 @@ EVENT2ACTION = {
         str(evdev.ecodes.KEY_LEFT): {"x":   0, "y": 128}
     },
     'OTHERS': {
-        str(evdev.ecodes.REL_WHEEL): NSButton.HOME    
+        str(evdev.ecodes.REL_WHEEL): DS4Button.OPTIONS    
     }
 }
+
 
 
 async def handle_events(device):

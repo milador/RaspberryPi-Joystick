@@ -2,9 +2,9 @@ import os
 import sys
 import termios
 import time
-from NSGamepad import *
+from MFGamepad import *
 
-Gamepad = NSGamepad()
+Gamepad = MFGamepad()
 Gamepad.begin('/dev/hidg0')
 
 def getch():
@@ -122,7 +122,6 @@ def clean_up():
     Gamepad.dPad(DPad.CENTERED)
 
 def main():
-    Gamepad.begin('/dev/hidg0')
 
     while True:
         print("\nKey: '" + getch() + "'\n")

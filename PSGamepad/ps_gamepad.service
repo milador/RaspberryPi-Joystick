@@ -1,0 +1,23 @@
+[Unit]
+Description=PS Gamepad automatic start with systemd, respawn, after bluetooth
+After=bluetooth.target
+After=multi-user.target
+Requires=bluetooth.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u gamepad_ps_inputevent.py
+WorkingDirectory=/home/pi/RaspberryPi-Joystick/PSGamepad/Code
+Type=idle
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=ps_gamepad
+ExecStartPre=/bin/sleep 10
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+
+
+

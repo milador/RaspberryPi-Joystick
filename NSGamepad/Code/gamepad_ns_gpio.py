@@ -14,9 +14,9 @@ import time
 import threading
 import signal
 from gpiozero import Button
-from NSGamepad import *
+from MFGamepad import *
 
-Gamepad = NSGamepad()
+Gamepad = MFGamepad()
 
 # Map the 4 direction buttons (up, right, down, left) to NS direction pad values
 BUTTONS_MAP_DPAD = array.array('B', [
