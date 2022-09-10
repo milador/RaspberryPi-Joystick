@@ -74,7 +74,7 @@
   
   12. Connect the data (USB A Male) port of the (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable to your PS4.
   
-  13. Press and hold the Mode button on Mayflash Magic Pro to enter the NS. The LED should turn Blue for PS4. 
+  13. Press and hold the Mode button on Mayflash Magic Pro to select PS4 mode. The LED should turn Blue for PS4. 
 
   
 ### Option2 : 
@@ -103,7 +103,7 @@
   
   12. Connect the data (USB A Male) port of the (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable to your PS4.
   
-  13. Press and hold the Mode button on Mayflash Magic Pro to enter the NS. The LED should turn Blue for PS4.
+  13. Press and hold the Mode button on Mayflash Magic Pro to select PS4 mode. The LED should turn Blue for PS4.
   
 Note: Make sure the USB cable is connected to host before running the codes or you may get 108 error.
 
@@ -132,7 +132,7 @@ Note: Make sure the USB cable is connected to host before running the codes or y
       
   9. Connect the (USB C Male) port of the (USB C Male to USB A Female) cable to your PS4.
   
-  10. Press and hold the Mode button on Mayflash Magic Pro to enter the NS. The LED should turn Blue for PS4. 
+  10. Press and hold the Mode button on Mayflash Magic Pro to select PS4 mode. The LED should turn Blue for PS4. 
   
   
   
@@ -163,7 +163,7 @@ Note: Make sure the USB cable is connected to host before running the codes or y
       
   9. Connect the (USB C Male) port of the (USB C Male to USB A Female) cable to your PS4.
   
-  10. Press and hold the Mode button on Mayflash Magic Pro to enter the NS. The LED should turn Blue for PS4.
+  10. Press and hold the Mode button on Mayflash Magic Pro to select PS4 mode. The LED should turn Blue for PS4.
 
   
 Note: Make sure the USB cable is connected to host device before running the codes or you may get 108 error.
@@ -439,7 +439,7 @@ sudo nano /etc/systemd/system/ps_gamepad.service
 
 ```
 [Unit]
-Description=NS Gamepad automatic start with systemd, respawn, after bluetooth
+Description=PS Gamepad automatic start with systemd, respawn, after bluetooth
 After=bluetooth.target
 After=multi-user.target
 Requires=bluetooth.target

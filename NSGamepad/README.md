@@ -86,7 +86,7 @@ https://www.raspberrypi.org/documentation/remote-access/vnc/
   
   12. Connect the data (USB A Male) port of the (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable to your Nintendo Switch.
   
-  13. Press and hold the Mode button on Mayflash Magic NS to enter the NS. The LED should turn Red for Nintendo Switch. 
+  13. Press and hold the Mode button on Mayflash Magic NS to select NS mode. The LED should turn Red for Nintendo Switch. 
 
   
 ### Option2 : 
@@ -115,7 +115,7 @@ https://www.raspberrypi.org/documentation/remote-access/vnc/
   
   12. Connect the data (USB A Male) port of the (USB A Female to Dual USB Male Extra Power Data Y Extension) Cable to your Nintendo Switch.
   
-  13. Press and hold the Mode button on Mayflash Magic NS to enter the NS. The LED should turn Red for Nintendo Switch. 
+  13. Press and hold the Mode button on Mayflash Magic NS to select NS mode. The LED should turn Red for Nintendo Switch. 
   
 Note: Make sure the USB cable is connected to host before running the codes or you may get 108 error.
 
@@ -162,7 +162,7 @@ https://www.raspberrypi.org/documentation/remote-access/vnc/
       
   9. Connect the (USB C Male) port of the (USB C Male to USB A Female) cable to your Nintendo Switch.
   
-  10. Press and hold the Mode button on Mayflash Magic NS to enter the NS. The LED should turn Red for Nintendo Switch. 
+  10. Press and hold the Mode button on Mayflash Magic NS to select NS mode. The LED should turn Red for Nintendo Switch. 
   
   
   
@@ -198,7 +198,7 @@ substitution of the Pi 4B with the Pi 400.
       
   9. Connect the (USB C Male) port of the (USB C Male to USB A Female) cable to your Nintendo Switch.
   
-  10. Press and hold the Mode button on Mayflash Magic NS to enter the NS. The LED should turn Red for Nintendo Switch. 
+  10. Press and hold the Mode button on Mayflash Magic NS to select NS mode. The LED should turn Red for Nintendo Switch. 
 
   
 Note: Make sure the USB cable is connected to host device before running the codes or you may get 108 error.
