@@ -30,8 +30,9 @@ The setup process for each gamepad configuration can be performed manually as we
   1. [8_Buttons](https://github.com/milador/RaspberryPi-Joystick/blob/master/8_Buttons_Joystick/) ( 8 Buttons and a dual axis joystick )
   2. [16_Buttons](https://github.com/milador/RaspberryPi-Joystick/blob/master/16_Buttons_Joystick/) ( 16 Buttons and a dual axis joystick )
   3. [32_Buttons](https://github.com/milador/RaspberryPi-Joystick/blob/master/32_Buttons_Joystick/) ( 32 Buttons and a dual axis joystick )
-  4. [NSGamepad](https://github.com/milador/RaspberryPi-Joystick/blob/master/NSGamepad/) ( Nintendo Switch & PS4 )
-  5. [XACGamepad](https://github.com/milador/RaspberryPi-Joystick/blob/master/XACGamepad/) ( Xbox Adaptive Controller )
+  4. [NSGamepad](https://github.com/milador/RaspberryPi-Joystick/blob/master/NSGamepad/) ( Nintendo Switch )
+  5. [PSGamepad](https://github.com/milador/RaspberryPi-Joystick/blob/master/PSGamepad/) ( PS3/PS4 )
+  6. [XACGamepad](https://github.com/milador/RaspberryPi-Joystick/blob/master/XACGamepad/) ( Xbox Adaptive Controller )
   
 Please select the option based on your need and follow the instructions.
 
