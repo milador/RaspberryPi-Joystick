@@ -83,7 +83,7 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
  ### Option 2
  
 1.	Download/Clone project repository in your computer 
-2.	Enter the "Insall" directory 
+2.	Enter the "Install" directory 
 3.	Open install_windows.bat file with a text editor 
 4.	Change the ip address and set your raspberry pi local ip address 
 5.	Set the raspberry pi password if it is no longer set to "raspberry"
@@ -145,7 +145,7 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 ### Option 3
  
 1.	Download/Clone project repository in your computer 
-2.	Enter the "Insall" directory 
+2.	Enter the "Install" directory 
 3.	Open Command line or terminal 
 4.	Enter following command:
 
