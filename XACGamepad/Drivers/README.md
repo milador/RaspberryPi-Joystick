@@ -14,9 +14,8 @@ Be sure to install the dependencies and toolchains. Choose whether
 cross-compiling or compiling on a Raspberry Pi.
 
 ```
-sudo apt-get install flex
-sudo apt-get install bison
-sudo apt-get install gcc-arm*
+sudo apt install git bc bison flex libssl-dev make libc6-dev libncurses5-dev
+sudo apt install crossbuild-essential-armhf
 ```
 
 ```bash
