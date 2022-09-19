@@ -13,6 +13,12 @@ https://www.raspberrypi.org/documentation/linux/kernel/building.md
 Be sure to install the dependencies and toolchains. Choose whether
 cross-compiling or compiling on a Raspberry Pi.
 
+```
+sudo apt-get install flex
+sudo apt-get install bison
+sudo apt-get install gcc-arm*
+```
+
 ```bash
 git clone --depth=1 --branch rpi-5.10.y https://github.com/raspberrypi/linux
 cd linux
