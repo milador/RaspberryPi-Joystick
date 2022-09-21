@@ -158,37 +158,29 @@ Note: Make sure the USB cable is connected to XAC running the codes or you may g
   1.3. Install the required packages
 ```
 sudo apt-get update
-sudo rpi-update 43998c82a7e88df284b7aa30221b2d0d21b2b86a          #sudo apt full-upgrade
 sudo apt-get install python3-evdev python3-gpiozero python-dev python-pip git
 ```
-
-Note: 43998c82a7e88df284b7aa30221b2d0d21b2b86a is the hash for kernel release 5.10.11
 
   1.4. Install the optional packages
 ```
 sudo apt-get install vim ctags screen build-essential
 ```
 
-2.	Reboot RaspberryPi
-```
-sudo reboot
-```
-
-3.	Verify the kernel version ( Tested : Linux btgadget 5.10.11+ #1399 Thu Jan 28 12:02:28 GMT 2021 armv6l GNU/Linux )
+2.	Verify the kernel version ( Tested : Linux raspberrypi 5.15.61-v7l+ #1579 SMP Fri Aug 26 11:13:03 BST 2022 armv7l GNU/Linux )
 ```
 uname -a
 ```
 
-4.	Set up USB gadget mode
+3.	Set up USB gadget mode
 
-  4.1. Download source code and necessary scripts
+  3.1. Download source code and necessary scripts
   
 ```
 git clone https://github.com/milador/RaspberryPi-Joystick
 cd RaspberryPi-Joystick/XACGamepad
 ```
 
-  4.2. Enable libcomposite and other necessary modules and drivers
+  3.2. Enable libcomposite and other necessary modules and drivers
 
 ```
 sudo echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
@@ -196,34 +188,41 @@ sudo echo "dwc2" | sudo tee -a /etc/modules
 sudo echo "libcomposite" | sudo tee -a /etc/modules
 ```
 
-  4.3. Make changes to Linux USB gadget HID driver module for the Xbox Adaptive Controller
+  3.3. Make changes to Linux USB gadget HID driver module for the Xbox Adaptive Controller
 ```
 cd Drivers
-sudo cp -R 5.* /lib/modules/
+sudo cp -R "$(uname -r)" /lib/modules/
 cd ..
 ```
 
-5.	Create the virtual joystick HID config script
+Note: Please update kernel version if the release number of your kernel and available kernel driver modules don't match. You can resolve this issue by updating the raspberry pi kernel version. You can find release hash code from [rpi-firmware](https://github.com/raspberrypi/rpi-firmware) github repository which is located in **git_hash** file.
+
+```
+sudo rpi-update b11af53ca3d52a4eb4599167dce2b2c35ec9c7eb  # Release Hash code for 5.15.61 from git_hash
+sudo reboot
+```
+
+4.	Create the virtual joystick HID config script
 
 ```
 sudo touch /usr/bin/xac_gamepad_usb
 sudo chmod +x /usr/bin/xac_gamepad_usb
 ```
 
-6.	Add virtual joystick HID config script to startup scripts and run it automatically after OS boot
+5.	Add virtual joystick HID config script to startup scripts and run it automatically after OS boot
 
-  6.1. Open /etc/rc.local
+  5.1. Open /etc/rc.local
   
 ```
 sudo nano /etc/rc.local
 ```
-  6.2. Add following command on the line above "exit 0" and save it. ( Add it on the line before "exit 0" )
+  5.2. Add following command on the line above "exit 0" and save it. ( Add it on the line before "exit 0" )
   
 ```
 /usr/bin/xac_gamepad_usb # Raspberry XAC GamePad joystick libcomposite configuration
 ```
 
-7.	Create the joystick HID gadget 
+6.	Create the joystick HID gadget 
 
 ```
 sudo chmod +x xac_gamepad_usb
@@ -265,16 +264,16 @@ The actual USB Report Descriptor can be defined as following:
 // 42 bytes
 ```
 
-8. Save and reboot the Rpi zero:
+7. Save and reboot the Rpi zero:
   
 ```
 sudo reboot
 ```
   
-9. Connect your Rpi zero to your computer and make sure it recognizes your Rpi zero as a USB HID joystick device named "RaspberryPi Joystick". Wait at least 30 seconds for Raspberry Pi to emulate as a HID Joystick device. Windows will initially say the USB Device is not recognized but detects it as a joystick in 30 seconds. 
+8. Connect your Rpi zero to your computer and make sure it recognizes your Rpi zero as a USB HID joystick device named "RaspberryPi Joystick". Wait at least 30 seconds for Raspberry Pi to emulate as a HID Joystick device. Windows will initially say the USB Device is not recognized but detects it as a joystick in 30 seconds. 
 
   
-10.  Startup your Rpi zero and enter following commands to test the configuration:
+9.  Startup your Rpi zero and enter following commands to test the configuration:
    
 ```
 sudo /usr/bin/xac_gamepad_usb
@@ -287,7 +286,7 @@ You should get something similar to following which means it's working and ready
 crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 ```   
 
-9.  Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
+10.  Windows 10 detects Raspberry Pi joystick as a USB HID device and you can use find it under Control Panel\Hardware and Sound\Devices and Printers.
 
 <p align="center">
 <img align="center" src="../Resources/Images/XAC_Cpanel.png" width="50%" height="50%" alt="raspberry pi XAC joystick device in cpanel"/>
@@ -296,6 +295,8 @@ crw------- 1 root root 243, 0 Dec 26 02:34 /dev/hidg0
 <p align="center">
 <img align="center" src="../Resources/Images/XAC_Properties.png" width="50%" height="50%" alt="raspberry pi 8 buttons XAC joystick properties"/>
 </p>
+
+11.  You can skip to **Autostart** section to enable the service that automatically runs the main python script.
 
 # Data packets
 
