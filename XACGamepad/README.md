@@ -188,17 +188,17 @@ sudo echo "dwc2" | sudo tee -a /etc/modules
 sudo echo "libcomposite" | sudo tee -a /etc/modules
 ```
 
-  3.3. Make changes to Linux USB gadget HID driver module for the Xbox Adaptive Controller
+  3.3. Make changes to Linux USB gadget HID driver module for the Xbox Adaptive Controller. You can skip this step if the kernel release number from step 2 is **5.15.61** or higher.
 ```
 cd Drivers
 sudo cp -R "$(uname -r)" /lib/modules/
 cd ..
 ```
 
-Note: Please update kernel version if the release number of your kernel and available kernel driver modules don't match. You can resolve this issue by updating the raspberry pi kernel version. You can find release hash code from [rpi-firmware](https://github.com/raspberrypi/rpi-firmware) github repository which is located in **git_hash** file.
+Note: Please update kernel version if the release number of your kernel and available kernel driver modules don't match. You can resolve this issue by updating the raspberry pi kernel version. You can find release hash code from [rpi-firmware](https://github.com/raspberrypi/rpi-firmware) github repository which is same as the commit hash code.
 
 ```
-sudo rpi-update b11af53ca3d52a4eb4599167dce2b2c35ec9c7eb  # Release Hash code for 5.15.61 from git_hash
+sudo rpi-update b4f90378beb780a5f92f54c95327584d85051910  # Release Hash code for 5.15.61
 sudo reboot
 ```
 
