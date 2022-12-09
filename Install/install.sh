@@ -49,7 +49,7 @@ echo "Step 1: Kernel version is currently set to ${KERNEL_VERSION}"
 #Step 2: Install and update dependencies
 sudo apt update
 sudo apt install -y python3-pip python3-gpiozero python3-evdev git
-python -m pip install fastapi uvicorn[standard]
+pip install fastapi uvicorn[standard]
 echo "Step 2: Dependencies successfully installed"
 
 #Step 3: Clone code from github
