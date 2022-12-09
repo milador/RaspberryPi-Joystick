@@ -49,11 +49,13 @@ echo "Step 1: Kernel version is currently set to ${KERNEL_VERSION}"
 #Step 2: Install and update dependencies
 sudo apt update
 sudo apt install -y python3-pip python3-gpiozero python3-evdev git
+python -m pip install fastapi uvicorn[standard]
 echo "Step 2: Dependencies successfully installed"
 
 #Step 3: Clone code from github
 [ ! -d ${REPO_NAME} ] && git clone https://github.com/milador/RaspberryPi-Joystick
 cd ${REPO_NAME}/${GADGET_NAME}
+git checkout api
 echo "Step 3: Repository was cloned"
 
 #Step 4: Load the USB gadget drivers
