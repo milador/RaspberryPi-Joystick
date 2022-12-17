@@ -143,7 +143,7 @@ sudo cp connection_repair.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable connection_repair.service
 systemctl start connection_repair.service
-echo "Step 7: Successfully added auto connect repair service."
+echo "Step 8: Successfully added auto connect repair service."
 
 
 #Step 9: Rebooting RaspberryPi
