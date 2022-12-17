@@ -136,8 +136,18 @@ else
     echo "Step 7: Service successfully started"
 fi
 
-#Step 8: Rebooting RaspberryPi
-echo "Step 8: Rebooting RaspberryPi."
+#Step 8: Add auto connect repair service
+cd ../Repair
+sudo chmod +x connection_repair.service
+sudo cp connection_repair.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable connection_repair.service
+systemctl start connection_repair.service
+echo "Step 7: Successfully added auto connect repair service."
+
+
+#Step 9: Rebooting RaspberryPi
+echo "Step 9: Rebooting RaspberryPi."
 echo "RaspberryPi-Joystick software successfully installed..."
 sleep 3
 sudo reboot
