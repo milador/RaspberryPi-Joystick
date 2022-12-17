@@ -342,8 +342,7 @@ sudo python joystick_16_buttons_demo.py
 
 # Usage Setup
 
-Connect RaspberryPi to one of the USB ports on your host device. Make sure you use an external power source to power RPi Zero. Wait 30 seconds for it to initialize.
-
+Connect RaspberryPi to one of the USB ports on your host device. Make sure you use an external power source to power RaspberryPi. Wait 30 seconds for it to initialize.
 
 ## Bluetooth
 
@@ -360,6 +359,9 @@ Connect RaspberryPi to one of the USB ports on your host device. Make sure you u
 <p align="center">
 <img align="center" src="../Resources/Images/BT_Pair_Add.PNG" width="50%" height="50%" alt="BT keyboard/mouse scanning menu"/>
 </p>
+
+2.  Restart RaspberryPi.
+
 
 # Usage
 
@@ -441,6 +443,45 @@ systemctl status 16_buttons_joystick.service
 ```   
 
 6.  Perform reboot
+
+```
+sudo reboot
+```   
+
+ # Auto Connection Repair
+ 
+Most of input HID bluetooth devices auto connect on boot if they are already paired, but there are bluetooth devices that fail to always auto connect on startup.
+The following process will attempt to connect to every paired device and restart the running service: 
+
+1.  Navigate the connection and restart repair script directory
+```
+cd /home/pi/RaspberryPi-Joystick/Repair
+```   
+
+Note: To manually execute the connection and restart repair script:
+```
+sudo sh connection_repair.sh
+```   
+
+2.  Set the permission of connection repair systemctl service
+```
+sudo chmod +x connection_repair.service
+```   
+
+3.  Copy connection repair systemctl service to systemd path
+```
+sudo cp connection_repair.service /etc/systemd/system/
+```   
+
+4.  Enable and start the connection_repair.service
+
+```
+systemctl daemon-reload
+systemctl enable connection_repair.service
+systemctl start connection_repair.service
+```   
+
+5.  Perform reboot
 
 ```
 sudo reboot

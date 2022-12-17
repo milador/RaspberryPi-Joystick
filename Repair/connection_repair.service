@@ -1,0 +1,10 @@
+[Unit]
+Description=Joystick Connection Repair Service
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/bin/bash /home/pi/RaspberryPi-Joystick/Repair/connection_repair.sh
+
+[Install]
+WantedBy=multi-user.target
