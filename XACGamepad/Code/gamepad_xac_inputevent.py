@@ -82,7 +82,7 @@ EVENT2ACTION = {
         str(evdev.ecodes.BTN_PINKIE): LEFT_BUTTON.Menu,
         str(evdev.ecodes.BTN_BASE): LEFT_BUTTON.X1,
         str(evdev.ecodes.BTN_BASE2): LEFT_BUTTON.X2,
-	str(evdev.ecodes.BTN_BASE3): LEFT_BUTTON.A,
+        str(evdev.ecodes.BTN_BASE3): LEFT_BUTTON.A,
         str(evdev.ecodes.BTN_BASE4): LEFT_BUTTON.B,
         str(evdev.ecodes.BTN_BASE5): LEFT_BUTTON.BumperL,
         str(evdev.ecodes.BTN_BASE6): LEFT_BUTTON.ThumbBtnL
@@ -102,6 +102,8 @@ EVENT2ACTION = {
 async def handle_events(device):
     global mice_x_in
     global mice_y_in
+    global joystick_x_in
+    global joystick_y_in
     global joystick_x_out
     global joystick_y_out
     # Grab exclusive access means the shell and/or GUI no longer receives the input events
@@ -147,6 +149,11 @@ async def handle_events(device):
                     if DEBUG_MODE: 
                         print('REL_X', event.value , 'joystick x axis out', joystick_x_out)
                     Joystick.xAxis(joystick_x_out)
+                elif event.code == evdev.ecodes.ABS_HAT0X:
+                    joystick_x_out = map_joystick(event.value,0,-1,1,int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
+                    if DEBUG_MODE: 
+                        print('ABS_HAT0X', event.value , 'joystick x hat out', joystick_x_out)
+                    Joystick.xAxis(joystick_x_out)
                 elif event.code == evdev.ecodes.REL_Y and int(JOYSTICK_XY.OperationMode)== 0 and event.value != 0:
                     mice_y_in = event.value
                     joystick_y_out = map_joystick(mice_y_in,int(JOYSTICK_XY.DeadZoneValue),int(JOYSTICK_XY.MinInputValue),int(JOYSTICK_XY.MaxInputValue),int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
@@ -158,6 +165,11 @@ async def handle_events(device):
                     joystick_y_out = map_joystick(mice_y_in,int(JOYSTICK_XY.DeadZoneValue),int(JOYSTICK_XY.MinInputValue),int(JOYSTICK_XY.MaxInputValue),int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
                     if DEBUG_MODE: 
                         print('REL_Y', event.value , 'joystick y axis out', joystick_y_out)
+                    Joystick.yAxis(joystick_y_out)
+                elif event.code == evdev.ecodes.ABS_HAT0Y:
+                    joystick_y_out = map_joystick(event.value,0,1,-1,int(JOYSTICK_XY.MinOutputValue),int(JOYSTICK_XY.MaxOutputValue))
+                    if DEBUG_MODE: 
+                        print('ABS_HAT0Y', event.value , 'joystick y hat out', joystick_y_out)
                     Joystick.yAxis(joystick_y_out)
                 elif event.code == evdev.ecodes.REL_WHEEL:
                     joystick_button = EVENT2ACTION.get('OTHERS')[str(event.code)]
