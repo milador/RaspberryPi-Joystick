@@ -73,7 +73,19 @@ EVENT2ACTION = {
         str(evdev.ecodes.BTN_EXTRA): LEFT_BUTTON.View,
         str(evdev.ecodes.KEY_A): LEFT_BUTTON.Menu,
         str(evdev.ecodes.KEY_S): LEFT_BUTTON.X1,
-        str(evdev.ecodes.KEY_D): LEFT_BUTTON.X2
+        str(evdev.ecodes.KEY_D): LEFT_BUTTON.X2,
+        str(evdev.ecodes.BTN_TRIGGER): LEFT_BUTTON.A,
+        str(evdev.ecodes.BTN_THUMB): LEFT_BUTTON.B,
+        str(evdev.ecodes.BTN_THUMB2): LEFT_BUTTON.BumperL,
+        str(evdev.ecodes.BTN_TOP): LEFT_BUTTON.ThumbBtnL,
+        str(evdev.ecodes.BTN_TOP2): LEFT_BUTTON.View,
+        str(evdev.ecodes.BTN_PINKIE): LEFT_BUTTON.Menu,
+        str(evdev.ecodes.BTN_BASE): LEFT_BUTTON.X1,
+        str(evdev.ecodes.BTN_BASE2): LEFT_BUTTON.X2        
+        str(evdev.ecodes.BTN_BASE3): LEFT_BUTTON.A,
+        str(evdev.ecodes.BTN_BASE4): LEFT_BUTTON.B,
+        str(evdev.ecodes.BTN_BASE5): LEFT_BUTTON.BumperL,
+        str(evdev.ecodes.BTN_BASE6): LEFT_BUTTON.ThumbBtnL
     }, 
     'DIRECTIONS': {
         str(evdev.ecodes.KEY_UP): {"x":   0, "y": -127},
