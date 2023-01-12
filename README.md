@@ -1,29 +1,23 @@
 # RaspberryPi-Joystick
 
-The goal of this project is to create a virtual USB HID joystick using Raspberry Pi which can convert BT mice/keyboard or USB mice/keyboard to joystick HID actions.
+The goal of this project is to create a virtual USB HID joystick which is able to convert BT mice/keyboard or USB mice/keyboard to joystick HID actions.
 
-This Raspberry Pi joystick converter can be used to operate Xbox Adaptive Controller or NS console as practical use cases.
+This Raspberry Pi joystick converter is based on RaspberryPi 4B/zero and can be used to operate Xbox Adaptive Controller or NS console for practical use cases.
 
-A RaspberryPi 4B or a raspberry pi zero W can be used for this project.
+## Updates 
 
-The new versions of raspberry pi zero W come with USB OTG and bluetooth chip which makes it possible to use Bluetooth HID devices as well as USB HID.
+January 2023: The software is now available as an OS image (BlueStick OS) and you can use RaspberryPi Imager to flash the image to the SD card. Visit [BlueStick OS](http://bluestick.ca/) website for more information.
 
-A RaspberryPi 4B can also be used instead of a Raspberry pi zero W.
-
-This project is in development process at the moment.
-
-We now go over the hardware and software requirements.
-
-# Setup 
+## Setup 
 
 Here are the hardware and software setup process instructions:
 
-## [Hardware requirements and setup](./HARDWARE_SETUP.md) ( HARDWARE_SETUP.md )
+### [Hardware requirements and setup](./HARDWARE_SETUP.md) ( HARDWARE_SETUP.md )
 
-## [Software requirements and setup](./SOFTWARE_SETUP.md) ( SOFTWARE_SETUP.md )
+### [Software requirements and setup](./SOFTWARE_SETUP.md) ( SOFTWARE_SETUP.md )
 
 
-# Manual setup instructions   
+## Manual setup instructions   
 
 The setup process for each gamepad configuration can be performed manually as well. You can chose the configuration that matches your needs and follow the steps.
 
@@ -36,12 +30,12 @@ The setup process for each gamepad configuration can be performed manually as we
   
 Please select the option based on your need and follow the instructions.
 
-# Collaborators
+## Collaborators
 
 Thanks to all the developers and testers helping to create this project. Special thanks to [gdsports](https://github.com/gdsports) for finding/fixing bugs and developing new features. 
 
 
-# License
+## License
 
 ### MIT License
 
